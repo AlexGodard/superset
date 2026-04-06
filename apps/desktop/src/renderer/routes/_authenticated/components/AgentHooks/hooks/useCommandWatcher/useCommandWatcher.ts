@@ -49,6 +49,8 @@ export function useCommandWatcher() {
 
 	const { data: workspaces, refetch: refetchWorkspaces } =
 		electronTrpc.workspaces.getAll.useQuery();
+	const { data: terminalPresets } =
+		electronTrpc.settings.getTerminalPresets.useQuery();
 	const { data: workspaceGroups } =
 		electronTrpc.workspaces.getAllGrouped.useQuery();
 	const { data: projects } = electronTrpc.projects.getRecents.useQuery();
@@ -91,6 +93,7 @@ export function useCommandWatcher() {
 			getActiveWorkspaceId: getCurrentWorkspaceIdFromRoute,
 			getWorktreePathByWorkspaceId: (workspaceId) =>
 				worktreePathByWorkspaceId.get(workspaceId),
+			getTerminalPresets: () => terminalPresets,
 		}),
 		[
 			createWorktree,
@@ -104,6 +107,7 @@ export function useCommandWatcher() {
 			projects,
 			getCurrentWorkspaceIdFromRoute,
 			worktreePathByWorkspaceId,
+			terminalPresets,
 		],
 	);
 

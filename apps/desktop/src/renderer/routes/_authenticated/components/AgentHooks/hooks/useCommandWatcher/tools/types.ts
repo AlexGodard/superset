@@ -2,6 +2,11 @@ import type { SelectProject, SelectWorkspace } from "@superset/local-db";
 import type { electronTrpc } from "renderer/lib/electron-trpc";
 import type { z } from "zod";
 
+export interface TerminalPresetInfo {
+	name: string;
+	commands: string[];
+}
+
 export interface CommandResult<
 	TData extends Record<string, unknown> = Record<string, unknown>,
 > {
@@ -62,6 +67,7 @@ export interface ToolContext {
 	getProjects: () => SelectProject[] | undefined;
 	getActiveWorkspaceId: () => string | null;
 	getWorktreePathByWorkspaceId: (workspaceId: string) => string | undefined;
+	getTerminalPresets: () => TerminalPresetInfo[] | undefined;
 }
 
 // Tool definition with schema and execute function

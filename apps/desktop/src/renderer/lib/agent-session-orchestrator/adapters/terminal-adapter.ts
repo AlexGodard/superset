@@ -189,6 +189,12 @@ export async function launchTerminalAdapter(
 	}
 
 	const { workspaceId } = request;
+	const command = request.terminal.command;
+	if (!command) {
+		throw new Error(
+			"Missing terminal command. Preset-based launches must resolve the command before reaching the terminal adapter.",
+		);
+	}
 	const targetPaneId = request.terminal.paneId;
 
 	const noExecute = request.terminal.autoExecute === false;
@@ -230,7 +236,7 @@ export async function launchTerminalAdapter(
 				paneId: newPaneId,
 				tabId: tab.id,
 				workspaceId,
-				command: request.terminal.command,
+				command,
 				createOrAttach: context.createOrAttach,
 				write: context.write,
 				noExecute,
@@ -271,7 +277,7 @@ export async function launchTerminalAdapter(
 			paneId,
 			tabId,
 			workspaceId,
-			command: request.terminal.command,
+			command,
 			createOrAttach: context.createOrAttach,
 			write: context.write,
 			noExecute,

@@ -48,7 +48,7 @@ const baseAgentLaunchSchema = z.object({
 });
 
 export const terminalLaunchConfigSchema = z.object({
-	command: z.string().min(1),
+	command: z.string().min(1).optional(),
 	name: z.string().min(1).optional(),
 	paneId: z.string().min(1).optional(),
 	taskPromptContent: z.string().min(1).optional(),
@@ -158,7 +158,7 @@ function normalizeLegacyLaunchRequest(
 		};
 	}
 
-	if (!legacy.command) {
+	if (!legacy.command && !legacy.agentType) {
 		throw new Error(
 			"Invalid launch request: missing terminal command or chat launch config",
 		);
@@ -171,7 +171,7 @@ function normalizeLegacyLaunchRequest(
 		agentType: legacy.agentType,
 		source: legacy.source,
 		terminal: {
-			command: legacy.command,
+			...(legacy.command ? { command: legacy.command } : {}),
 			name: legacy.name,
 			paneId: legacy.paneId,
 		},

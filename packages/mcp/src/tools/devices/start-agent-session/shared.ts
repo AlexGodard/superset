@@ -34,14 +34,24 @@ function describeSupportedAgents(): string {
 	const quotedAgents = STARTABLE_AGENT_TYPES.map((agent) => `"${agent}"`);
 	const lastAgent = quotedAgents.at(-1);
 	if (!lastAgent) {
-		return 'AI agent to use. Defaults to "claude".';
+		return 'AI agent to use. Defaults to "claude". Also accepts "preset:<name>" to use a user-configured terminal preset.';
 	}
 
 	if (quotedAgents.length === 1) {
-		return `AI agent to use: ${lastAgent}. Defaults to "claude".`;
+		return `AI agent to use: ${lastAgent}. Defaults to "claude". Also accepts "preset:<name>" to use a user-configured terminal preset.`;
 	}
 
-	return `AI agent to use: ${quotedAgents.slice(0, -1).join(", ")}, or ${lastAgent}. Defaults to "claude".`;
+	return `AI agent to use: ${quotedAgents.slice(0, -1).join(", ")}, or ${lastAgent}. Defaults to "claude". Also accepts "preset:<name>" to use a user-configured terminal preset.`;
+}
+
+function isPresetAgent(agent: string): boolean {
+	return agent.startsWith("preset:");
+}
+
+function isBuiltinAgent(
+	agent: string,
+): agent is (typeof STARTABLE_AGENT_TYPES)[number] {
+	return (STARTABLE_AGENT_TYPES as readonly string[]).includes(agent);
 }
 
 export const commonInputSchemaShape = {
@@ -55,7 +65,10 @@ export const commonInputSchemaShape = {
 			"Optional pane ID. When provided, launches relative to the tab containing this pane.",
 		),
 	agent: z
-		.enum(STARTABLE_AGENT_TYPES)
+		.union([
+			z.enum(STARTABLE_AGENT_TYPES),
+			z.string().regex(/^preset:.+/, 'Must be a builtin agent or "preset:<name>"'),
+		])
 		.optional()
 		.describe(describeSupportedAgents()),
 };
@@ -144,7 +157,7 @@ export function buildTaskLaunchRequest({
 }: {
 	workspaceId: string;
 	paneId?: string;
-	agent: (typeof STARTABLE_AGENT_TYPES)[number];
+	agent: string;
 	task: TaskRecord;
 }): AgentLaunchRequest {
 	if (agent === "superset-chat") {
@@ -157,6 +170,22 @@ export function buildTaskLaunchRequest({
 				...(paneId ? { paneId } : {}),
 				initialPrompt: buildAgentTaskPrompt(task),
 				retryCount: 1,
+			},
+		};
+	}
+
+	// For preset agents, defer command resolution to the device
+	if (isPresetAgent(agent)) {
+		return {
+			kind: "terminal",
+			workspaceId,
+			agentType: agent,
+			source: "mcp",
+			terminal: {
+				name: task.slug,
+				taskPromptContent: buildAgentTaskPrompt(task),
+				taskPromptFileName: `task-${task.slug}.md`,
+				...(paneId ? { paneId } : {}),
 			},
 		};
 	}
@@ -186,7 +215,7 @@ export function buildPromptLaunchRequest({
 }: {
 	workspaceId: string;
 	paneId?: string;
-	agent: (typeof STARTABLE_AGENT_TYPES)[number];
+	agent: string;
 	prompt: string;
 }): AgentLaunchRequest {
 	if (agent === "superset-chat") {
@@ -203,6 +232,22 @@ export function buildPromptLaunchRequest({
 		};
 	}
 
+	// For preset agents, defer command resolution to the device
+	if (isPresetAgent(agent)) {
+		const presetName = agent.slice("preset:".length);
+		return {
+			kind: "terminal",
+			workspaceId,
+			agentType: agent,
+			source: "mcp",
+			terminal: {
+				name: presetName,
+				taskPromptContent: prompt,
+				...(paneId ? { paneId } : {}),
+			},
+		};
+	}
+
 	return {
 		kind: "terminal",
 		workspaceId,
@@ -214,7 +259,7 @@ export function buildPromptLaunchRequest({
 				randomId: crypto.randomUUID(),
 				agent: agent as (typeof AGENT_TYPES)[number],
 			}),
-			name: STARTABLE_AGENT_LABELS[agent],
+			name: isBuiltinAgent(agent) ? STARTABLE_AGENT_LABELS[agent] : agent,
 			...(paneId ? { paneId } : {}),
 		},
 	};
@@ -228,7 +273,7 @@ function buildExecuteParams({
 }: {
 	workspaceId: string;
 	paneId?: string;
-	agent: (typeof STARTABLE_AGENT_TYPES)[number];
+	agent: string;
 	request: AgentLaunchRequest;
 }): Record<string, unknown> {
 	const params: Record<string, unknown> = {
@@ -239,7 +284,9 @@ function buildExecuteParams({
 	};
 
 	if (request.kind === "terminal") {
-		params.command = request.terminal.command;
+		if (request.terminal.command) {
+			params.command = request.terminal.command;
+		}
 		if (request.terminal.name) {
 			params.name = request.terminal.name;
 		}
@@ -269,7 +316,7 @@ export function executeLaunchOnDevice({
 	tool: StartAgentSessionToolName;
 	workspaceId: string;
 	paneId?: string;
-	agent: (typeof STARTABLE_AGENT_TYPES)[number];
+	agent: string;
 	request: AgentLaunchRequest;
 }) {
 	return executeOnDevice({
