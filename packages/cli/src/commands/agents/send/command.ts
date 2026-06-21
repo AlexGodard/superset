@@ -12,7 +12,7 @@ export default command({
 		positional("text")
 			.required()
 			.variadic()
-			.desc("Message to inject; submitted with a trailing newline"),
+			.desc("Message to inject; submitted with a trailing carriage return"),
 	],
 	options: {
 		workspace: string().required().desc("Workspace ID"),
@@ -40,14 +40,27 @@ export default command({
 			userJwt: ctx.bearer,
 		});
 
-		// Mirror normalizeTerminalCommand: append LF (not CR) iff absent so the
-		// agent submits the message instead of leaving it in the input box.
-		const data = text.endsWith("\n") ? text : `${text}\n`;
-
+		// Submit in TWO writes: the body, then a SEPARATE carriage return.
+		//
+		// Verified against Claude Code's TUI: a trailing \n only types a newline into
+		// the input box (never submits); \r is the Enter key. But a long body with a
+		// trailing \r in a SINGLE write is swallowed by the TUI's bracketed-paste
+		// detection — the whole chunk is treated as a paste and the \r is absorbed as
+		// literal text, so it buffers UNSUBMITTED (short single-token sends happen to
+		// escape this, which masked the bug). Writing the \r as its own chunk makes it
+		// an unambiguous Enter that flushes the buffered input, regardless of body
+		// length. A short delay keeps the two chunks from coalescing into one read.
+		const body = text.replace(/[\r\n]+$/, "");
 		await target.client.terminal.writeInput.mutate({
 			terminalId: sessionId,
 			workspaceId: options.workspace,
-			data,
+			data: body,
+		});
+		await new Promise((resolve) => setTimeout(resolve, 150));
+		await target.client.terminal.writeInput.mutate({
+			terminalId: sessionId,
+			workspaceId: options.workspace,
+			data: "\r",
 		});
 
 		return {
