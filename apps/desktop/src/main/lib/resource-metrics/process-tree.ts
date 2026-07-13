@@ -18,6 +18,10 @@ const MAX_BUFFER = 10 * 1024 * 1024;
 export interface ProcessInfo {
 	pid: number;
 	ppid: number;
+	/** Numeric owner ID when available. */
+	uid?: number;
+	/** Executable path/name when available. */
+	executable?: string;
 	/** CPU usage as a percentage (can exceed 100 on multi-core). */
 	cpu: number;
 	/** Resident memory in bytes. */
@@ -152,39 +156,51 @@ export function enrichWithPhysFootprint(
 
 async function listProcessesUnix(): Promise<ProcessInfo[]> {
 	try {
-		// Single call: PID, parent PID, %CPU, RSS (KB).
-		const { stdout } = await execAsync("ps -eo pid=,ppid=,pcpu=,rss=", {
-			maxBuffer: MAX_BUFFER,
-			timeout: EXEC_TIMEOUT_MS,
-		});
+		// Single call: UID, PID, parent PID, %CPU, RSS (KB), executable path/name.
+		const { stdout } = await execAsync(
+			"ps -eo uid=,pid=,ppid=,pcpu=,rss=,comm=",
+			{
+				maxBuffer: MAX_BUFFER,
+				timeout: EXEC_TIMEOUT_MS,
+			},
+		);
 
-		const result: ProcessInfo[] = [];
-		for (const line of stdout.split("\n")) {
-			const t = line.trim();
-			if (!t) continue;
-
-			const parts = t.split(/\s+/);
-			if (parts.length < 4) continue;
-
-			const pid = Number.parseInt(parts[0], 10);
-			const ppid = Number.parseInt(parts[1], 10);
-			if (Number.isNaN(pid) || Number.isNaN(ppid)) continue;
-
-			const cpu = Number.parseFloat(parts[2]);
-			const rssKb = Number.parseInt(parts[3], 10);
-
-			result.push({
-				pid,
-				ppid,
-				cpu: Number.isFinite(cpu) ? Math.max(0, cpu) : 0,
-				memory: Number.isFinite(rssKb) ? Math.max(0, rssKb) * 1024 : 0,
-			});
-		}
-
-		return result;
+		return parseUnixProcessList(stdout);
 	} catch {
 		return [];
 	}
+}
+
+export function parseUnixProcessList(stdout: string): ProcessInfo[] {
+	const result: ProcessInfo[] = [];
+	for (const line of stdout.split("\n")) {
+		const trimmed = line.trim();
+		if (!trimmed) continue;
+
+		const parts = trimmed.split(/\s+/);
+		if (parts.length < 6) continue;
+
+		const uid = Number.parseInt(parts[0], 10);
+		const pid = Number.parseInt(parts[1], 10);
+		const ppid = Number.parseInt(parts[2], 10);
+		if (Number.isNaN(uid) || Number.isNaN(pid) || Number.isNaN(ppid)) {
+			continue;
+		}
+
+		const cpu = Number.parseFloat(parts[3]);
+		const rssKb = Number.parseInt(parts[4], 10);
+
+		result.push({
+			pid,
+			ppid,
+			uid,
+			executable: parts.slice(5).join(" "),
+			cpu: Number.isFinite(cpu) ? Math.max(0, cpu) : 0,
+			memory: Number.isFinite(rssKb) ? Math.max(0, rssKb) * 1024 : 0,
+		});
+	}
+
+	return result;
 }
 
 async function listProcessesWindows(): Promise<ProcessInfo[]> {

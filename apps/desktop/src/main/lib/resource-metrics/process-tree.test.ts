@@ -4,6 +4,7 @@ import {
 	getSubtreeResources,
 	type ProcessInfo,
 	type ProcessSnapshot,
+	parseUnixProcessList,
 } from "./process-tree";
 
 function buildSnapshot(processes: ProcessInfo[]): ProcessSnapshot {
@@ -22,6 +23,26 @@ function buildSnapshot(processes: ProcessInfo[]): ProcessSnapshot {
 
 	return { byPid, childrenOf };
 }
+
+describe("parseUnixProcessList", () => {
+	it("preserves a plugin-cache executable path containing spaces", () => {
+		const processes = parseUnixProcessList(
+			"501 55264 1 112.5 250000 /Users/alexandre/.codex/plugins/cache/openai-bundled/computer-use/1.0.1000387/Codex Computer Use.app/Contents/MacOS/SkyComputerUseService",
+		);
+
+		expect(processes).toEqual([
+			{
+				uid: 501,
+				pid: 55_264,
+				ppid: 1,
+				cpu: 112.5,
+				memory: 256_000_000,
+				executable:
+					"/Users/alexandre/.codex/plugins/cache/openai-bundled/computer-use/1.0.1000387/Codex Computer Use.app/Contents/MacOS/SkyComputerUseService",
+			},
+		]);
+	});
+});
 
 describe("getSubtreePids", () => {
 	it("returns the root PID when it has no children", () => {

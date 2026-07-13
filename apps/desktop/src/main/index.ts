@@ -29,6 +29,10 @@ import { initAppState } from "./lib/app-state";
 import { requestAppleEventsAccess } from "./lib/apple-events-permission";
 import { isUpdateReadyToInstall, setupAutoUpdater } from "./lib/auto-updater";
 import { installBundledCliShim } from "./lib/bundled-cli";
+import {
+	startComputerUseBridgeWatchdog,
+	stopComputerUseBridgeWatchdog,
+} from "./lib/computer-use-bridge-watchdog";
 import { resolveDevWorkspaceName } from "./lib/dev-workspace-name";
 import { setWorkspaceDockIcon } from "./lib/dock-icon";
 import { loadWebviewBrowserExtension } from "./lib/extensions";
@@ -228,6 +232,7 @@ app.on("before-quit", async (event) => {
 	}
 
 	isQuitting = true;
+	stopComputerUseBridgeWatchdog();
 	try {
 		stopMemoryTelemetry();
 		getHostServiceCoordinator().stopAll();
@@ -397,6 +402,7 @@ if (!gotTheLock) {
 		ensureProjectIconsDir();
 		setWorkspaceDockIcon();
 		initSentry();
+		startComputerUseBridgeWatchdog();
 		await initAppState();
 		initTanstackDbPersistence();
 
