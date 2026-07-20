@@ -148,6 +148,7 @@ function V2WorkspaceContent() {
 		terminalId,
 		chatSessionId,
 		focusRequestId,
+		launcher,
 	});
 	useAutoAdoptBackgroundSessions({ store, workspaceId, isLayoutReady });
 	useConsumeOpenUrlRequest({

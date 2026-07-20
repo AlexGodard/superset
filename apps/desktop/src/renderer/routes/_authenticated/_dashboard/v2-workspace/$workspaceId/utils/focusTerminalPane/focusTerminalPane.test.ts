@@ -1,13 +1,15 @@
-import { describe, expect, it } from "bun:test";
+import { describe, expect, it, mock } from "bun:test";
 import {
 	createWorkspaceStore,
 	type LayoutNode,
 	type WorkspaceState,
 } from "@superset/panes";
+import type { TerminalLauncher } from "../../hooks/useV2TerminalLauncher";
 import type { PaneViewerData } from "../../types";
 import {
 	findTerminalPaneLocation,
 	focusOrAddTerminalPane,
+	focusOrCreateTerminalPane,
 	focusTerminalPane,
 } from "./focusTerminalPane";
 
@@ -116,5 +118,81 @@ describe("focusOrAddTerminalPane", () => {
 					(pane.data as { terminalId?: string }).terminalId === "terminal-3",
 			),
 		).toBe(true);
+	});
+});
+
+describe("focusOrCreateTerminalPane", () => {
+	it("focuses an existing pane without creating a terminal (foreground)", async () => {
+		const store = createWorkspaceStore<PaneViewerData>({
+			initialState: workspaceState(),
+		});
+		const create = mock(async () => "terminal-2");
+		const launcher: TerminalLauncher = { create };
+
+		expect(await focusOrCreateTerminalPane(store, "terminal-2", launcher)).toBe(
+			"focused",
+		);
+		expect(create).not.toHaveBeenCalled();
+		expect(store.getState().activeTabId).toBe("tab-2");
+		expect(store.getState().tabs).toHaveLength(2);
+	});
+
+	it("creates/adopts the terminal then adds a pane (background)", async () => {
+		const store = createWorkspaceStore<PaneViewerData>({
+			initialState: workspaceState(),
+		});
+		const create = mock(async () => "terminal-3");
+		const launcher: TerminalLauncher = { create };
+
+		expect(await focusOrCreateTerminalPane(store, "terminal-3", launcher)).toBe(
+			"created",
+		);
+		expect(create).toHaveBeenCalledTimes(1);
+		expect(create).toHaveBeenCalledWith({ terminalId: "terminal-3" });
+
+		const state = store.getState();
+		expect(state.tabs).toHaveLength(3);
+		const activeTab = state.tabs.find((tab) => tab.id === state.activeTabId);
+		expect(
+			Object.values(activeTab?.panes ?? {}).some(
+				(pane) =>
+					pane.kind === "terminal" &&
+					(pane.data as { terminalId?: string }).terminalId === "terminal-3",
+			),
+		).toBe(true);
+	});
+
+	it("does not add a duplicate pane if one appears while adopting", async () => {
+		const store = createWorkspaceStore<PaneViewerData>({
+			initialState: workspaceState(),
+		});
+		// Simulate a concurrent adoption (e.g. useAutoAdoptBackgroundSessions)
+		// creating the pane while launcher.create is in flight.
+		const create = mock(async () => {
+			store.getState().addTab({
+				panes: [
+					{
+						kind: "terminal",
+						data: { terminalId: "terminal-3" } as PaneViewerData,
+					},
+				],
+			});
+			return "terminal-3";
+		});
+		const launcher: TerminalLauncher = { create };
+
+		expect(await focusOrCreateTerminalPane(store, "terminal-3", launcher)).toBe(
+			"focused",
+		);
+
+		const paneCount = store
+			.getState()
+			.tabs.flatMap((tab) => Object.values(tab.panes))
+			.filter(
+				(pane) =>
+					pane.kind === "terminal" &&
+					(pane.data as { terminalId?: string }).terminalId === "terminal-3",
+			).length;
+		expect(paneCount).toBe(1);
 	});
 });

@@ -6,7 +6,8 @@ import { useEffect, useRef } from "react";
 import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";
 import type { StoreApi } from "zustand/vanilla";
 import type { ChatPaneData, PaneViewerData } from "../../types";
-import { focusOrAddTerminalPane } from "../../utils/focusTerminalPane";
+import { focusOrCreateTerminalPane } from "../../utils/focusTerminalPane";
+import type { TerminalLauncher } from "../useV2TerminalLauncher";
 
 interface UseConsumeAutomationRunLinkArgs {
 	store: StoreApi<WorkspaceStore<PaneViewerData>>;
@@ -14,13 +15,17 @@ interface UseConsumeAutomationRunLinkArgs {
 	terminalId: string | undefined;
 	chatSessionId: string | undefined;
 	focusRequestId: string | undefined;
+	launcher: TerminalLauncher;
 }
 
 /**
- * When the workspace is opened via a deep link from an automation run
- * (`?terminalId=...` or `?chatSessionId=...`), ensure the corresponding pane
- * is present and focused. The underlying session already exists on the
- * host-service from the dispatcher — we just re-adopt it in the pane store.
+ * When the workspace is opened via a deep link (an automation run, or clicking
+ * an agent chip in the dashboard sidebar) with `?terminalId=...` /
+ * `?chatSessionId=...`, ensure the corresponding pane is present and focused.
+ * If a pane already displays the terminal the agent is in the foreground and we
+ * just focus it; otherwise it's running in the background with no pane, so we
+ * create/adopt the terminal before adding the pane (see
+ * {@link focusOrCreateTerminalPane}).
  */
 export function useConsumeAutomationRunLink({
 	store,
@@ -28,6 +33,7 @@ export function useConsumeAutomationRunLink({
 	terminalId,
 	chatSessionId,
 	focusRequestId,
+	launcher,
 }: UseConsumeAutomationRunLinkArgs): void {
 	const consumedRef = useRef<Set<string>>(new Set());
 	const collections = useCollections();
@@ -70,7 +76,7 @@ export function useConsumeAutomationRunLink({
 			);
 			return;
 		}
-		focusOrAddTerminalPane(store, terminalId);
+		void focusOrCreateTerminalPane(store, terminalId, launcher);
 	}, [
 		store,
 		terminalId,
@@ -78,6 +84,7 @@ export function useConsumeAutomationRunLink({
 		terminalSessionsQuery.isSuccess,
 		terminalSessionsQuery.data,
 		workspaceId,
+		launcher,
 	]);
 
 	useEffect(() => {
