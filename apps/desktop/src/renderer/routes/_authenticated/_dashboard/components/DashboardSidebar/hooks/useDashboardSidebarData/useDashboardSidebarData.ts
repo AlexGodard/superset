@@ -368,11 +368,16 @@ export function useDashboardSidebarData() {
 	);
 	const rawSidebarWorkspacesWithHostStatus = useMemo(
 		() =>
-			rawSidebarWorkspaces.map((workspace) => ({
-				...workspace,
-				hostIsOnline: hostsByMachineId.get(workspace.hostId)?.isOnline ?? false,
-				pendingTransaction: workspaceTransactionsById[workspace.id] ?? null,
-			})),
+			rawSidebarWorkspaces.map((workspace) => {
+				const host = hostsByMachineId.get(workspace.hostId);
+				return {
+					...workspace,
+					hostIsOnline: host?.isOnline ?? false,
+					hostIcon: host?.icon ?? null,
+					hostColor: host?.color ?? null,
+					pendingTransaction: workspaceTransactionsById[workspace.id] ?? null,
+				};
+			}),
 		[hostsByMachineId, rawSidebarWorkspaces, workspaceTransactionsById],
 	);
 

@@ -3354,6 +3354,9 @@ msgstr "Zuständigkeit ändern"
 msgid "Change avatar"
 msgstr "Avatar ändern"
 
+msgid "Change host icon and color"
+msgstr "Host-Symbol und -Farbe ändern"
+
 msgid "Change icon"
 msgstr "Symbol ändern"
 
@@ -3550,6 +3553,10 @@ msgstr "Prüfungen bestanden"
 
 msgid "Checks Skipped"
 msgstr "Prüfungen übersprungen"
+
+msgctxt "host icon"
+msgid "Chip"
+msgstr "Chip"
 
 msgid "Choose a {pluginLabel} account"
 msgstr "{pluginLabel}-Konto auswählen"
@@ -3926,6 +3933,10 @@ msgstr "Diesen Tab zu schließen, beendet den laufenden Prozess."
 msgid "Closing this terminal will end the running process."
 msgstr "Dieses Terminal zu schließen, beendet den laufenden Prozess."
 
+msgid "Cloud"
+msgstr "Cloud"
+
+msgctxt "host icon"
 msgid "Cloud"
 msgstr "Cloud"
 
@@ -5921,6 +5932,10 @@ msgstr "Design-Review"
 msgid "Desktop"
 msgstr "Desktop"
 
+msgctxt "host icon"
+msgid "Desktop"
+msgstr "Desktop-PC"
+
 msgid "Desktop app"
 msgstr "Desktop-App"
 
@@ -6861,6 +6876,9 @@ msgstr "Einladung konnte nicht zurückgezogen werden"
 msgid "Failed to change base branch"
 msgstr "Basis-Branch konnte nicht geändert werden"
 
+msgid "Failed to change host appearance"
+msgstr "Darstellung des Hosts konnte nicht geändert werden"
+
 msgid "Failed to change role"
 msgstr "Rolle konnte nicht geändert werden"
 
@@ -7775,6 +7793,10 @@ msgstr "Vollständiger Quellcode auf GitHub unter der Elastic License 2.0 (ELv2)
 msgid "Future home for reusable agent configs."
 msgstr "Künftiger Ort für wiederverwendbare Agenten-Konfigurationen."
 
+msgctxt "host icon"
+msgid "Gaming"
+msgstr "Gaming"
+
 msgid "Gates"
 msgstr "Schwellen"
 
@@ -8175,6 +8197,10 @@ msgstr "Start"
 msgctxt "directory"
 msgid "Home"
 msgstr "Home"
+
+msgctxt "host icon"
+msgid "Home"
+msgstr "Zuhause"
 
 msgid "Host"
 msgstr "Host"
@@ -9055,6 +9081,10 @@ msgstr "Ein paar TODOs abarbeiten"
 msgid "Knowledge"
 msgstr "Wissen"
 
+msgctxt "host icon"
+msgid "Lab"
+msgstr "Labor"
+
 msgid "Label"
 msgstr "Bezeichnung"
 
@@ -9078,6 +9108,10 @@ msgstr "Sprache"
 
 msgid "Language saved on this device, but syncing it to your account failed."
 msgstr "Sprache auf diesem Gerät gespeichert, aber die Synchronisierung mit deinem Konto ist fehlgeschlagen."
+
+msgctxt "host icon"
+msgid "Laptop"
+msgstr "Laptop"
 
 msgid "Large"
 msgstr "Groß"
@@ -14807,6 +14841,10 @@ msgstr "Sentry-Trigger lösen nicht mehr aus, bis du neu verbindest. Die Integra
 msgid "Separator"
 msgstr "Separator"
 
+msgctxt "host icon"
+msgid "Server"
+msgstr "Server"
+
 msgid "Service availability is published at <0>status.superset.sh</0>, and security and compliance documentation at <1>trust.superset.sh</1>."
 msgstr "Die Verfügbarkeit der Dienste wird unter <0>status.superset.sh</0> veröffentlicht, Sicherheits- und Compliance-Dokumente unter <1>trust.superset.sh</1>."
 
@@ -16471,6 +16509,10 @@ msgstr "Zehn parallele Arbeitsabläufe, die jeweils Arbeit zum Merge bringen"
 msgid "terminal"
 msgstr "Terminal"
 
+msgid "Terminal"
+msgstr "Terminal"
+
+msgctxt "host icon"
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -18652,6 +18694,10 @@ msgstr "Wortmarke, schwarz"
 
 msgid "Wordmark, white"
 msgstr "Wortmarke, weiß"
+
+msgctxt "host icon"
+msgid "Work"
+msgstr "Arbeit"
 
 msgid "Work email"
 msgstr "Geschäftliche E-Mail-Adresse"

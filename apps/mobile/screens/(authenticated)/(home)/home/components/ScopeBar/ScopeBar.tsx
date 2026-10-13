@@ -2,7 +2,7 @@ import { ScrollView } from "react-native";
 import { Icon } from "@/components/ui/icon";
 import type { WorkspaceScope } from "@/screens/(authenticated)/(home)/home/stores/workspacesFilterStore";
 import { CloudIcon } from "@/screens/(authenticated)/components/CloudIcon";
-import { HostStatusDot } from "@/screens/(authenticated)/components/HostStatusDot";
+import { HostGlyph } from "@/screens/(authenticated)/components/HostGlyph";
 import { Chip } from "./components/Chip";
 import { CloudFilterChips } from "./components/CloudFilterChips";
 
@@ -10,6 +10,8 @@ interface ScopeBarProps {
 	scope: WorkspaceScope;
 	hostName: string | null;
 	hostOnline: boolean;
+	hostIcon: string | null;
+	hostColor: string | null;
 	sortLabel: string | null;
 	onPressScope: () => void;
 	onPressSort: () => void;
@@ -30,6 +32,8 @@ export function ScopeBar({
 	scope,
 	hostName,
 	hostOnline,
+	hostIcon,
+	hostColor,
 	sortLabel,
 	onPressScope,
 	onPressSort,
@@ -53,7 +57,12 @@ export function ScopeBar({
 								strokeWidth={2}
 							/>
 						) : (
-							<HostStatusDot isOnline={hostOnline} />
+							<HostGlyph
+								icon={hostIcon}
+								color={hostColor}
+								isOnline={hostOnline}
+								size={14}
+							/>
 						)
 					}
 					onPress={onPressScope}

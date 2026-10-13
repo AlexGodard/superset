@@ -12,7 +12,7 @@ import {
 import { useSelectedHost } from "@/screens/(authenticated)/(home)/hooks/useSelectedHost";
 import { useWorkspaceScope } from "@/screens/(authenticated)/(home)/hooks/useWorkspaceScope";
 import { CloudIcon } from "@/screens/(authenticated)/components/CloudIcon";
-import { HostStatusDot } from "@/screens/(authenticated)/components/HostStatusDot";
+import { HostGlyph } from "@/screens/(authenticated)/components/HostGlyph";
 import { ListRow } from "@/screens/(authenticated)/components/ListRow";
 import { ListRowValue } from "@/screens/(authenticated)/components/ListRowValue";
 
@@ -52,7 +52,11 @@ export function FilterScreen() {
 									strokeWidth={2}
 								/>
 							) : selectedHost ? (
-								<HostStatusDot isOnline={selectedHost.isOnline} />
+								<HostGlyph
+									icon={selectedHost.icon}
+									color={selectedHost.color}
+									isOnline={selectedHost.isOnline}
+								/>
 							) : undefined
 						}
 					/>

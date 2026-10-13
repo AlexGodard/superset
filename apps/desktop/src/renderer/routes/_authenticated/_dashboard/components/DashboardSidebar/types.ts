@@ -37,6 +37,8 @@ export interface DashboardSidebarWorkspace {
 	hostType: DashboardSidebarWorkspaceHostType;
 	type: DashboardSidebarWorkspaceType;
 	hostIsOnline: boolean | null;
+	hostIcon: string | null;
+	hostColor: string | null;
 	accentColor: string | null;
 	name: string;
 	branch: string;

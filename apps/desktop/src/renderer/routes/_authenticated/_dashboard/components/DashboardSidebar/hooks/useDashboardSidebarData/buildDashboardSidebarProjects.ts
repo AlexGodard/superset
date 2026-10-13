@@ -55,6 +55,8 @@ export interface SidebarWorkspaceInput {
 	hostId: string;
 	type: DashboardSidebarWorkspaceType;
 	hostIsOnline: boolean;
+	hostIcon?: string | null;
+	hostColor?: string | null;
 	name: string;
 	branch: string;
 	taskId: string | null;
@@ -105,6 +107,8 @@ function decorateSidebarWorkspace(
 		hostType,
 		type: workspace.type,
 		hostIsOnline: hostType === "remote-device" ? workspace.hostIsOnline : null,
+		hostIcon: workspace.hostIcon ?? null,
+		hostColor: workspace.hostColor ?? null,
 		accentColor: null,
 		name: getV2WorkspaceDisplayName(workspace),
 		branch: workspace.branch,

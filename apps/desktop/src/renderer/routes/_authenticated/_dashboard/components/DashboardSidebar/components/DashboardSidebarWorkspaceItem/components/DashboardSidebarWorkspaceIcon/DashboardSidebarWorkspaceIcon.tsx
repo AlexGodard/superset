@@ -9,6 +9,7 @@ import {
 } from "react-icons/lu";
 import { RxDot } from "react-icons/rx";
 import { TbCloud, TbCloudOff } from "react-icons/tb";
+import { HostIcon } from "renderer/components/HostIcon";
 import { AsciiSpinner } from "renderer/screens/main/components/AsciiSpinner";
 import { StatusIndicator } from "renderer/screens/main/components/StatusIndicator";
 import type { ActivePaneStatus } from "shared/tabs-types";
@@ -22,6 +23,8 @@ interface DashboardSidebarWorkspaceIconProps {
 	hostType: DashboardSidebarWorkspaceHostType;
 	workspaceType: DashboardSidebarWorkspaceType;
 	hostIsOnline: boolean | null;
+	hostIcon: string | null;
+	hostColor: string | null;
 	isActive: boolean;
 	variant: "collapsed" | "expanded";
 	workspaceStatus?: ActivePaneStatus | null;
@@ -54,6 +57,8 @@ export function DashboardSidebarWorkspaceIcon({
 	hostType,
 	workspaceType,
 	hostIsOnline,
+	hostIcon,
+	hostColor,
 	isActive,
 	variant,
 	workspaceStatus = null,
@@ -89,18 +94,16 @@ export function DashboardSidebarWorkspaceIcon({
 			return <RxDot className={cn("size-4 transition-colors", iconColor)} />;
 		}
 
-		if (isRemoteDeviceOffline) {
-			return (
-				<TbCloudOff
-					className={cn("size-4 transition-colors", iconColor, "opacity-60")}
-					strokeWidth={1.75}
-				/>
-			);
-		}
-
 		return (
-			<TbCloud
-				className={cn("size-4 transition-colors", iconColor)}
+			<HostIcon
+				icon={hostIcon}
+				color={hostColor}
+				fallback={isRemoteDeviceOffline ? TbCloudOff : TbCloud}
+				className={cn(
+					"size-4 transition-colors",
+					iconColor,
+					isRemoteDeviceOffline && "opacity-60",
+				)}
 				strokeWidth={1.75}
 			/>
 		);

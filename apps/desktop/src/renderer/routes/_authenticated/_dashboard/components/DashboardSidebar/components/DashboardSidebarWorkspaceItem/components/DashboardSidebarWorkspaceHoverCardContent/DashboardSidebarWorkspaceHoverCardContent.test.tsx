@@ -22,6 +22,8 @@ function workspaceWithName(name: string): DashboardSidebarWorkspace {
 		hostType: "local-device",
 		type: "session",
 		hostIsOnline: true,
+		hostIcon: null,
+		hostColor: null,
 		accentColor: null,
 		name,
 		branch: "main",

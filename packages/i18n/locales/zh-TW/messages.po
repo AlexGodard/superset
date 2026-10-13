@@ -3354,6 +3354,9 @@ msgstr "變更負責人"
 msgid "Change avatar"
 msgstr "更換頭像"
 
+msgid "Change host icon and color"
+msgstr "變更主機圖示和顏色"
+
 msgid "Change icon"
 msgstr "變更圖示"
 
@@ -3550,6 +3553,10 @@ msgstr "檢查通過"
 
 msgid "Checks Skipped"
 msgstr "檢查已跳過"
+
+msgctxt "host icon"
+msgid "Chip"
+msgstr "晶片"
 
 msgid "Choose a {pluginLabel} account"
 msgstr "選擇 {pluginLabel} 帳戶"
@@ -3926,6 +3933,10 @@ msgstr "關閉此分頁將結束正在執行的處理程序。"
 msgid "Closing this terminal will end the running process."
 msgstr "關閉此終端將結束正在執行的處理程序。"
 
+msgid "Cloud"
+msgstr "雲端"
+
+msgctxt "host icon"
 msgid "Cloud"
 msgstr "雲端"
 
@@ -5921,6 +5932,10 @@ msgstr "設計審查"
 msgid "Desktop"
 msgstr "桌面"
 
+msgctxt "host icon"
+msgid "Desktop"
+msgstr "桌上型電腦"
+
 msgid "Desktop app"
 msgstr "桌面應用程式"
 
@@ -6861,6 +6876,9 @@ msgstr "取消邀請失敗"
 msgid "Failed to change base branch"
 msgstr "更改基準分支失敗"
 
+msgid "Failed to change host appearance"
+msgstr "變更主機外觀失敗"
+
 msgid "Failed to change role"
 msgstr "更改角色失敗"
 
@@ -7775,6 +7793,10 @@ msgstr "完整原始碼在GitHub上以Elastic License 2.0（ELv2）提供。可�
 msgid "Future home for reusable agent configs."
 msgstr "可複用代理程式配置的未來歸處。"
 
+msgctxt "host icon"
+msgid "Gaming"
+msgstr "遊戲"
+
 msgid "Gates"
 msgstr "關卡"
 
@@ -8175,6 +8197,10 @@ msgstr "首頁"
 msgctxt "directory"
 msgid "Home"
 msgstr "主目錄"
+
+msgctxt "host icon"
+msgid "Home"
+msgstr "家"
 
 msgid "Host"
 msgstr "主機"
@@ -9055,6 +9081,10 @@ msgstr "清掉一些TODO"
 msgid "Knowledge"
 msgstr "知識"
 
+msgctxt "host icon"
+msgid "Lab"
+msgstr "實驗室"
+
 msgid "Label"
 msgstr "名稱"
 
@@ -9078,6 +9108,10 @@ msgstr "語言"
 
 msgid "Language saved on this device, but syncing it to your account failed."
 msgstr "語言已在此裝置上儲存，但同步到你的帳戶失敗。"
+
+msgctxt "host icon"
+msgid "Laptop"
+msgstr "筆記型電腦"
 
 msgid "Large"
 msgstr "大"
@@ -14807,6 +14841,10 @@ msgstr "在你重新連線之前，Sentry觸發器會停止觸發。該整合仍
 msgid "Separator"
 msgstr "分隔線"
 
+msgctxt "host icon"
+msgid "Server"
+msgstr "伺服器"
+
 msgid "Service availability is published at <0>status.superset.sh</0>, and security and compliance documentation at <1>trust.superset.sh</1>."
 msgstr "服務可用性發布在<0>status.superset.sh</0>，安全與合規文件在<1>trust.superset.sh</1>。"
 
@@ -16471,6 +16509,10 @@ msgstr "十條並行工作流程同時執行，各自交付已合併的成果"
 msgid "terminal"
 msgstr "終端"
 
+msgid "Terminal"
+msgstr "終端"
+
+msgctxt "host icon"
 msgid "Terminal"
 msgstr "終端"
 
@@ -18652,6 +18694,10 @@ msgstr "文字標誌，黑色"
 
 msgid "Wordmark, white"
 msgstr "文字標誌，白色"
+
+msgctxt "host icon"
+msgid "Work"
+msgstr "工作"
 
 msgid "Work email"
 msgstr "工作電子郵件"

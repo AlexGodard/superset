@@ -13,7 +13,7 @@ import {
 	useWorkspaceScope,
 } from "@/screens/(authenticated)/(home)/hooks/useWorkspaceScope";
 import { CloudIcon } from "@/screens/(authenticated)/components/CloudIcon";
-import { HostStatusDot } from "@/screens/(authenticated)/components/HostStatusDot";
+import { HostGlyph } from "@/screens/(authenticated)/components/HostGlyph";
 import { ListRow } from "@/screens/(authenticated)/components/ListRow";
 import { ListRowCheck } from "@/screens/(authenticated)/components/ListRowCheck";
 
@@ -84,7 +84,13 @@ export function ScopeFilterScreen() {
 			{sortedHosts.map((host, index) => (
 				<ListRow
 					key={host.machineId}
-					icon={<HostStatusDot isOnline={host.isOnline} />}
+					icon={
+						<HostGlyph
+							icon={host.icon}
+							color={host.color}
+							isOnline={host.isOnline}
+						/>
+					}
 					label={host.name}
 					trailing={
 						<ListRowCheck

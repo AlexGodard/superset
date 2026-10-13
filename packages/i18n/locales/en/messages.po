@@ -3354,6 +3354,9 @@ msgstr "Change assignee"
 msgid "Change avatar"
 msgstr "Change avatar"
 
+msgid "Change host icon and color"
+msgstr "Change host icon and color"
+
 msgid "Change icon"
 msgstr "Change icon"
 
@@ -3550,6 +3553,10 @@ msgstr "Checks passed"
 
 msgid "Checks Skipped"
 msgstr "Checks Skipped"
+
+msgctxt "host icon"
+msgid "Chip"
+msgstr "Chip"
 
 msgid "Choose a {pluginLabel} account"
 msgstr "Choose a {pluginLabel} account"
@@ -3926,6 +3933,10 @@ msgstr "Closing this tab will end the running process."
 msgid "Closing this terminal will end the running process."
 msgstr "Closing this terminal will end the running process."
 
+msgid "Cloud"
+msgstr "Cloud"
+
+msgctxt "host icon"
 msgid "Cloud"
 msgstr "Cloud"
 
@@ -5921,6 +5932,10 @@ msgstr "Design review"
 msgid "Desktop"
 msgstr "Desktop"
 
+msgctxt "host icon"
+msgid "Desktop"
+msgstr "Desktop"
+
 msgid "Desktop app"
 msgstr "Desktop app"
 
@@ -6861,6 +6876,9 @@ msgstr "Failed to cancel invitation"
 msgid "Failed to change base branch"
 msgstr "Failed to change base branch"
 
+msgid "Failed to change host appearance"
+msgstr "Failed to change host appearance"
+
 msgid "Failed to change role"
 msgstr "Failed to change role"
 
@@ -7775,6 +7793,10 @@ msgstr "Full source available on GitHub under Elastic License 2.0 (ELv2). Inspec
 msgid "Future home for reusable agent configs."
 msgstr "Future home for reusable agent configs."
 
+msgctxt "host icon"
+msgid "Gaming"
+msgstr "Gaming"
+
 msgid "Gates"
 msgstr "Gates"
 
@@ -8173,6 +8195,10 @@ msgid "Home"
 msgstr "Home"
 
 msgctxt "directory"
+msgid "Home"
+msgstr "Home"
+
+msgctxt "host icon"
 msgid "Home"
 msgstr "Home"
 
@@ -9055,6 +9081,10 @@ msgstr "Knock out some TODOs"
 msgid "Knowledge"
 msgstr "Knowledge"
 
+msgctxt "host icon"
+msgid "Lab"
+msgstr "Lab"
+
 msgid "Label"
 msgstr "Label"
 
@@ -9078,6 +9108,10 @@ msgstr "Language"
 
 msgid "Language saved on this device, but syncing it to your account failed."
 msgstr "Language saved on this device, but syncing it to your account failed."
+
+msgctxt "host icon"
+msgid "Laptop"
+msgstr "Laptop"
 
 msgid "Large"
 msgstr "Large"
@@ -14807,6 +14841,10 @@ msgstr "Sentry triggers stop firing until you connect again. The integration sta
 msgid "Separator"
 msgstr "Separator"
 
+msgctxt "host icon"
+msgid "Server"
+msgstr "Server"
+
 msgid "Service availability is published at <0>status.superset.sh</0>, and security and compliance documentation at <1>trust.superset.sh</1>."
 msgstr "Service availability is published at <0>status.superset.sh</0>, and security and compliance documentation at <1>trust.superset.sh</1>."
 
@@ -16471,6 +16509,10 @@ msgstr "Ten parallel workstreams running, each landing merged work"
 msgid "terminal"
 msgstr "terminal"
 
+msgid "Terminal"
+msgstr "Terminal"
+
+msgctxt "host icon"
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -18652,6 +18694,10 @@ msgstr "Wordmark, black"
 
 msgid "Wordmark, white"
 msgstr "Wordmark, white"
+
+msgctxt "host icon"
+msgid "Work"
+msgstr "Work"
 
 msgid "Work email"
 msgstr "Work email"

@@ -17,6 +17,8 @@ export interface WorkspaceHostOption {
 	isOnline: boolean;
 	version: string | null;
 	versionState: HostVersionState;
+	icon: string | null;
+	color: string | null;
 }
 
 interface UseWorkspaceHostOptionsResult {
@@ -64,6 +66,8 @@ export function useWorkspaceHostOptions(): UseWorkspaceHostOptionsResult {
 				name: host.name,
 				isOnline: host.isOnline,
 				version: host.version,
+				icon: host.icon,
+				color: host.color,
 			}));
 	}, [activeOrganizationId, currentUserId, hostMemberRows, hostRows]);
 
@@ -82,6 +86,8 @@ export function useWorkspaceHostOptions(): UseWorkspaceHostOptionsResult {
 					isOnline: host.isOnline,
 					version: host.version,
 					versionState: deriveHostVersionState(host.version, appVersion),
+					icon: host.icon,
+					color: host.color,
 				}))
 				.sort((a, b) => a.name.localeCompare(b.name)),
 		[accessibleHosts, machineId, appVersion],

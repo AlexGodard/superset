@@ -3354,6 +3354,9 @@ msgstr "Изменить исполнителя"
 msgid "Change avatar"
 msgstr "Сменить аватар"
 
+msgid "Change host icon and color"
+msgstr "Изменить значок и цвет хоста"
+
 msgid "Change icon"
 msgstr "Изменить значок"
 
@@ -3550,6 +3553,10 @@ msgstr "Проверки пройдены"
 
 msgid "Checks Skipped"
 msgstr "Проверки пропущены"
+
+msgctxt "host icon"
+msgid "Chip"
+msgstr "Чип"
 
 msgid "Choose a {pluginLabel} account"
 msgstr "Выберите аккаунт {pluginLabel}"
@@ -3926,6 +3933,10 @@ msgstr "Закрытие этой вкладки завершит работаю
 msgid "Closing this terminal will end the running process."
 msgstr "Закрытие этого терминала завершит работающий процесс."
 
+msgid "Cloud"
+msgstr "Облако"
+
+msgctxt "host icon"
 msgid "Cloud"
 msgstr "Облако"
 
@@ -5921,6 +5932,10 @@ msgstr "Дизайн-ревью"
 msgid "Desktop"
 msgstr "Десктоп"
 
+msgctxt "host icon"
+msgid "Desktop"
+msgstr "Настольный ПК"
+
 msgid "Desktop app"
 msgstr "Десктопное приложение"
 
@@ -6861,6 +6876,9 @@ msgstr "Не удалось отменить приглашение"
 msgid "Failed to change base branch"
 msgstr "Не удалось изменить базовую ветку"
 
+msgid "Failed to change host appearance"
+msgstr "Не удалось изменить оформление хоста"
+
 msgid "Failed to change role"
 msgstr "Не удалось изменить роль"
 
@@ -7775,6 +7793,10 @@ msgstr "Полный исходный код доступен на GitHub под
 msgid "Future home for reusable agent configs."
 msgstr "Будущее место для переиспользуемых конфигураций агентов."
 
+msgctxt "host icon"
+msgid "Gaming"
+msgstr "Игры"
+
 msgid "Gates"
 msgstr "Шлюзы"
 
@@ -8175,6 +8197,10 @@ msgstr "Главная"
 msgctxt "directory"
 msgid "Home"
 msgstr "Домашняя"
+
+msgctxt "host icon"
+msgid "Home"
+msgstr "Дом"
 
 msgid "Host"
 msgstr "Хост"
@@ -9055,6 +9081,10 @@ msgstr "Разобрать несколько TODO"
 msgid "Knowledge"
 msgstr "Знания"
 
+msgctxt "host icon"
+msgid "Lab"
+msgstr "Лаборатория"
+
 msgid "Label"
 msgstr "Название"
 
@@ -9078,6 +9108,10 @@ msgstr "Язык"
 
 msgid "Language saved on this device, but syncing it to your account failed."
 msgstr "Язык сохранён на этом устройстве, но синхронизировать его с аккаунтом не удалось."
+
+msgctxt "host icon"
+msgid "Laptop"
+msgstr "Ноутбук"
 
 msgid "Large"
 msgstr "Большой"
@@ -14807,6 +14841,10 @@ msgstr "Триггеры Sentry перестанут срабатывать, п�
 msgid "Separator"
 msgstr "Разделитель"
 
+msgctxt "host icon"
+msgid "Server"
+msgstr "Сервер"
+
 msgid "Service availability is published at <0>status.superset.sh</0>, and security and compliance documentation at <1>trust.superset.sh</1>."
 msgstr "Доступность сервиса публикуется на <0>status.superset.sh</0>, а документация по безопасности и соответствию — на <1>trust.superset.sh</1>."
 
@@ -16471,6 +16509,10 @@ msgstr "Десять параллельных рабочих потоков, к�
 msgid "terminal"
 msgstr "терминал"
 
+msgid "Terminal"
+msgstr "Терминал"
+
+msgctxt "host icon"
 msgid "Terminal"
 msgstr "Терминал"
 
@@ -18652,6 +18694,10 @@ msgstr "Логотип-надпись, чёрный"
 
 msgid "Wordmark, white"
 msgstr "Логотип-надпись, белый"
+
+msgctxt "host icon"
+msgid "Work"
+msgstr "Работа"
 
 msgid "Work email"
 msgstr "Рабочая электронная почта"

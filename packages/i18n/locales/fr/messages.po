@@ -3354,6 +3354,9 @@ msgstr "Changer l'assigné"
 msgid "Change avatar"
 msgstr "Changer d'avatar"
 
+msgid "Change host icon and color"
+msgstr "Changer l'icône et la couleur de l'hôte"
+
 msgid "Change icon"
 msgstr "Changer l’icône"
 
@@ -3550,6 +3553,10 @@ msgstr "Vérifications réussies"
 
 msgid "Checks Skipped"
 msgstr "Vérifications ignorées"
+
+msgctxt "host icon"
+msgid "Chip"
+msgstr "Puce"
 
 msgid "Choose a {pluginLabel} account"
 msgstr "Choisir un compte {pluginLabel}"
@@ -3926,6 +3933,10 @@ msgstr "Fermer cet onglet mettra fin au processus en cours."
 msgid "Closing this terminal will end the running process."
 msgstr "Fermer ce terminal mettra fin au processus en cours."
 
+msgid "Cloud"
+msgstr "Cloud"
+
+msgctxt "host icon"
 msgid "Cloud"
 msgstr "Cloud"
 
@@ -5921,6 +5932,10 @@ msgstr "Revue de design"
 msgid "Desktop"
 msgstr "Bureau"
 
+msgctxt "host icon"
+msgid "Desktop"
+msgstr "Ordinateur de bureau"
+
 msgid "Desktop app"
 msgstr "Application de bureau"
 
@@ -6861,6 +6876,9 @@ msgstr "Échec de l'annulation de l'invitation"
 msgid "Failed to change base branch"
 msgstr "Échec du changement de branche de base"
 
+msgid "Failed to change host appearance"
+msgstr "Impossible de changer l'apparence de l'hôte"
+
 msgid "Failed to change role"
 msgstr "Échec du changement de rôle"
 
@@ -7775,6 +7793,10 @@ msgstr "Code source complet disponible sur GitHub sous Elastic License 2.0 (ELv2
 msgid "Future home for reusable agent configs."
 msgstr "Futur foyer des configurations d'agents réutilisables."
 
+msgctxt "host icon"
+msgid "Gaming"
+msgstr "Jeu"
+
 msgid "Gates"
 msgstr "Portes"
 
@@ -8175,6 +8197,10 @@ msgstr "Accueil"
 msgctxt "directory"
 msgid "Home"
 msgstr "Accueil"
+
+msgctxt "host icon"
+msgid "Home"
+msgstr "Maison"
 
 msgid "Host"
 msgstr "Hôte"
@@ -9055,6 +9081,10 @@ msgstr "Éliminer quelques TODO"
 msgid "Knowledge"
 msgstr "Connaissances"
 
+msgctxt "host icon"
+msgid "Lab"
+msgstr "Labo"
+
 msgid "Label"
 msgstr "Libellé"
 
@@ -9078,6 +9108,10 @@ msgstr "Langue"
 
 msgid "Language saved on this device, but syncing it to your account failed."
 msgstr "Langue enregistrée sur cet appareil, mais sa synchronisation avec votre compte a échoué."
+
+msgctxt "host icon"
+msgid "Laptop"
+msgstr "Ordinateur portable"
 
 msgid "Large"
 msgstr "Grand"
@@ -14807,6 +14841,10 @@ msgstr "Les déclencheurs Sentry cesseront de se déclencher jusqu'à ce que vou
 msgid "Separator"
 msgstr "Séparateur"
 
+msgctxt "host icon"
+msgid "Server"
+msgstr "Serveur"
+
 msgid "Service availability is published at <0>status.superset.sh</0>, and security and compliance documentation at <1>trust.superset.sh</1>."
 msgstr "La disponibilité du service est publiée sur <0>status.superset.sh</0>, et la documentation sécurité et conformité sur <1>trust.superset.sh</1>."
 
@@ -16471,6 +16509,10 @@ msgstr "Dix flux de travail parallèles, chacun produisant du travail fusionné"
 msgid "terminal"
 msgstr "terminal"
 
+msgid "Terminal"
+msgstr "Terminal"
+
+msgctxt "host icon"
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -18652,6 +18694,10 @@ msgstr "Logotype, noir"
 
 msgid "Wordmark, white"
 msgstr "Logotype, blanc"
+
+msgctxt "host icon"
+msgid "Work"
+msgstr "Travail"
 
 msgid "Work email"
 msgstr "E-mail professionnel"

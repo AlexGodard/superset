@@ -1,6 +1,7 @@
 import { useLingui } from "@lingui/react/macro";
 import type { TaskPriority, V2UsersHostRole } from "@superset/db/enums";
 import { errorMessage } from "@superset/i18n/errors";
+import type { HostIcon } from "@superset/shared/host-appearance";
 import type { RouterOutputs } from "@superset/trpc";
 import { toast } from "@superset/ui/sonner";
 import { useQueryClient } from "@tanstack/react-query";
@@ -467,6 +468,22 @@ export function useOptimisticActions() {
 								void utils.host.invalidate();
 							}),
 						),
+					),
+				setHostAppearance: (
+					hostId: string,
+					appearance: { icon?: HostIcon | null; color?: string | null },
+				) =>
+					runHostsMutation(
+						t({ message: "Failed to change host appearance" }),
+						() =>
+							makeTransaction(
+								"update",
+								apiTrpcClient.host.setAppearance
+									.mutate({ hostId, ...appearance })
+									.finally(() => {
+										void utils.host.invalidate();
+									}),
+							),
 					),
 			},
 			v2UsersHosts: {

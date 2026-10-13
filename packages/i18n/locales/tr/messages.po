@@ -3354,6 +3354,9 @@ msgstr "Atananı değiştir"
 msgid "Change avatar"
 msgstr "Avatarı değiştir"
 
+msgid "Change host icon and color"
+msgstr "Host simgesini ve rengini değiştir"
+
 msgid "Change icon"
 msgstr "Simgeyi değiştir"
 
@@ -3550,6 +3553,10 @@ msgstr "Kontroller geçti"
 
 msgid "Checks Skipped"
 msgstr "Kontroller atlandı"
+
+msgctxt "host icon"
+msgid "Chip"
+msgstr "Çip"
 
 msgid "Choose a {pluginLabel} account"
 msgstr "Bir {pluginLabel} hesabı seçin"
@@ -3926,6 +3933,10 @@ msgstr "Bu sekmeyi kapatmak çalışan süreci sonlandırır."
 msgid "Closing this terminal will end the running process."
 msgstr "Bu terminali kapatmak çalışan süreci sonlandırır."
 
+msgid "Cloud"
+msgstr "Bulut"
+
+msgctxt "host icon"
 msgid "Cloud"
 msgstr "Bulut"
 
@@ -5921,6 +5932,10 @@ msgstr "Tasarım incelemesi"
 msgid "Desktop"
 msgstr "Masaüstü"
 
+msgctxt "host icon"
+msgid "Desktop"
+msgstr "Masaüstü"
+
 msgid "Desktop app"
 msgstr "Masaüstü uygulaması"
 
@@ -6861,6 +6876,9 @@ msgstr "Davet iptal edilemedi"
 msgid "Failed to change base branch"
 msgstr "Temel dal değiştirilemedi"
 
+msgid "Failed to change host appearance"
+msgstr "Host görünümü değiştirilemedi"
+
 msgid "Failed to change role"
 msgstr "Rol değiştirilemedi"
 
@@ -7775,6 +7793,10 @@ msgstr "Tüm kaynak kodu GitHub'da Elastic License 2.0 (ELv2) altında mevcuttur
 msgid "Future home for reusable agent configs."
 msgstr "Yeniden kullanılabilir ajan yapılandırmalarının gelecekteki evi."
 
+msgctxt "host icon"
+msgid "Gaming"
+msgstr "Oyun"
+
 msgid "Gates"
 msgstr "Eşikler"
 
@@ -8175,6 +8197,10 @@ msgstr "Ana sayfa"
 msgctxt "directory"
 msgid "Home"
 msgstr "Ana dizin"
+
+msgctxt "host icon"
+msgid "Home"
+msgstr "Ev"
 
 msgid "Host"
 msgstr "Host"
@@ -9055,6 +9081,10 @@ msgstr "Birkaç TODO'yu bitir"
 msgid "Knowledge"
 msgstr "Bilgi"
 
+msgctxt "host icon"
+msgid "Lab"
+msgstr "Laboratuvar"
+
 msgid "Label"
 msgstr "Etiket"
 
@@ -9078,6 +9108,10 @@ msgstr "Dil"
 
 msgid "Language saved on this device, but syncing it to your account failed."
 msgstr "Dil bu cihaza kaydedildi, ancak hesabınıza eşitlenemedi."
+
+msgctxt "host icon"
+msgid "Laptop"
+msgstr "Dizüstü"
 
 msgid "Large"
 msgstr "Büyük"
@@ -14807,6 +14841,10 @@ msgstr "Siz yeniden bağlanana kadar Sentry tetikleyicileri çalışmaz. Entegra
 msgid "Separator"
 msgstr "Ayırıcı"
 
+msgctxt "host icon"
+msgid "Server"
+msgstr "Sunucu"
+
 msgid "Service availability is published at <0>status.superset.sh</0>, and security and compliance documentation at <1>trust.superset.sh</1>."
 msgstr "Hizmet durumu <0>status.superset.sh</0> adresinde, güvenlik ve uyumluluk belgeleri ise <1>trust.superset.sh</1> adresinde yayımlanır."
 
@@ -16471,6 +16509,10 @@ msgstr "Her biri birleştirilmiş iş üreten on paralel iş akışı"
 msgid "terminal"
 msgstr "terminal"
 
+msgid "Terminal"
+msgstr "Terminal"
+
+msgctxt "host icon"
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -18652,6 +18694,10 @@ msgstr "Yazı logosu, siyah"
 
 msgid "Wordmark, white"
 msgstr "Yazı logosu, beyaz"
+
+msgctxt "host icon"
+msgid "Work"
+msgstr "İş"
 
 msgid "Work email"
 msgstr "İş e-postası"

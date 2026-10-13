@@ -3354,6 +3354,9 @@ msgstr "更改负责人"
 msgid "Change avatar"
 msgstr "更换头像"
 
+msgid "Change host icon and color"
+msgstr "更改主机图标和颜色"
+
 msgid "Change icon"
 msgstr "更改图标"
 
@@ -3550,6 +3553,10 @@ msgstr "检查通过"
 
 msgid "Checks Skipped"
 msgstr "检查已跳过"
+
+msgctxt "host icon"
+msgid "Chip"
+msgstr "芯片"
 
 msgid "Choose a {pluginLabel} account"
 msgstr "选择 {pluginLabel} 账户"
@@ -3926,6 +3933,10 @@ msgstr "关闭此标签页将结束正在运行的进程。"
 msgid "Closing this terminal will end the running process."
 msgstr "关闭此终端将结束正在运行的进程。"
 
+msgid "Cloud"
+msgstr "云端"
+
+msgctxt "host icon"
 msgid "Cloud"
 msgstr "云端"
 
@@ -5921,6 +5932,10 @@ msgstr "设计评审"
 msgid "Desktop"
 msgstr "桌面端"
 
+msgctxt "host icon"
+msgid "Desktop"
+msgstr "台式机"
+
 msgid "Desktop app"
 msgstr "桌面应用"
 
@@ -6861,6 +6876,9 @@ msgstr "取消邀请失败"
 msgid "Failed to change base branch"
 msgstr "更改基准分支失败"
 
+msgid "Failed to change host appearance"
+msgstr "更改主机外观失败"
+
 msgid "Failed to change role"
 msgstr "更改角色失败"
 
@@ -7775,6 +7793,10 @@ msgstr "完整源码在GitHub上以Elastic License 2.0（ELv2）提供。可查�
 msgid "Future home for reusable agent configs."
 msgstr "可复用智能体配置的未来归处。"
 
+msgctxt "host icon"
+msgid "Gaming"
+msgstr "游戏"
+
 msgid "Gates"
 msgstr "关卡"
 
@@ -8175,6 +8197,10 @@ msgstr "首页"
 msgctxt "directory"
 msgid "Home"
 msgstr "主目录"
+
+msgctxt "host icon"
+msgid "Home"
+msgstr "家"
 
 msgid "Host"
 msgstr "主机"
@@ -9055,6 +9081,10 @@ msgstr "清掉一些TODO"
 msgid "Knowledge"
 msgstr "知识"
 
+msgctxt "host icon"
+msgid "Lab"
+msgstr "实验室"
+
 msgid "Label"
 msgstr "名称"
 
@@ -9078,6 +9108,10 @@ msgstr "语言"
 
 msgid "Language saved on this device, but syncing it to your account failed."
 msgstr "语言已在此设备上保存，但同步到你的账户失败。"
+
+msgctxt "host icon"
+msgid "Laptop"
+msgstr "笔记本电脑"
 
 msgid "Large"
 msgstr "大"
@@ -14807,6 +14841,10 @@ msgstr "在你重新连接之前，Sentry触发器会停止触发。该集成仍
 msgid "Separator"
 msgstr "分隔线"
 
+msgctxt "host icon"
+msgid "Server"
+msgstr "服务器"
+
 msgid "Service availability is published at <0>status.superset.sh</0>, and security and compliance documentation at <1>trust.superset.sh</1>."
 msgstr "服务可用性发布在<0>status.superset.sh</0>，安全与合规文档在<1>trust.superset.sh</1>。"
 
@@ -16471,6 +16509,10 @@ msgstr "十条并行工作流同时运行，各自交付已合并的成果"
 msgid "terminal"
 msgstr "终端"
 
+msgid "Terminal"
+msgstr "终端"
+
+msgctxt "host icon"
 msgid "Terminal"
 msgstr "终端"
 
@@ -18652,6 +18694,10 @@ msgstr "文字标志，黑色"
 
 msgid "Wordmark, white"
 msgstr "文字标志，白色"
+
+msgctxt "host icon"
+msgid "Work"
+msgstr "工作"
 
 msgid "Work email"
 msgstr "工作邮箱"

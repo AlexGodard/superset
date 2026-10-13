@@ -227,6 +227,8 @@ export function DashboardSidebarWorkspaceItem({
 					hostType={hostType}
 					workspaceType={workspace.type}
 					hostIsOnline={hostIsOnline}
+					hostIcon={workspace.hostIcon}
+					hostColor={workspace.hostColor}
 					isActive={isActive}
 					workspaceStatus={workspaceStatus}
 					onClick={handleClick}

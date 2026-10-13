@@ -21,9 +21,13 @@ import {
 	HiOutlineComputerDesktop,
 	HiOutlineServer,
 } from "react-icons/hi2";
+import { HostIcon } from "renderer/components/HostIcon";
 import { useLocalHostService } from "renderer/routes/_authenticated/providers/LocalHostServiceProvider";
 import { FormPickerTrigger } from "../../PromptGroup/components/FormPickerTrigger";
-import { useWorkspaceHostOptions } from "./hooks/useWorkspaceHostOptions";
+import {
+	useWorkspaceHostOptions,
+	type WorkspaceHostOption,
+} from "./hooks/useWorkspaceHostOptions";
 
 function OnlineDot({ online }: { online: boolean }) {
 	const { t } = useLingui();
@@ -64,14 +68,26 @@ interface DevicePickerProps {
 	disabled?: boolean;
 }
 
-function getSelectedIcon(hostId: string | null, machineId: string | null) {
+function getSelectedIcon(
+	hostId: string | null,
+	machineId: string | null,
+	otherHosts: WorkspaceHostOption[],
+) {
 	if (hostId === CLOUD_HOST_ID) {
 		return <HiOutlineCloud className="size-4 shrink-0" />;
 	}
 	if (hostId === null || hostId === machineId) {
 		return <HiOutlineComputerDesktop className="size-4 shrink-0" />;
 	}
-	return <HiOutlineServer className="size-4 shrink-0" />;
+	const host = otherHosts.find((option) => option.id === hostId);
+	return (
+		<HostIcon
+			icon={host?.icon}
+			color={host?.color}
+			fallback={HiOutlineServer}
+			className="size-4 shrink-0"
+		/>
+	);
 }
 
 export function DevicePicker({
@@ -130,7 +146,7 @@ export function DevicePicker({
 					})}
 					title={selectedLabel}
 				>
-					{getSelectedIcon(hostId, machineId)}
+					{getSelectedIcon(hostId, machineId, otherHosts)}
 					<span className="truncate">{selectedLabel}</span>
 					{selectedOnline !== null && <OnlineDot online={selectedOnline} />}
 					<HiChevronUpDown className="size-3 shrink-0" />
@@ -171,7 +187,12 @@ export function DevicePicker({
 											key={host.id}
 											onSelect={() => onSelectHostId(host.id)}
 										>
-											<HiOutlineServer className="size-4" />
+											<HostIcon
+												icon={host.icon}
+												color={host.color}
+												fallback={HiOutlineServer}
+												className="size-4"
+											/>
 											<span className="min-w-0 truncate">{host.name}</span>
 											{host.isOnline && host.version && (
 												<span

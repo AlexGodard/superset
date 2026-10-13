@@ -3354,6 +3354,9 @@ msgstr "Ubah penerima tugas"
 msgid "Change avatar"
 msgstr "Ganti avatar"
 
+msgid "Change host icon and color"
+msgstr "Ubah ikon dan warna host"
+
 msgid "Change icon"
 msgstr "Ubah ikon"
 
@@ -3550,6 +3553,10 @@ msgstr "Check lulus"
 
 msgid "Checks Skipped"
 msgstr "Check Dilewati"
+
+msgctxt "host icon"
+msgid "Chip"
+msgstr "Chip"
 
 msgid "Choose a {pluginLabel} account"
 msgstr "Pilih akun {pluginLabel}"
@@ -3926,6 +3933,10 @@ msgstr "Menutup tab ini akan menghentikan proses yang berjalan."
 msgid "Closing this terminal will end the running process."
 msgstr "Menutup terminal ini akan menghentikan proses yang berjalan."
 
+msgid "Cloud"
+msgstr "Cloud"
+
+msgctxt "host icon"
 msgid "Cloud"
 msgstr "Cloud"
 
@@ -5921,6 +5932,10 @@ msgstr "Tinjauan desain"
 msgid "Desktop"
 msgstr "Desktop"
 
+msgctxt "host icon"
+msgid "Desktop"
+msgstr "Desktop"
+
 msgid "Desktop app"
 msgstr "Aplikasi desktop"
 
@@ -6861,6 +6876,9 @@ msgstr "Gagal membatalkan undangan"
 msgid "Failed to change base branch"
 msgstr "Gagal mengubah branch dasar"
 
+msgid "Failed to change host appearance"
+msgstr "Gagal mengubah tampilan host"
+
 msgid "Failed to change role"
 msgstr "Gagal mengubah peran"
 
@@ -7775,6 +7793,10 @@ msgstr "Sumber lengkap tersedia di GitHub dengan Elastic License 2.0 (ELv2). Per
 msgid "Future home for reusable agent configs."
 msgstr "Rumah masa depan untuk konfigurasi agen yang bisa dipakai ulang."
 
+msgctxt "host icon"
+msgid "Gaming"
+msgstr "Gaming"
+
 msgid "Gates"
 msgstr "Gerbang"
 
@@ -8175,6 +8197,10 @@ msgstr "Beranda"
 msgctxt "directory"
 msgid "Home"
 msgstr "Home"
+
+msgctxt "host icon"
+msgid "Home"
+msgstr "Rumah"
 
 msgid "Host"
 msgstr "Host"
@@ -9055,6 +9081,10 @@ msgstr "Beresin beberapa TODO"
 msgid "Knowledge"
 msgstr "Pengetahuan"
 
+msgctxt "host icon"
+msgid "Lab"
+msgstr "Lab"
+
 msgid "Label"
 msgstr "Label"
 
@@ -9078,6 +9108,10 @@ msgstr "Bahasa"
 
 msgid "Language saved on this device, but syncing it to your account failed."
 msgstr "Bahasa tersimpan di perangkat ini, tapi sinkronisasi ke akun Anda gagal."
+
+msgctxt "host icon"
+msgid "Laptop"
+msgstr "Laptop"
 
 msgid "Large"
 msgstr "Besar"
@@ -14807,6 +14841,10 @@ msgstr "Pemicu Sentry berhenti berjalan sampai Anda menghubungkan lagi. Integras
 msgid "Separator"
 msgstr "Separator"
 
+msgctxt "host icon"
+msgid "Server"
+msgstr "Server"
+
 msgid "Service availability is published at <0>status.superset.sh</0>, and security and compliance documentation at <1>trust.superset.sh</1>."
 msgstr "Ketersediaan layanan dipublikasikan di <0>status.superset.sh</0>, dan dokumentasi keamanan serta kepatuhan di <1>trust.superset.sh</1>."
 
@@ -16471,6 +16509,10 @@ msgstr "Sepuluh alur kerja paralel berjalan, masing-masing menghasilkan pekerjaa
 msgid "terminal"
 msgstr "terminal"
 
+msgid "Terminal"
+msgstr "Terminal"
+
+msgctxt "host icon"
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -18652,6 +18694,10 @@ msgstr "Wordmark, hitam"
 
 msgid "Wordmark, white"
 msgstr "Wordmark, putih"
+
+msgctxt "host icon"
+msgid "Work"
+msgstr "Kerja"
 
 msgid "Work email"
 msgstr "Email kerja"

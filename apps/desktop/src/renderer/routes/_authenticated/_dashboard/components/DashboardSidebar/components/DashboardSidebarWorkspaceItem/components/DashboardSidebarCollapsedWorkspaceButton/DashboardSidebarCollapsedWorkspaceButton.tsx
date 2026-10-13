@@ -13,6 +13,8 @@ interface DashboardSidebarCollapsedWorkspaceButtonProps
 	hostType: DashboardSidebarWorkspaceHostType;
 	workspaceType: DashboardSidebarWorkspaceType;
 	hostIsOnline: boolean | null;
+	hostIcon: string | null;
+	hostColor: string | null;
 	isActive: boolean;
 	workspaceStatus?: ActivePaneStatus | null;
 	isCreatePending: boolean;
@@ -28,6 +30,8 @@ export const DashboardSidebarCollapsedWorkspaceButton = forwardRef<
 			hostType,
 			workspaceType,
 			hostIsOnline,
+			hostIcon,
+			hostColor,
 			isActive,
 			workspaceStatus = null,
 			isCreatePending,
@@ -55,6 +59,8 @@ export const DashboardSidebarCollapsedWorkspaceButton = forwardRef<
 					hostType={hostType}
 					workspaceType={workspaceType}
 					hostIsOnline={hostIsOnline}
+					hostIcon={hostIcon}
+					hostColor={hostColor}
 					isActive={isActive}
 					variant="collapsed"
 					workspaceStatus={workspaceStatus}

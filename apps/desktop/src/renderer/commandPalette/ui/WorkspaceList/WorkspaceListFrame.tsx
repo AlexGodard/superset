@@ -10,6 +10,8 @@ import { useLocation, useNavigate } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { CgLaptop } from "react-icons/cg";
 import { LuGitBranch, LuLaptop, LuMonitor } from "react-icons/lu";
+import { HostIcon } from "renderer/components/HostIcon";
+import { useKnownHosts } from "renderer/hooks/known-hosts/useKnownHosts";
 import { useIsV2CloudEnabled } from "renderer/hooks/useIsV2CloudEnabled";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import {
@@ -144,6 +146,11 @@ function V2WorkspaceList({ query }: { query: string }) {
 	const currentPath = useLocation({ select: (loc) => loc.pathname });
 	const navigate = useNavigate();
 	const setOpen = useFrameStackStore((s) => s.setOpen);
+	const { hosts } = useKnownHosts();
+	const hostsById = useMemo(
+		() => new Map(hosts.map((host) => [host.machineId, host])),
+		[hosts],
+	);
 
 	const projectGroups = useMemo(() => {
 		const grouped = new Map<
@@ -186,8 +193,7 @@ function V2WorkspaceList({ query }: { query: string }) {
 			{projectGroups.map((group) => (
 				<CommandGroup key={group.projectId} heading={group.projectName}>
 					{group.workspaces.map((workspace) => {
-						const HostIcon =
-							workspace.hostType === "local-device" ? LuLaptop : LuMonitor;
+						const host = hostsById.get(workspace.hostId);
 						const displayName = getV2WorkspaceDisplayName(workspace);
 						return (
 							<CommandItem
@@ -207,7 +213,16 @@ function V2WorkspaceList({ query }: { query: string }) {
 									<CgLaptop className="!size-3.5 shrink-0 text-muted-foreground" />
 								</span>
 								<span className="flex min-w-0 max-w-44 items-center gap-1 text-muted-foreground text-xs">
-									<HostIcon className="!size-3 shrink-0" />
+									<HostIcon
+										icon={host?.icon}
+										color={host?.color}
+										fallback={
+											workspace.hostType === "local-device"
+												? LuLaptop
+												: LuMonitor
+										}
+										className="!size-3 shrink-0"
+									/>
 									<span className="truncate">{workspace.hostName}</span>
 								</span>
 							</CommandItem>

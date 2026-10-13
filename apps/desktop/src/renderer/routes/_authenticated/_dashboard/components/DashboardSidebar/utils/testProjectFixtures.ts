@@ -13,6 +13,8 @@ export function makeWorkspace(
 		hostType: "local-device",
 		type: "worktree",
 		hostIsOnline: true,
+		hostIcon: null,
+		hostColor: null,
 		accentColor: null,
 		branch: overrides.name,
 		pullRequest: null,

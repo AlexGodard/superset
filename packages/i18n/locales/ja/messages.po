@@ -3354,6 +3354,9 @@ msgstr "担当者を変更"
 msgid "Change avatar"
 msgstr "アバターを変更"
 
+msgid "Change host icon and color"
+msgstr "ホストのアイコンと色を変更"
+
 msgid "Change icon"
 msgstr "アイコンを変更"
 
@@ -3550,6 +3553,10 @@ msgstr "チェックが成功しました"
 
 msgid "Checks Skipped"
 msgstr "チェックをスキップ"
+
+msgctxt "host icon"
+msgid "Chip"
+msgstr "チップ"
 
 msgid "Choose a {pluginLabel} account"
 msgstr "{pluginLabel} アカウントを選択"
@@ -3926,6 +3933,10 @@ msgstr "このタブを閉じると実行中のプロセスが終了します。
 msgid "Closing this terminal will end the running process."
 msgstr "このターミナルを閉じると実行中のプロセスが終了します。"
 
+msgid "Cloud"
+msgstr "クラウド"
+
+msgctxt "host icon"
 msgid "Cloud"
 msgstr "クラウド"
 
@@ -5921,6 +5932,10 @@ msgstr "デザインレビュー"
 msgid "Desktop"
 msgstr "デスクトップ"
 
+msgctxt "host icon"
+msgid "Desktop"
+msgstr "デスクトップ"
+
 msgid "Desktop app"
 msgstr "デスクトップアプリ"
 
@@ -6861,6 +6876,9 @@ msgstr "招待のキャンセルに失敗しました"
 msgid "Failed to change base branch"
 msgstr "ベースブランチの変更に失敗しました"
 
+msgid "Failed to change host appearance"
+msgstr "ホストの外観を変更できませんでした"
+
 msgid "Failed to change role"
 msgstr "ロールの変更に失敗しました"
 
@@ -7775,6 +7793,10 @@ msgstr "全ソースがElastic License 2.0(ELv2)のもとGitHubで公開され�
 msgid "Future home for reusable agent configs."
 msgstr "再利用可能なエージェント設定を、いずれここに置きます。"
 
+msgctxt "host icon"
+msgid "Gaming"
+msgstr "ゲーム"
+
 msgid "Gates"
 msgstr "ゲート"
 
@@ -8175,6 +8197,10 @@ msgstr "ホーム"
 msgctxt "directory"
 msgid "Home"
 msgstr "ホーム"
+
+msgctxt "host icon"
+msgid "Home"
+msgstr "自宅"
 
 msgid "Host"
 msgstr "ホスト"
@@ -9055,6 +9081,10 @@ msgstr "TODOを片付ける"
 msgid "Knowledge"
 msgstr "ナレッジ"
 
+msgctxt "host icon"
+msgid "Lab"
+msgstr "ラボ"
+
 msgid "Label"
 msgstr "ラベル"
 
@@ -9078,6 +9108,10 @@ msgstr "言語"
 
 msgid "Language saved on this device, but syncing it to your account failed."
 msgstr "言語はこのデバイスに保存しましたが、アカウントへの同期に失敗しました。"
+
+msgctxt "host icon"
+msgid "Laptop"
+msgstr "ノートPC"
 
 msgid "Large"
 msgstr "大"
@@ -14807,6 +14841,10 @@ msgstr "再接続するまでSentryのトリガーは動作しなくなります
 msgid "Separator"
 msgstr "Separator"
 
+msgctxt "host icon"
+msgid "Server"
+msgstr "サーバー"
+
 msgid "Service availability is published at <0>status.superset.sh</0>, and security and compliance documentation at <1>trust.superset.sh</1>."
 msgstr "サービスの稼働状況は<0>status.superset.sh</0>で、セキュリティとコンプライアンスに関するドキュメントは<1>trust.superset.sh</1>で公開しています。"
 
@@ -16471,6 +16509,10 @@ msgstr "10本の並列作業がそれぞれ成果をマージします"
 msgid "terminal"
 msgstr "ターミナル"
 
+msgid "Terminal"
+msgstr "ターミナル"
+
+msgctxt "host icon"
 msgid "Terminal"
 msgstr "ターミナル"
 
@@ -18652,6 +18694,10 @@ msgstr "ワードマーク（黒）"
 
 msgid "Wordmark, white"
 msgstr "ワードマーク（白）"
+
+msgctxt "host icon"
+msgid "Work"
+msgstr "仕事"
 
 msgid "Work email"
 msgstr "勤務先のメールアドレス"

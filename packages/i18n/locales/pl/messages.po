@@ -3354,6 +3354,9 @@ msgstr "Zmień osobę przypisaną"
 msgid "Change avatar"
 msgstr "Zmień awatar"
 
+msgid "Change host icon and color"
+msgstr "Zmień ikonę i kolor hosta"
+
 msgid "Change icon"
 msgstr "Zmień ikonę"
 
@@ -3550,6 +3553,10 @@ msgstr "Kontrole przeszły"
 
 msgid "Checks Skipped"
 msgstr "Kontrole pominięte"
+
+msgctxt "host icon"
+msgid "Chip"
+msgstr "Układ"
 
 msgid "Choose a {pluginLabel} account"
 msgstr "Wybierz konto {pluginLabel}"
@@ -3926,6 +3933,10 @@ msgstr "Zamknięcie tej karty zakończy działający proces."
 msgid "Closing this terminal will end the running process."
 msgstr "Zamknięcie tego terminala zakończy działający proces."
 
+msgid "Cloud"
+msgstr "Chmura"
+
+msgctxt "host icon"
 msgid "Cloud"
 msgstr "Chmura"
 
@@ -5921,6 +5932,10 @@ msgstr "Przegląd projektu"
 msgid "Desktop"
 msgstr "Pulpit"
 
+msgctxt "host icon"
+msgid "Desktop"
+msgstr "Komputer stacjonarny"
+
 msgid "Desktop app"
 msgstr "Aplikacja desktopowa"
 
@@ -6861,6 +6876,9 @@ msgstr "Nie udało się anulować zaproszenia"
 msgid "Failed to change base branch"
 msgstr "Nie udało się zmienić gałęzi bazowej"
 
+msgid "Failed to change host appearance"
+msgstr "Nie udało się zmienić wyglądu hosta"
+
 msgid "Failed to change role"
 msgstr "Nie udało się zmienić roli"
 
@@ -7775,6 +7793,10 @@ msgstr "Pełny kod źródłowy dostępny na GitHub na licencji Elastic License 2
 msgid "Future home for reusable agent configs."
 msgstr "Przyszłe miejsce na konfiguracje agentów wielokrotnego użytku."
 
+msgctxt "host icon"
+msgid "Gaming"
+msgstr "Gry"
+
 msgid "Gates"
 msgstr "Bramki"
 
@@ -8173,6 +8195,10 @@ msgid "Home"
 msgstr "Start"
 
 msgctxt "directory"
+msgid "Home"
+msgstr "Dom"
+
+msgctxt "host icon"
 msgid "Home"
 msgstr "Dom"
 
@@ -9055,6 +9081,10 @@ msgstr "Uporaj się z kilkoma TODO"
 msgid "Knowledge"
 msgstr "Wiedza"
 
+msgctxt "host icon"
+msgid "Lab"
+msgstr "Laboratorium"
+
 msgid "Label"
 msgstr "Etykieta"
 
@@ -9078,6 +9108,10 @@ msgstr "Język"
 
 msgid "Language saved on this device, but syncing it to your account failed."
 msgstr "Język zapisano na tym urządzeniu, ale synchronizacja z kontem się nie powiodła."
+
+msgctxt "host icon"
+msgid "Laptop"
+msgstr "Laptop"
 
 msgid "Large"
 msgstr "Duży"
@@ -14807,6 +14841,10 @@ msgstr "Wyzwalacze Sentry przestaną działać, dopóki nie połączysz ponownie
 msgid "Separator"
 msgstr "Separator"
 
+msgctxt "host icon"
+msgid "Server"
+msgstr "Serwer"
+
 msgid "Service availability is published at <0>status.superset.sh</0>, and security and compliance documentation at <1>trust.superset.sh</1>."
 msgstr "Dostępność usług publikujemy na <0>status.superset.sh</0>, a dokumentację bezpieczeństwa i zgodności na <1>trust.superset.sh</1>."
 
@@ -16471,6 +16509,10 @@ msgstr "Dziesięć równoległych strumieni pracy, z których każdy dostarcza s
 msgid "terminal"
 msgstr "terminal"
 
+msgid "Terminal"
+msgstr "Terminal"
+
+msgctxt "host icon"
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -18652,6 +18694,10 @@ msgstr "Logotyp, czarny"
 
 msgid "Wordmark, white"
 msgstr "Logotyp, biały"
+
+msgctxt "host icon"
+msgid "Work"
+msgstr "Praca"
 
 msgid "Work email"
 msgstr "Służbowy adres e-mail"

@@ -3354,6 +3354,9 @@ msgstr "Đổi người phụ trách"
 msgid "Change avatar"
 msgstr "Đổi ảnh đại diện"
 
+msgid "Change host icon and color"
+msgstr "Đổi biểu tượng và màu của host"
+
 msgid "Change icon"
 msgstr "Đổi biểu tượng"
 
@@ -3550,6 +3553,10 @@ msgstr "Check đã qua"
 
 msgid "Checks Skipped"
 msgstr "Check đã bỏ qua"
+
+msgctxt "host icon"
+msgid "Chip"
+msgstr "Chip"
 
 msgid "Choose a {pluginLabel} account"
 msgstr "Chọn một tài khoản {pluginLabel}"
@@ -3926,6 +3933,10 @@ msgstr "Đóng tab này sẽ kết thúc tiến trình đang chạy."
 msgid "Closing this terminal will end the running process."
 msgstr "Đóng terminal này sẽ kết thúc tiến trình đang chạy."
 
+msgid "Cloud"
+msgstr "Cloud"
+
+msgctxt "host icon"
 msgid "Cloud"
 msgstr "Cloud"
 
@@ -5921,6 +5932,10 @@ msgstr "Duyệt thiết kế"
 msgid "Desktop"
 msgstr "Màn hình nền"
 
+msgctxt "host icon"
+msgid "Desktop"
+msgstr "Máy bàn"
+
 msgid "Desktop app"
 msgstr "Ứng dụng máy tính"
 
@@ -6861,6 +6876,9 @@ msgstr "Không thể hủy lời mời"
 msgid "Failed to change base branch"
 msgstr "Không thể đổi nhánh gốc"
 
+msgid "Failed to change host appearance"
+msgstr "Không đổi được giao diện host"
+
 msgid "Failed to change role"
 msgstr "Không thể đổi vai trò"
 
@@ -7775,6 +7793,10 @@ msgstr "Toàn bộ mã nguồn có trên GitHub theo Elastic License 2.0 (ELv2).
 msgid "Future home for reusable agent configs."
 msgstr "Nơi sẽ chứa các cấu hình agent dùng lại được."
 
+msgctxt "host icon"
+msgid "Gaming"
+msgstr "Chơi game"
+
 msgid "Gates"
 msgstr "Cổng"
 
@@ -8175,6 +8197,10 @@ msgstr "Trang chủ"
 msgctxt "directory"
 msgid "Home"
 msgstr "Home"
+
+msgctxt "host icon"
+msgid "Home"
+msgstr "Nhà"
 
 msgid "Host"
 msgstr "Host"
@@ -9055,6 +9081,10 @@ msgstr "Xử lý bớt vài TODO"
 msgid "Knowledge"
 msgstr "Tri thức"
 
+msgctxt "host icon"
+msgid "Lab"
+msgstr "Phòng lab"
+
 msgid "Label"
 msgstr "Nhãn"
 
@@ -9078,6 +9108,10 @@ msgstr "Ngôn ngữ"
 
 msgid "Language saved on this device, but syncing it to your account failed."
 msgstr "Đã lưu ngôn ngữ trên thiết bị này, nhưng không đồng bộ được lên tài khoản của bạn."
+
+msgctxt "host icon"
+msgid "Laptop"
+msgstr "Laptop"
 
 msgid "Large"
 msgstr "Lớn"
@@ -14807,6 +14841,10 @@ msgstr "Các trigger Sentry sẽ ngừng chạy cho đến khi bạn kết nối
 msgid "Separator"
 msgstr "Separator"
 
+msgctxt "host icon"
+msgid "Server"
+msgstr "Máy chủ"
+
 msgid "Service availability is published at <0>status.superset.sh</0>, and security and compliance documentation at <1>trust.superset.sh</1>."
 msgstr "Tình trạng dịch vụ được công bố tại <0>status.superset.sh</0>, còn tài liệu bảo mật và tuân thủ tại <1>trust.superset.sh</1>."
 
@@ -16471,6 +16509,10 @@ msgstr "Mười luồng công việc song song, mỗi luồng đều tạo ra c�
 msgid "terminal"
 msgstr "terminal"
 
+msgid "Terminal"
+msgstr "Terminal"
+
+msgctxt "host icon"
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -18652,6 +18694,10 @@ msgstr "Wordmark, đen"
 
 msgid "Wordmark, white"
 msgstr "Wordmark, trắng"
+
+msgctxt "host icon"
+msgid "Work"
+msgstr "Công việc"
 
 msgid "Work email"
 msgstr "Email công việc"

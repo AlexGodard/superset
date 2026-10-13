@@ -1,20 +1,27 @@
 import { Trans, useLingui } from "@lingui/react/macro";
 import { cn } from "@superset/ui/utils";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { LuPencil } from "react-icons/lu";
+import { LuLaptop, LuPencil, LuServer } from "react-icons/lu";
 import { useOptimisticActions } from "renderer/routes/_authenticated/hooks/useOptimisticActions";
+import { HostAppearancePicker } from "./components/HostAppearancePicker";
 
 interface HostHeaderProps {
 	name: string;
 	isOnline: boolean;
+	isLocal: boolean;
 	machineId: string;
+	icon: string | null;
+	color: string | null;
 	canRename: boolean;
 }
 
 export function HostHeader({
 	name,
 	isOnline,
+	isLocal,
 	machineId,
+	icon,
+	color,
 	canRename,
 }: HostHeaderProps) {
 	const { t } = useLingui();
@@ -64,6 +71,15 @@ export function HostHeader({
 						"size-2 rounded-full",
 						isOnline ? "bg-emerald-500" : "bg-muted-foreground/40",
 					)}
+				/>
+				<HostAppearancePicker
+					icon={icon}
+					color={color}
+					fallback={isLocal ? LuLaptop : LuServer}
+					disabled={!canRename}
+					onChange={(change) =>
+						hostActions.setHostAppearance(machineId, change)
+					}
 				/>
 				{isEditing ? (
 					<label className="inline-grid text-xl font-semibold -my-px leading-[1.6875rem]">

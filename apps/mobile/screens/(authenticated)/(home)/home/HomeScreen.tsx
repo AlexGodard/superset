@@ -698,6 +698,8 @@ export function HomeScreen() {
 			scope={cloudScope ? "cloud" : "host"}
 			hostName={selectedHost?.name ?? null}
 			hostOnline={selectedHost?.isOnline ?? false}
+			hostIcon={selectedHost?.icon ?? null}
+			hostColor={selectedHost?.color ?? null}
 			sortLabel={showArchived ? null : sortLabel}
 			onPressScope={() => {
 				void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);

@@ -8,7 +8,7 @@ import { useOrgHosts } from "@/hooks/useOrgHosts";
 import { useReadableInset } from "@/hooks/useReadableInset";
 import { useTheme } from "@/hooks/useTheme";
 import { openUrl } from "@/lib/open-url";
-import { HostStatusDot } from "@/screens/(authenticated)/components/HostStatusDot";
+import { HostGlyph } from "@/screens/(authenticated)/components/HostGlyph";
 import { ListRow } from "@/screens/(authenticated)/components/ListRow";
 
 export function HostsSettingsScreen() {
@@ -60,7 +60,13 @@ export function HostsSettingsScreen() {
 			{hostRows.map((host, index) => (
 				<ListRow
 					key={host.machineId}
-					icon={<HostStatusDot isOnline={host.isOnline} />}
+					icon={
+						<HostGlyph
+							icon={host.icon}
+							color={host.color}
+							isOnline={host.isOnline}
+						/>
+					}
 					label={host.name}
 					trailing={
 						<Text className="text-sm" style={{ color: theme.mutedForeground }}>

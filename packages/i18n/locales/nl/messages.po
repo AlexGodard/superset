@@ -3354,6 +3354,9 @@ msgstr "Toegewezen persoon wijzigen"
 msgid "Change avatar"
 msgstr "Avatar wijzigen"
 
+msgid "Change host icon and color"
+msgstr "Pictogram en kleur van host wijzigen"
+
 msgid "Change icon"
 msgstr "Pictogram wijzigen"
 
@@ -3550,6 +3553,10 @@ msgstr "Checks geslaagd"
 
 msgid "Checks Skipped"
 msgstr "Checks overgeslagen"
+
+msgctxt "host icon"
+msgid "Chip"
+msgstr "Chip"
 
 msgid "Choose a {pluginLabel} account"
 msgstr "Kies een {pluginLabel}-account"
@@ -3926,6 +3933,10 @@ msgstr "Als je dit tabblad sluit, wordt het draaiende proces beëindigd."
 msgid "Closing this terminal will end the running process."
 msgstr "Als je deze terminal sluit, wordt het draaiende proces beëindigd."
 
+msgid "Cloud"
+msgstr "Cloud"
+
+msgctxt "host icon"
 msgid "Cloud"
 msgstr "Cloud"
 
@@ -5921,6 +5932,10 @@ msgstr "Designreview"
 msgid "Desktop"
 msgstr "Bureaublad"
 
+msgctxt "host icon"
+msgid "Desktop"
+msgstr "Desktop"
+
 msgid "Desktop app"
 msgstr "Desktop-app"
 
@@ -6861,6 +6876,9 @@ msgstr "Annuleren van uitnodiging mislukt"
 msgid "Failed to change base branch"
 msgstr "Wijzigen van basisbranch mislukt"
 
+msgid "Failed to change host appearance"
+msgstr "Uiterlijk van host wijzigen mislukt"
+
 msgid "Failed to change role"
 msgstr "Wijzigen van rol mislukt"
 
@@ -7775,6 +7793,10 @@ msgstr "Volledige broncode beschikbaar op GitHub onder Elastic License 2.0 (ELv2
 msgid "Future home for reusable agent configs."
 msgstr "Toekomstige plek voor herbruikbare agentconfiguraties."
 
+msgctxt "host icon"
+msgid "Gaming"
+msgstr "Gaming"
+
 msgid "Gates"
 msgstr "Drempels"
 
@@ -8175,6 +8197,10 @@ msgstr "Home"
 msgctxt "directory"
 msgid "Home"
 msgstr "Home"
+
+msgctxt "host icon"
+msgid "Home"
+msgstr "Thuis"
 
 msgid "Host"
 msgstr "Host"
@@ -9055,6 +9081,10 @@ msgstr "Een paar TODO's wegwerken"
 msgid "Knowledge"
 msgstr "Kennis"
 
+msgctxt "host icon"
+msgid "Lab"
+msgstr "Lab"
+
 msgid "Label"
 msgstr "Label"
 
@@ -9078,6 +9108,10 @@ msgstr "Taal"
 
 msgid "Language saved on this device, but syncing it to your account failed."
 msgstr "Taal opgeslagen op dit apparaat, maar synchroniseren naar je account is mislukt."
+
+msgctxt "host icon"
+msgid "Laptop"
+msgstr "Laptop"
 
 msgid "Large"
 msgstr "Groot"
@@ -14807,6 +14841,10 @@ msgstr "Sentry-triggers stoppen tot je opnieuw verbindt. De integratie blijft in
 msgid "Separator"
 msgstr "Separator"
 
+msgctxt "host icon"
+msgid "Server"
+msgstr "Server"
+
 msgid "Service availability is published at <0>status.superset.sh</0>, and security and compliance documentation at <1>trust.superset.sh</1>."
 msgstr "De beschikbaarheid van de dienst staat op <0>status.superset.sh</0> en documentatie over security en compliance op <1>trust.superset.sh</1>."
 
@@ -16471,6 +16509,10 @@ msgstr "Tien parallelle werkstromen die elk samengevoegd werk opleveren"
 msgid "terminal"
 msgstr "terminal"
 
+msgid "Terminal"
+msgstr "Terminal"
+
+msgctxt "host icon"
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -18652,6 +18694,10 @@ msgstr "Woordmerk, zwart"
 
 msgid "Wordmark, white"
 msgstr "Woordmerk, wit"
+
+msgctxt "host icon"
+msgid "Work"
+msgstr "Werk"
 
 msgid "Work email"
 msgstr "Zakelijk e-mailadres"

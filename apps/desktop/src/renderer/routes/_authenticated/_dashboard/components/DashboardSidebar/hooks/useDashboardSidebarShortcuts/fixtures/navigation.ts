@@ -55,6 +55,8 @@ function workspace(
 		hostType: "local-device",
 		type: projectId ? "worktree" : "session",
 		hostIsOnline: true,
+		hostIcon: null,
+		hostColor: null,
 		accentColor: null,
 		name: id,
 		branch: "main",

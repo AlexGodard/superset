@@ -169,7 +169,10 @@ export function HostSettings({ hostId }: HostSettingsProps) {
 			<HostHeader
 				name={host.name}
 				isOnline={hostIsOnline}
+				isLocal={host.machineId === machineId}
 				machineId={host.machineId}
+				icon={host.icon}
+				color={host.color}
 				canRename={isOwner}
 			/>
 
