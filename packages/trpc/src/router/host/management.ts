@@ -11,6 +11,7 @@ import {
 	requireActiveOrgId,
 	requireActiveOrgMembership,
 } from "../utils/active-org";
+import { setHostAppearanceInput } from "./appearance";
 
 async function requireHostOwner(
 	userId: string,
@@ -96,6 +97,8 @@ export const hostManagementRouter = {
 					version: v2Hosts.version,
 					platform: v2Hosts.platform,
 					installSource: v2Hosts.installSource,
+					icon: v2Hosts.icon,
+					color: v2Hosts.color,
 				})
 				.from(v2Hosts)
 				.innerJoin(
@@ -145,6 +148,40 @@ export const hostManagementRouter = {
 				const [updated] = await tx
 					.update(v2Hosts)
 					.set({ name: input.name })
+					.where(
+						and(
+							eq(v2Hosts.organizationId, organizationId),
+							eq(v2Hosts.machineId, input.hostId),
+						),
+					)
+					.returning({ machineId: v2Hosts.machineId });
+				if (!updated) {
+					throw userError({
+						code: "NOT_FOUND",
+						message: "Host not found in this organization",
+						i18nKey: "serverError.host.hostNotFoundInThisOrganization",
+					});
+				}
+				return await getCurrentTxid(tx);
+			});
+
+			nudge(organizationId, "hosts");
+			return { success: true, txid };
+		}),
+
+	setAppearance: protectedProcedure
+		.input(setHostAppearanceInput)
+		.mutation(async ({ ctx, input }) => {
+			const organizationId = requireActiveOrgId(ctx);
+			await requireHostOwner(ctx.session.user.id, input.hostId, organizationId);
+
+			const txid = await dbWs.transaction(async (tx) => {
+				const [updated] = await tx
+					.update(v2Hosts)
+					.set({
+						...(input.icon !== undefined && { icon: input.icon }),
+						...(input.color !== undefined && { color: input.color }),
+					})
 					.where(
 						and(
 							eq(v2Hosts.organizationId, organizationId),

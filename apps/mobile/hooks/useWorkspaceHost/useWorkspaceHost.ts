@@ -125,6 +125,8 @@ export function useWorkspaceHost(
 						version: null,
 						platform: null,
 						installSource: null,
+						icon: null,
+						color: null,
 						// A sandbox is reachable or it isn't; there is no offline
 						// device behind it to report on.
 						isOnline: true,
