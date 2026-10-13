@@ -3262,6 +3262,9 @@ msgstr "能把整个应用的tooltip样式统一一下吗？"
 msgid "Can’t check {hostName}"
 msgstr "无法检查{hostName}"
 
+msgid "Can’t check status"
+msgstr "无法检查状态"
+
 msgid "Can't connect right now"
 msgstr "暂时无法连接"
 

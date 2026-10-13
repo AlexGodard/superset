@@ -3262,6 +3262,9 @@ msgstr "Bisakah kamu menyeragamkan tooltip di seluruh aplikasi?"
 msgid "Can’t check {hostName}"
 msgstr "Tidak dapat memeriksa {hostName}"
 
+msgid "Can’t check status"
+msgstr "Tidak dapat memeriksa status"
+
 msgid "Can't connect right now"
 msgstr "Belum bisa terhubung"
 

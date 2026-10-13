@@ -3262,6 +3262,9 @@ msgstr "Kun je de tooltips in de hele app standaardiseren?"
 msgid "Can’t check {hostName}"
 msgstr "Kan {hostName} niet controleren"
 
+msgid "Can’t check status"
+msgstr "Kan status niet controleren"
+
 msgid "Can't connect right now"
 msgstr "Verbinden lukt nu even niet"
 

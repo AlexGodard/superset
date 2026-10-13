@@ -3262,6 +3262,9 @@ msgstr "Dá para padronizar os tooltips do app inteiro?"
 msgid "Can’t check {hostName}"
 msgstr "Não foi possível verificar {hostName}"
 
+msgid "Can’t check status"
+msgstr "Não é possível verificar o status"
+
 msgid "Can't connect right now"
 msgstr "Não foi possível conectar agora"
 

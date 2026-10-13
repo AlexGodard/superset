@@ -75,3 +75,17 @@ export function buildProjectSections({
 			})
 	);
 }
+
+/** The newest activity across every section, whatever order pins put them in. */
+export function latestSectionActivity(
+	sections: ProjectSection[],
+	activityTs: (workspace: HostWorkspaceItem) => number,
+): number {
+	let latest = 0;
+	for (const section of sections) {
+		for (const workspace of section.workspaces) {
+			latest = Math.max(latest, activityTs(workspace));
+		}
+	}
+	return latest;
+}

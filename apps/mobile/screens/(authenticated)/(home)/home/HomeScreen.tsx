@@ -92,6 +92,7 @@ import {
 } from "./stores/workspacesFilterStore";
 import {
 	buildProjectSections,
+	latestSectionActivity,
 	NO_PROJECT_SECTION_ID,
 	type ProjectSection,
 } from "./utils/buildProjectSections";
@@ -416,8 +417,11 @@ export function HomeScreen() {
 		const groups = scopedHosts
 			.map((host) => {
 				const sections = host.isOnline ? projectSections(host.machineId) : [];
-				const first = sections[0]?.workspaces[0];
-				return { host, sections, latest: first ? activityTs(first) : 0 };
+				return {
+					host,
+					sections,
+					latest: latestSectionActivity(sections, activityTs),
+				};
 			})
 			.sort(
 				(a, b) =>
@@ -435,6 +439,7 @@ export function HomeScreen() {
 				state: getHostSectionState({
 					isOnline: host.isOnline,
 					presencePending,
+					lastSeenAt: host.lastSeenAt,
 					hasRows: sections.length > 0,
 					status: statusByHost[host.machineId],
 				}),

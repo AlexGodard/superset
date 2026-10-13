@@ -3262,6 +3262,9 @@ msgstr "Czy możesz ujednolicić tooltipy w całej aplikacji?"
 msgid "Can’t check {hostName}"
 msgstr "Nie można sprawdzić {hostName}"
 
+msgid "Can’t check status"
+msgstr "Nie można sprawdzić stanu"
+
 msgid "Can't connect right now"
 msgstr "Nie można teraz się połączyć"
 

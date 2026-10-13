@@ -3262,6 +3262,9 @@ msgstr "Can you standardize the tooltips across the app?"
 msgid "Can’t check {hostName}"
 msgstr "Can’t check {hostName}"
 
+msgid "Can’t check status"
+msgstr "Can’t check status"
+
 msgid "Can't connect right now"
 msgstr "Can't connect right now"
 

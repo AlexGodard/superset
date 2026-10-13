@@ -3262,6 +3262,9 @@ msgstr "Можешь стандартизировать подсказки во 
 msgid "Can’t check {hostName}"
 msgstr "Не удаётся проверить {hostName}"
 
+msgid "Can’t check status"
+msgstr "Не удаётся проверить статус"
+
 msgid "Can't connect right now"
 msgstr "Сейчас не удаётся подключиться"
 

@@ -7,10 +7,23 @@ describe("getHostSectionState", () => {
 			getHostSectionState({
 				isOnline: false,
 				presencePending: false,
+				lastSeenAt: 1_000,
 				hasRows: false,
 				status: undefined,
 			}),
 		).toBe("offline");
+	});
+
+	test("a failed presence check is not an offline answer", () => {
+		expect(
+			getHostSectionState({
+				isOnline: false,
+				presencePending: false,
+				lastSeenAt: undefined,
+				hasRows: false,
+				status: undefined,
+			}),
+		).toBe("unknown");
 	});
 
 	test("an unanswered presence check is not offline yet", () => {
@@ -18,6 +31,7 @@ describe("getHostSectionState", () => {
 			getHostSectionState({
 				isOnline: false,
 				presencePending: true,
+				lastSeenAt: undefined,
 				hasRows: false,
 				status: undefined,
 			}),
@@ -29,6 +43,7 @@ describe("getHostSectionState", () => {
 			getHostSectionState({
 				isOnline: true,
 				presencePending: false,
+				lastSeenAt: 1_000,
 				hasRows: true,
 				status: "error",
 			}),
@@ -40,6 +55,7 @@ describe("getHostSectionState", () => {
 			getHostSectionState({
 				isOnline: true,
 				presencePending: false,
+				lastSeenAt: 1_000,
 				hasRows: false,
 				status,
 			});

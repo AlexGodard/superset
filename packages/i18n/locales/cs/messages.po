@@ -3262,6 +3262,9 @@ msgstr "Můžeš sjednotit tooltipy napříč aplikací?"
 msgid "Can’t check {hostName}"
 msgstr "{hostName} nelze zkontrolovat"
 
+msgid "Can’t check status"
+msgstr "Stav nelze ověřit"
+
 msgid "Can't connect right now"
 msgstr "Teď se nelze připojit"
 

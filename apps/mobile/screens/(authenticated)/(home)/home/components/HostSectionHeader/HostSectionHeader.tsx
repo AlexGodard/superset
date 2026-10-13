@@ -8,6 +8,7 @@ import { getLastSeenTime } from "../../utils/getLastSeenTime";
 
 export type HostSectionState =
 	| "offline"
+	| "unknown"
 	| "loading"
 	| "error"
 	| "empty"
@@ -35,9 +36,7 @@ export function HostSectionHeader({
 	if (state === "offline") {
 		if (lastSeenAt === null) {
 			note = t({ message: "Not connected" });
-		} else if (lastSeenAt === undefined) {
-			note = t({ message: "Offline" });
-		} else {
+		} else if (lastSeenAt !== undefined) {
 			const now = Date.now();
 			const lastSeen = formatRelativeTime(
 				getLastSeenTime(lastSeenAt, now),
@@ -45,6 +44,8 @@ export function HostSectionHeader({
 			);
 			note = t({ message: `Last seen ${lastSeen}` });
 		}
+	} else if (state === "unknown") {
+		note = t({ message: "Can’t check status" });
 	} else if (state === "error") {
 		note = t({ message: "Couldn't load workspaces" });
 	} else if (state === "empty") {

@@ -3262,6 +3262,9 @@ msgstr "¿Puedes unificar los tooltips de toda la app?"
 msgid "Can’t check {hostName}"
 msgstr "No se puede comprobar {hostName}"
 
+msgid "Can’t check status"
+msgstr "No se puede comprobar el estado"
+
 msgid "Can't connect right now"
 msgstr "No podemos conectar ahora"
 
