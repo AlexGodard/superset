@@ -51,7 +51,7 @@ export interface UseHostWorkspacesResult {
 	 * states only — existing rows always render (cache-first rule).
 	 */
 	isReady: boolean;
-	statusByHost: ReadonlyMap<string, HostWorkspacesStatus>;
+	statusByHost: Readonly<Record<string, HostWorkspacesStatus>>;
 	cache: HostWorkspacesCacheOps;
 }
 
@@ -90,7 +90,9 @@ export function useHostsWorkspaces(
 	const combine = useCallback(
 		(results: UseQueryResult<HostWorkspaceRow[]>[]) => {
 			const workspaces: HostWorkspaceItem[] = [];
-			const statusByHost = new Map<string, HostWorkspacesStatus>();
+			// Plain objects, not Maps: TanStack shares an unchanged combined
+			// result deeply, which keeps rows stable across polls.
+			const statusByHost: Record<string, HostWorkspacesStatus> = {};
 			let isReady = true;
 			targets.forEach(({ machineId, hostUrl }, index) => {
 				const query = results[index];
@@ -104,7 +106,7 @@ export function useHostsWorkspaces(
 					: query.isError
 						? "error"
 						: "loading";
-				statusByHost.set(machineId, status);
+				statusByHost[machineId] = status;
 				if (status === "loading") isReady = false;
 			});
 			return { workspaces, isReady, statusByHost };

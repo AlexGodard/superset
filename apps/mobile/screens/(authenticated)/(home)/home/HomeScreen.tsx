@@ -246,7 +246,7 @@ export function HomeScreen() {
 	const { projectsByHost, isReady: projectsReady } =
 		useHostsProjects(scopedHosts);
 	const projects = useMemo(
-		() => [...projectsByHost.values()].flat(),
+		() => Object.values(projectsByHost).flat(),
 		[projectsByHost],
 	);
 
@@ -376,7 +376,7 @@ export function HomeScreen() {
 				workspaces: liveWorkspaces.filter(
 					(workspace) => workspace.hostId === machineId,
 				),
-				projects: projectsByHost.get(machineId) ?? [],
+				projects: projectsByHost[machineId] ?? [],
 				noProjectName: t({ message: "No project" }),
 				compareWorkspaces: byPinThenActivity,
 				activityTs,
@@ -436,7 +436,7 @@ export function HomeScreen() {
 					isOnline: host.isOnline,
 					presencePending,
 					hasRows: sections.length > 0,
-					status: statusByHost.get(host.machineId),
+					status: statusByHost[host.machineId],
 				}),
 				isFirst: index === 0,
 			});

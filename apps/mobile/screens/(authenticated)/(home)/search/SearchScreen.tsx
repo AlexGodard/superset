@@ -82,7 +82,7 @@ export function SearchScreen() {
 	const projectNamesById = useMemo(
 		() =>
 			new Map(
-				[...projectsByHost.values()]
+				Object.values(projectsByHost)
 					.flat()
 					.map((project) => [project.id, project.name]),
 			),

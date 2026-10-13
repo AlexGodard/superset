@@ -46,7 +46,7 @@ export interface UseHostProjectsResult {
 }
 
 export interface UseHostsProjectsResult {
-	projectsByHost: ReadonlyMap<string, HostProjectItem[]>;
+	projectsByHost: Readonly<Record<string, HostProjectItem[]>>;
 	/** True once every host answered or failed. Gates empty states only. */
 	isReady: boolean;
 }
@@ -78,15 +78,13 @@ export function useHostsProjects(
 
 	const combine = useCallback(
 		(results: UseQueryResult<HostProjectRow[]>[]) => {
-			const projectsByHost = new Map<string, HostProjectItem[]>();
+			// A plain object, not a Map, so TanStack's deep sharing applies.
+			const projectsByHost: Record<string, HostProjectItem[]> = {};
 			let isReady = true;
 			targets.forEach(({ machineId, isOnline }, index) => {
 				const query = results[index];
 				if (!query) return;
-				projectsByHost.set(
-					machineId,
-					(query.data ?? []).map(toHostProjectItem),
-				);
+				projectsByHost[machineId] = (query.data ?? []).map(toHostProjectItem);
 				if (isOnline && !query.isSuccess && !query.isError) isReady = false;
 			});
 			return { projectsByHost, isReady };
@@ -113,7 +111,7 @@ export function useHostProjects(
 	const hosts = useMemo(() => (host ? [host] : []), [host]);
 	const { projectsByHost, isReady } = useHostsProjects(hosts);
 	return {
-		projects: (host && projectsByHost.get(host.machineId)) || NO_PROJECTS,
+		projects: (host && projectsByHost[host.machineId]) || NO_PROJECTS,
 		isReady,
 	};
 }
