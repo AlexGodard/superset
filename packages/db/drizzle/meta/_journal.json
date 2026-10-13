@@ -1058,6 +1058,13 @@
       "when": 1791845922148,
       "tag": "0150_drop_hiring_ats",
       "breakpoints": true
+    },
+    {
+      "idx": 151,
+      "version": "7",
+      "when": 1791901074283,
+      "tag": "0151_v2_hosts_icon_color",
+      "breakpoints": true
     }
   ]
 }

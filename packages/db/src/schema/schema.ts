@@ -1278,6 +1278,9 @@ export const v2Hosts = pgTable(
 		version: text(),
 		platform: text(),
 		installSource: text("install_source"),
+		// An icon name from @superset/shared/host-appearance and a "#rrggbb" color.
+		icon: text(),
+		color: text(),
 		createdByUserId: uuid("created_by_user_id").references(() => users.id, {
 			onDelete: "set null",
 		}),
