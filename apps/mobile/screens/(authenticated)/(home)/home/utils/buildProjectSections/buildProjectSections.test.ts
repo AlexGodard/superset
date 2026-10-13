@@ -1,0 +1,76 @@
+import { describe, expect, test } from "bun:test";
+import type { HostProjectItem } from "@/hooks/useHostProjects";
+import type { HostWorkspaceItem } from "@/hooks/useHostWorkspaces";
+import {
+	buildProjectSections,
+	NO_PROJECT_SECTION_ID,
+} from "./buildProjectSections";
+
+function workspace(
+	id: string,
+	projectId: string | null,
+	ts: number,
+): HostWorkspaceItem {
+	return { id, projectId, ts } as unknown as HostWorkspaceItem;
+}
+
+function project(id: string, name: string): HostProjectItem {
+	return { id, name, iconUrl: null, repoOwner: null, repoName: null };
+}
+
+const activityTs = (item: HostWorkspaceItem) =>
+	(item as unknown as { ts: number }).ts;
+const byActivity = (a: HostWorkspaceItem, b: HostWorkspaceItem) =>
+	activityTs(b) - activityTs(a);
+
+function build(workspaces: HostWorkspaceItem[], projects: HostProjectItem[]) {
+	return buildProjectSections({
+		workspaces,
+		projects,
+		noProjectName: "No project",
+		compareWorkspaces: byActivity,
+		activityTs,
+	});
+}
+
+describe("buildProjectSections", () => {
+	test("puts the project with the latest activity first", () => {
+		const sections = build(
+			[
+				workspace("a1", "a", 1),
+				workspace("b1", "b", 5),
+				workspace("a2", "a", 3),
+			],
+			[project("a", "Alpha"), project("b", "Beta")],
+		);
+		expect(sections.map((section) => section.projectId)).toEqual(["b", "a"]);
+		expect(sections[1]?.workspaces.map((row) => row.id)).toEqual(["a2", "a1"]);
+	});
+
+	test("drops projects with no workspaces", () => {
+		const sections = build(
+			[workspace("a1", "a", 1)],
+			[project("a", "Alpha"), project("b", "Beta")],
+		);
+		expect(sections.map((section) => section.projectId)).toEqual(["a"]);
+	});
+
+	test("files unknown and missing project ids under No project", () => {
+		const sections = build(
+			[workspace("x1", "gone", 2), workspace("x2", null, 1)],
+			[project("a", "Alpha")],
+		);
+		expect(sections).toHaveLength(1);
+		expect(sections[0]?.projectId).toBe(NO_PROJECT_SECTION_ID);
+		expect(sections[0]?.name).toBe("No project");
+		expect(sections[0]?.workspaces.map((row) => row.id)).toEqual(["x1", "x2"]);
+	});
+
+	test("breaks activity ties by name", () => {
+		const sections = build(
+			[workspace("b1", "b", 1), workspace("a1", "a", 1)],
+			[project("b", "Beta"), project("a", "Alpha")],
+		);
+		expect(sections.map((section) => section.name)).toEqual(["Alpha", "Beta"]);
+	});
+});

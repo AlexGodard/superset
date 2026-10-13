@@ -206,6 +206,10 @@ msgid "{0, plural, one {# result in Cloud} other {# results in Cloud}}"
 msgstr "{0, plural, one {# výsledek v Cloudu} few {# výsledky v Cloudu} many {# výsledku v Cloudu} other {# výsledků v Cloudu}}"
 
 #. placeholder {0}: results.length
+msgid "{0, plural, one {# result on all hosts} other {# results on all hosts}}"
+msgstr "{0, plural, one {# výsledek na všech hostech} few {# výsledky na všech hostech} many {# výsledku na všech hostech} other {# výsledků na všech hostech}}"
+
+#. placeholder {0}: results.length
 msgid "{0, plural, one {# result on this host} other {# results on this host}}"
 msgstr "{0, plural, one {# výsledek na tomto hostu} few {# výsledky na tomto hostu} many {# výsledku na tomto hostu} other {# výsledků na tomto hostu}}"
 
@@ -2035,6 +2039,9 @@ msgstr "Všechny funkce vedle sebe"
 
 msgid "All files exceed the maximum size."
 msgstr "Všechny soubory překračují maximální velikost."
+
+msgid "All hosts"
+msgstr "Všechny hosty"
 
 msgid "All in a new tab (split panes)"
 msgstr "Vše v nové kartě (rozdělené panely)"
@@ -5031,6 +5038,9 @@ msgstr "Běhy se nepodařilo načíst"
 
 msgid "Couldn't load this run's payload."
 msgstr "Data tohoto běhu se nepodařilo načíst."
+
+msgid "Couldn't load workspaces"
+msgstr "Pracovní prostory se nepodařilo načíst"
 
 msgid "Couldn't load your profile, so editing is disabled."
 msgstr "Tvůj profil se nepodařilo načíst, úpravy jsou proto vypnuté."
@@ -10993,6 +11003,9 @@ msgstr "Zatím žádné verze."
 msgid "No workspace run command configured"
 msgstr "Není nastavený žádný spouštěcí příkaz pracovního prostoru"
 
+msgid "No workspaces"
+msgstr "Žádné pracovní prostory"
+
 msgid "No workspaces found."
 msgstr "Nenalezeny žádné pracovní prostory."
 
@@ -11010,6 +11023,9 @@ msgstr "Žádný pracovní prostor neodpovídá."
 
 msgid "No workspaces on this host yet"
 msgstr "Na tomto hostu zatím nejsou žádné pracovní prostory"
+
+msgid "No workspaces on your hosts yet"
+msgstr "Na vašich hostech zatím nejsou žádné pracovní prostory"
 
 msgid "No workspaces yet"
 msgstr "Zatím žádné pracovní prostory"

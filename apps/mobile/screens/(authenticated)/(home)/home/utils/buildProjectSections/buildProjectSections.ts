@@ -1,0 +1,77 @@
+import type { HostProjectItem } from "@/hooks/useHostProjects";
+import type { HostWorkspaceItem } from "@/hooks/useHostWorkspaces";
+
+export const NO_PROJECT_SECTION_ID = "__none";
+
+export interface ProjectSection {
+	projectId: string;
+	name: string;
+	iconUrl: string | null;
+	workspaces: HostWorkspaceItem[];
+}
+
+/** Pass one machine's workspaces and projects: project ids are per host. */
+export function buildProjectSections({
+	workspaces,
+	projects,
+	noProjectName,
+	compareWorkspaces,
+	activityTs,
+}: {
+	workspaces: HostWorkspaceItem[];
+	projects: HostProjectItem[];
+	noProjectName: string;
+	compareWorkspaces: (a: HostWorkspaceItem, b: HostWorkspaceItem) => number;
+	activityTs: (workspace: HostWorkspaceItem) => number;
+}): ProjectSection[] {
+	// A project id the host no longer reports is as good as none: grouping
+	// under it would render the workspace nowhere, since sections come from
+	// the reported list. Also covers the beat where workspaces have loaded
+	// and projects haven't.
+	const knownProjectIds = new Set(projects.map((project) => project.id));
+	const byProject = new Map<string, HostWorkspaceItem[]>();
+	for (const workspace of workspaces) {
+		const projectId =
+			workspace.projectId && knownProjectIds.has(workspace.projectId)
+				? workspace.projectId
+				: NO_PROJECT_SECTION_ID;
+		const group = byProject.get(projectId);
+		if (group) group.push(workspace);
+		else byProject.set(projectId, [workspace]);
+	}
+
+	return (
+		[
+			...projects.map((project) => ({
+				projectId: project.id,
+				name: project.name,
+				iconUrl: project.iconUrl,
+			})),
+			{
+				projectId: NO_PROJECT_SECTION_ID,
+				name: noProjectName,
+				iconUrl: null,
+			},
+		]
+			.map((section) => ({
+				...section,
+				workspaces: (byProject.get(section.projectId) ?? []).sort(
+					compareWorkspaces,
+				),
+			}))
+			// An empty section is a row that says nothing and does nothing — the
+			// composer's project picker is where you start work in a project that
+			// has none yet.
+			.filter((section) => section.workspaces.length > 0)
+			.sort((a, b) => {
+				// Sections rank by their liveliest workspace, so the project you
+				// were last in leads; ties fall back to the name.
+				const aFirst = a.workspaces[0];
+				const bFirst = b.workspaces[0];
+				const aTs = aFirst ? activityTs(aFirst) : 0;
+				const bTs = bFirst ? activityTs(bFirst) : 0;
+				if (aTs !== bTs) return bTs - aTs;
+				return a.name.localeCompare(b.name);
+			})
+	);
+}

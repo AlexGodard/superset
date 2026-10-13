@@ -206,6 +206,10 @@ msgid "{0, plural, one {# result in Cloud} other {# results in Cloud}}"
 msgstr "{0, plural, one {云端#个结果} other {云端#个结果}}"
 
 #. placeholder {0}: results.length
+msgid "{0, plural, one {# result on all hosts} other {# results on all hosts}}"
+msgstr "{0, plural, one {所有主机上#个结果} other {所有主机上#个结果}}"
+
+#. placeholder {0}: results.length
 msgid "{0, plural, one {# result on this host} other {# results on this host}}"
 msgstr "{0, plural, one {此主机上#个结果} other {此主机上#个结果}}"
 
@@ -2035,6 +2039,9 @@ msgstr "所有功能逐项对比"
 
 msgid "All files exceed the maximum size."
 msgstr "所有文件都超过了大小上限。"
+
+msgid "All hosts"
+msgstr "所有主机"
 
 msgid "All in a new tab (split panes)"
 msgstr "全部在新标签页（分屏窗格）"
@@ -5031,6 +5038,9 @@ msgstr "无法加载运行记录"
 
 msgid "Couldn't load this run's payload."
 msgstr "无法加载此次运行的负载。"
+
+msgid "Couldn't load workspaces"
+msgstr "无法加载工作区"
 
 msgid "Couldn't load your profile, so editing is disabled."
 msgstr "无法加载你的资料，编辑已停用。"
@@ -10993,6 +11003,9 @@ msgstr "还没有任何版本。"
 msgid "No workspace run command configured"
 msgstr "未配置工作区运行命令"
 
+msgid "No workspaces"
+msgstr "暂无工作区"
+
 msgid "No workspaces found."
 msgstr "未找到工作区。"
 
@@ -11010,6 +11023,9 @@ msgstr "没有匹配的工作区。"
 
 msgid "No workspaces on this host yet"
 msgstr "此主机上还没有工作区"
+
+msgid "No workspaces on your hosts yet"
+msgstr "你的主机上还没有工作区"
 
 msgid "No workspaces yet"
 msgstr "暂无工作区"

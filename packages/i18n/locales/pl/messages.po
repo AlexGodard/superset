@@ -206,6 +206,10 @@ msgid "{0, plural, one {# result in Cloud} other {# results in Cloud}}"
 msgstr "{0, plural, one {# wynik w chmurze} few {# wyniki w chmurze} many {# wyników w chmurze} other {# wyniku w chmurze}}"
 
 #. placeholder {0}: results.length
+msgid "{0, plural, one {# result on all hosts} other {# results on all hosts}}"
+msgstr "{0, plural, one {# wynik na wszystkich hostach} few {# wyniki na wszystkich hostach} many {# wyników na wszystkich hostach} other {# wyniku na wszystkich hostach}}"
+
+#. placeholder {0}: results.length
 msgid "{0, plural, one {# result on this host} other {# results on this host}}"
 msgstr "{0, plural, one {# wynik na tym hoście} few {# wyniki na tym hoście} many {# wyników na tym hoście} other {# wyniku na tym hoście}}"
 
@@ -2035,6 +2039,9 @@ msgstr "Wszystkie funkcje obok siebie"
 
 msgid "All files exceed the maximum size."
 msgstr "Wszystkie pliki przekraczają maksymalny rozmiar."
+
+msgid "All hosts"
+msgstr "Wszystkie hosty"
 
 msgid "All in a new tab (split panes)"
 msgstr "Wszystkie w nowej karcie (podzielone panele)"
@@ -5031,6 +5038,9 @@ msgstr "Nie udało się wczytać uruchomień"
 
 msgid "Couldn't load this run's payload."
 msgstr "Nie udało się wczytać ładunku tego uruchomienia."
+
+msgid "Couldn't load workspaces"
+msgstr "Nie udało się wczytać obszarów roboczych"
 
 msgid "Couldn't load your profile, so editing is disabled."
 msgstr "Nie udało się wczytać Twojego profilu, więc edycja jest wyłączona."
@@ -10993,6 +11003,9 @@ msgstr "Brak wersji."
 msgid "No workspace run command configured"
 msgstr "Nie skonfigurowano polecenia uruchamiania obszaru roboczego"
 
+msgid "No workspaces"
+msgstr "Brak obszarów roboczych"
+
 msgid "No workspaces found."
 msgstr "Nie znaleziono obszarów roboczych."
 
@@ -11010,6 +11023,9 @@ msgstr "Brak pasujących obszarów roboczych."
 
 msgid "No workspaces on this host yet"
 msgstr "Brak obszarów roboczych na tym hoście"
+
+msgid "No workspaces on your hosts yet"
+msgstr "Brak obszarów roboczych na Twoich hostach"
 
 msgid "No workspaces yet"
 msgstr "Brak obszarów roboczych"

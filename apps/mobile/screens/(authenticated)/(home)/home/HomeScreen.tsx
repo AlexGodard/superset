@@ -30,10 +30,10 @@ import {
 	type CloudWorkspaceRow,
 	useCloudWorkspaces,
 } from "@/hooks/useCloudWorkspaces";
-import { useHostProjects } from "@/hooks/useHostProjects";
+import { useHostsProjects } from "@/hooks/useHostProjects";
 import {
 	type HostWorkspaceItem,
-	useHostWorkspaces,
+	useHostsWorkspaces,
 } from "@/hooks/useHostWorkspaces";
 import { useOrgHosts } from "@/hooks/useOrgHosts";
 import { useReadableInset } from "@/hooks/useReadableInset";
@@ -42,6 +42,7 @@ import { errorCopy } from "@/lib/errors";
 import { useVoiceSession } from "@/lib/voice/useVoiceSession";
 import { useVoiceActive } from "@/lib/voice/voiceStore";
 import { useCloudFilters } from "@/screens/(authenticated)/(home)/hooks/useCloudFilters";
+import { useScopedHosts } from "@/screens/(authenticated)/(home)/hooks/useScopedHosts";
 import { useSelectedHost } from "@/screens/(authenticated)/(home)/hooks/useSelectedHost";
 import { useWorkspaceScope } from "@/screens/(authenticated)/(home)/hooks/useWorkspaceScope";
 import { HeaderNotice } from "@/screens/(authenticated)/components/HeaderNotice";
@@ -54,6 +55,10 @@ import { usePinnedWorkspacesStore } from "@/screens/(authenticated)/stores/pinne
 import { pullRequestStatus } from "@/screens/(authenticated)/workspace/[id]/utils/pullRequest";
 import { CloudWorkspaceRow as CloudWorkspaceListRow } from "./components/CloudWorkspaceRow";
 import { HostOfflineView } from "./components/HostOfflineView";
+import {
+	HostSectionHeader,
+	type HostSectionState,
+} from "./components/HostSectionHeader";
 import { NewChatWidget } from "./components/NewChatWidget";
 import { targetKeyFor } from "./components/NewChatWidget/hooks/useNewChatTargets";
 import { useNewSessionPreferencesStore } from "./components/NewChatWidget/stores/newSessionPreferencesStore";
@@ -85,6 +90,12 @@ import {
 	SORT_OPTIONS,
 	useWorkspacesFilterStore,
 } from "./stores/workspacesFilterStore";
+import {
+	buildProjectSections,
+	NO_PROJECT_SECTION_ID,
+	type ProjectSection,
+} from "./utils/buildProjectSections";
+import { getHostSectionState } from "./utils/getHostSectionState";
 
 const VIEWABILITY_CONFIG = {
 	itemVisiblePercentThreshold: 50,
@@ -94,8 +105,6 @@ const VIEWABILITY_CONFIG = {
 const MAX_VISIBLE_DIFF_STATS = 20;
 
 const NAVIGATION_BAR_HEIGHT = 44;
-
-const NO_PROJECT_SECTION_ID = "__none";
 
 /**
  * Cloud is a scope of its own, picked from the same chip as your machines,
@@ -108,7 +117,17 @@ const NO_PROJECT_SECTION_ID = "__none";
 
 type HomeListItem =
 	| {
+			kind: "hostHeader";
+			machineId: string;
+			name: string;
+			isOnline: boolean;
+			lastSeenAt: number | null | undefined;
+			state: HostSectionState;
+			isFirst: boolean;
+	  }
+	| {
 			kind: "projectHeader";
+			machineId: string;
 			projectId: string;
 			name: string;
 			iconUrl?: string | null;
@@ -133,8 +152,10 @@ type HomeListItem =
 
 function homeListItemKey(item: HomeListItem): string {
 	switch (item.kind) {
+		case "hostHeader":
+			return `host:${item.machineId}`;
 		case "projectHeader":
-			return `project:${item.projectId}`;
+			return `project:${item.machineId}:${item.projectId}`;
 		case "workspace":
 			return `ws:${item.workspace.id}`;
 		case "periodHeader":
@@ -188,18 +209,22 @@ export function HomeScreen() {
 		useOrganizations();
 
 	const selectedHost = useSelectedHost();
+	const scope = useWorkspaceScope();
+	const cloudScope = scope === "cloud";
+	const allHostsScope = scope === "allHosts";
+	const scopedHosts = useScopedHosts();
 	const pinnedAt = usePinnedWorkspacesStore((state) => state.pinnedAt);
 	const {
 		workspaces,
 		isReady: workspacesReady,
+		statusByHost,
 		cache,
-	} = useHostWorkspaces(selectedHost);
+	} = useHostsWorkspaces(scopedHosts);
 	const {
 		items: cloudItems,
 		cache: cloudCache,
 		isReady: cloudReady,
 	} = useCloudWorkspaceItems();
-	const cloudScope = useWorkspaceScope() === "cloud";
 	const cloudFilters = useCloudFilters();
 	const showArchived = cloudScope && cloudFilters.status === "archived";
 	const { workspaces: archivedCloud, isReady: archivedReady } =
@@ -211,14 +236,19 @@ export function HomeScreen() {
 	// No session marks for cloud rows: a request per sandbox keeps each one
 	// awake for as long as Home is on screen.
 	const terminalHosts = useMemo<TerminalsHost[]>(
-		() => (cloudScope || !selectedHost ? [] : [selectedHost]),
-		[selectedHost, cloudScope],
+		() => (cloudScope ? [] : scopedHosts),
+		[scopedHosts, cloudScope],
 	);
 	const { terminalsByWorkspace, attentionByWorkspace } =
 		useHostsTerminals(terminalHosts);
 
-	// Projects are fully local — served by the selected host, not the cloud.
-	const { projects, isReady: projectsReady } = useHostProjects(selectedHost);
+	// Projects are fully local — served by each host, not the cloud.
+	const { projectsByHost, isReady: projectsReady } =
+		useHostsProjects(scopedHosts);
+	const projects = useMemo(
+		() => [...projectsByHost.values()].flat(),
+		[projectsByHost],
+	);
 
 	// Mirrors the rows above onto the Lock Screen and Dynamic Island while the
 	// app is open. Foreground-only for now: nothing server-side knows an agent
@@ -237,7 +267,10 @@ export function HomeScreen() {
 	const { query: hostsQuery, presenceStatus } = useOrgHosts();
 	const presencePending = presenceStatus === "pending";
 	const hostOffline =
-		!cloudScope && !!selectedHost && !selectedHost.isOnline && !presencePending;
+		scope === "host" &&
+		!!selectedHost &&
+		!selectedHost.isOnline &&
+		!presencePending;
 
 	// An answer, not rows: an offline host and a host with no workspaces both
 	// settle. Decoration is not waited on. With no active organization the
@@ -338,80 +371,77 @@ export function HomeScreen() {
 			return items;
 		}
 
-		const pool = liveWorkspaces.filter(
-			(workspace) => workspace.hostId === selectedHost?.machineId,
-		);
-
-		// A project id the host no longer reports is as good as none: grouping
-		// under it would render the workspace nowhere, since sections come from
-		// the reported list. Also covers the beat where workspaces have loaded
-		// and projects haven't.
-		const knownProjectIds = new Set(projects.map((project) => project.id));
-		const byProject = new Map<string, HostWorkspaceItem[]>();
-		for (const workspace of pool) {
-			const projectId =
-				workspace.projectId && knownProjectIds.has(workspace.projectId)
-					? workspace.projectId
-					: NO_PROJECT_SECTION_ID;
-			const group = byProject.get(projectId);
-			if (group) group.push(workspace);
-			else byProject.set(projectId, [workspace]);
-		}
-
-		const sections = [
-			...projects.map((project) => ({
-				projectId: project.id,
-				name: project.name,
-				iconUrl: project.iconUrl,
-			})),
-			{
-				projectId: NO_PROJECT_SECTION_ID,
-				name: t({ message: "No project" }),
-				iconUrl: null,
-			},
-		]
-			.map((section) => ({
-				...section,
-				workspaces: (byProject.get(section.projectId) ?? []).sort(
-					byPinThenActivity,
+		const projectSections = (machineId: string) =>
+			buildProjectSections({
+				workspaces: liveWorkspaces.filter(
+					(workspace) => workspace.hostId === machineId,
 				),
-			}))
-			// An empty section is a row that says nothing and does nothing — the
-			// composer's project picker is where you start work in a project that
-			// has none yet.
-			.filter((section) => section.workspaces.length > 0)
-			.sort((a, b) => {
-				// Sections rank by their liveliest workspace, so the project you
-				// were last in leads; empty ones fall to the bottom alphabetically.
-				const first = (section: (typeof sections)[number]) =>
-					section.workspaces[0];
-				const aFirst = first(a);
-				const bFirst = first(b);
-				const aTs = aFirst ? activityTs(aFirst) : 0;
-				const bTs = bFirst ? activityTs(bFirst) : 0;
-				if (aTs !== bTs) return bTs - aTs;
-				return a.name.localeCompare(b.name);
+				projects: projectsByHost.get(machineId) ?? [],
+				noProjectName: t({ message: "No project" }),
+				compareWorkspaces: byPinThenActivity,
+				activityTs,
 			});
 
-		for (const section of sections) {
-			const isCollapsed =
-				collapseHydrated &&
-				!!collapsed[
-					collapsedProjectKey(selectedHost?.machineId ?? "", section.projectId)
-				];
-			items.push({
-				kind: "projectHeader",
-				projectId: section.projectId,
-				name: section.name,
-				iconUrl: section.iconUrl,
-				count: section.workspaces.length,
-				collapsed: isCollapsed,
-			});
-			if (isCollapsed) continue;
-			for (const workspace of section.workspaces) {
-				items.push({ kind: "workspace", workspace });
+		const pushSections = (machineId: string, sections: ProjectSection[]) => {
+			for (const section of sections) {
+				const isCollapsed =
+					collapseHydrated &&
+					!!collapsed[collapsedProjectKey(machineId, section.projectId)];
+				items.push({
+					kind: "projectHeader",
+					machineId,
+					projectId: section.projectId,
+					name: section.name,
+					iconUrl: section.iconUrl,
+					count: section.workspaces.length,
+					collapsed: isCollapsed,
+				});
+				if (isCollapsed) continue;
+				for (const workspace of section.workspaces) {
+					items.push({ kind: "workspace", workspace });
+				}
 			}
+		};
+
+		if (!allHostsScope) {
+			if (selectedHost) {
+				pushSections(
+					selectedHost.machineId,
+					projectSections(selectedHost.machineId),
+				);
+			}
+			return items;
 		}
+
+		const groups = scopedHosts
+			.map((host) => {
+				const sections = host.isOnline ? projectSections(host.machineId) : [];
+				const first = sections[0]?.workspaces[0];
+				return { host, sections, latest: first ? activityTs(first) : 0 };
+			})
+			.sort(
+				(a, b) =>
+					b.latest - a.latest ||
+					Number(b.host.isOnline) - Number(a.host.isOnline) ||
+					a.host.name.localeCompare(b.host.name),
+			);
+		groups.forEach(({ host, sections }, index) => {
+			items.push({
+				kind: "hostHeader",
+				machineId: host.machineId,
+				name: host.name,
+				isOnline: host.isOnline,
+				lastSeenAt: host.lastSeenAt,
+				state: getHostSectionState({
+					isOnline: host.isOnline,
+					presencePending,
+					hasRows: sections.length > 0,
+					status: statusByHost.get(host.machineId),
+				}),
+				isFirst: index === 0,
+			});
+			pushSections(host.machineId, sections);
+		});
 
 		return items;
 	}, [
@@ -425,7 +455,11 @@ export function HomeScreen() {
 		formatRelativePeriod,
 		now,
 		selectedHost,
-		projects,
+		allHostsScope,
+		scopedHosts,
+		projectsByHost,
+		statusByHost,
+		presencePending,
 		byPinThenActivity,
 		activityTs,
 		collapsed,
@@ -609,9 +643,20 @@ export function HomeScreen() {
 					</View>
 				);
 			}
+			if (item.kind === "hostHeader") {
+				return (
+					<HostSectionHeader
+						name={item.name}
+						isOnline={item.isOnline}
+						lastSeenAt={item.lastSeenAt}
+						state={item.state}
+						isFirst={item.isFirst}
+					/>
+				);
+			}
 			if (item.kind === "projectHeader") {
 				// Only a machine's projects get headers — Cloud is a flat scope.
-				const machineId = selectedHost?.machineId;
+				const { machineId } = item;
 				const isNoProject = item.projectId === NO_PROJECT_SECTION_ID;
 				return (
 					<ProjectSectionHeader
@@ -626,22 +671,15 @@ export function HomeScreen() {
 						collapsed={item.collapsed}
 						onToggle={() => {
 							void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-							toggleProject(machineId ?? "", item.projectId);
+							toggleProject(machineId, item.projectId);
 						}}
-						onNewWorkspace={
-							machineId
-								? () => {
-										void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-										setTargetKey(
-											targetKeyFor(
-												isNoProject ? null : item.projectId,
-												machineId,
-											),
-										);
-										requestComposerFocus();
-									}
-								: undefined
-						}
+						onNewWorkspace={() => {
+							void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+							setTargetKey(
+								targetKeyFor(isNoProject ? null : item.projectId, machineId),
+							);
+							requestComposerFocus();
+						}}
 					/>
 				);
 			}
@@ -680,7 +718,6 @@ export function HomeScreen() {
 			attentionByWorkspace,
 			terminalsByWorkspace,
 			toggleProject,
-			selectedHost,
 			setTargetKey,
 			requestComposerFocus,
 			handleCopied,
@@ -695,7 +732,7 @@ export function HomeScreen() {
 
 	const scopeBar = (
 		<ScopeBar
-			scope={cloudScope ? "cloud" : "host"}
+			scope={scope}
 			hostName={selectedHost?.name ?? null}
 			hostOnline={selectedHost?.isOnline ?? false}
 			sortLabel={showArchived ? null : sortLabel}
