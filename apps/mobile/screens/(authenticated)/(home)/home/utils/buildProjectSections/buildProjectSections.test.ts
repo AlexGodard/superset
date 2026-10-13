@@ -67,6 +67,27 @@ describe("buildProjectSections", () => {
 		expect(sections[0]?.workspaces.map((row) => row.id)).toEqual(["x1", "x2"]);
 	});
 
+	test("ranks a project by its newest workspace, not a pinned older one", () => {
+		const pinnedFirst = (a: HostWorkspaceItem, b: HostWorkspaceItem) =>
+			a.id === "pinned" ? -1 : b.id === "pinned" ? 1 : byActivity(a, b);
+		const sections = buildProjectSections({
+			workspaces: [
+				workspace("pinned", "a", 1),
+				workspace("fresh", "a", 100),
+				workspace("b1", "b", 50),
+			],
+			projects: [project("a", "Alpha"), project("b", "Beta")],
+			noProjectName: "No project",
+			compareWorkspaces: pinnedFirst,
+			activityTs,
+		});
+		expect(sections.map((section) => section.projectId)).toEqual(["a", "b"]);
+		expect(sections[0]?.workspaces.map((row) => row.id)).toEqual([
+			"pinned",
+			"fresh",
+		]);
+	});
+
 	test("breaks activity ties by name", () => {
 		const sections = build(
 			[workspace("b1", "b", 1), workspace("a1", "a", 1)],

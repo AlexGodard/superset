@@ -66,26 +66,32 @@ export function buildProjectSections({
 			.sort((a, b) => {
 				// Sections rank by their liveliest workspace, so the project you
 				// were last in leads; ties fall back to the name.
-				const aFirst = a.workspaces[0];
-				const bFirst = b.workspaces[0];
-				const aTs = aFirst ? activityTs(aFirst) : 0;
-				const bTs = bFirst ? activityTs(bFirst) : 0;
+				const aTs = newestActivity(a.workspaces, activityTs);
+				const bTs = newestActivity(b.workspaces, activityTs);
 				if (aTs !== bTs) return bTs - aTs;
 				return a.name.localeCompare(b.name);
 			})
 	);
 }
 
-/** The newest activity across every section, whatever order pins put them in. */
+/** Not the first row's: pins can put an older workspace first. */
+function newestActivity(
+	workspaces: HostWorkspaceItem[],
+	activityTs: (workspace: HostWorkspaceItem) => number,
+): number {
+	return workspaces.reduce(
+		(newest, workspace) => Math.max(newest, activityTs(workspace)),
+		0,
+	);
+}
+
 export function latestSectionActivity(
 	sections: ProjectSection[],
 	activityTs: (workspace: HostWorkspaceItem) => number,
 ): number {
-	let latest = 0;
-	for (const section of sections) {
-		for (const workspace of section.workspaces) {
-			latest = Math.max(latest, activityTs(workspace));
-		}
-	}
-	return latest;
+	return sections.reduce(
+		(newest, section) =>
+			Math.max(newest, newestActivity(section.workspaces, activityTs)),
+		0,
+	);
 }
