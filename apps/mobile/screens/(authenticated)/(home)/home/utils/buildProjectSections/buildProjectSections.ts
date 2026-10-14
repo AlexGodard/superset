@@ -10,7 +10,11 @@ export interface ProjectSection {
 	workspaces: HostWorkspaceItem[];
 }
 
-/** Pass one machine's workspaces and projects: project ids are per host. */
+/**
+ * Hosts that set up the same project share its id, so several machines'
+ * workspaces and projects can be passed together; a shared project is one
+ * section.
+ */
 export function buildProjectSections({
 	workspaces,
 	projects,
@@ -40,9 +44,14 @@ export function buildProjectSections({
 		else byProject.set(projectId, [workspace]);
 	}
 
+	const uniqueProjects = new Map<string, HostProjectItem>();
+	for (const project of projects) {
+		if (!uniqueProjects.has(project.id))
+			uniqueProjects.set(project.id, project);
+	}
 	return (
 		[
-			...projects.map((project) => ({
+			...[...uniqueProjects.values()].map((project) => ({
 				projectId: project.id,
 				name: project.name,
 				iconUrl: project.iconUrl,

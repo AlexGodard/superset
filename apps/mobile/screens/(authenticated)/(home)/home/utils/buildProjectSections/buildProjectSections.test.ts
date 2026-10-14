@@ -47,6 +47,18 @@ describe("buildProjectSections", () => {
 		expect(sections[1]?.workspaces.map((row) => row.id)).toEqual(["a2", "a1"]);
 	});
 
+	test("makes a project two hosts both report one section", () => {
+		const sections = build(
+			[workspace("mac", "a", 2), workspace("linux", "a", 1)],
+			[project("a", "Alpha"), project("a", "Alpha")],
+		);
+		expect(sections).toHaveLength(1);
+		expect(sections[0]?.workspaces.map((row) => row.id)).toEqual([
+			"mac",
+			"linux",
+		]);
+	});
+
 	test("drops projects with no workspaces", () => {
 		const sections = build(
 			[workspace("a1", "a", 1)],

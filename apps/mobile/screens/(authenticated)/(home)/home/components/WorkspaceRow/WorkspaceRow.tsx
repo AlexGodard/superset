@@ -35,7 +35,7 @@ const MAX_SESSION_MARKS = 3;
 
 export function WorkspaceRow({
 	workspace,
-	location,
+	hostName,
 	pullRequest,
 	diffStats,
 	cache,
@@ -45,8 +45,8 @@ export function WorkspaceRow({
 	onCopied,
 }: {
 	workspace: HostWorkspaceItem;
-	/** Host and project, for a flat list with no headers to say them. */
-	location?: string;
+	/** Set when the list mixes machines. */
+	hostName?: string;
 	pullRequest?: SelectGithubPullRequest;
 	diffStats: DiffStats | null;
 	cache: HostWorkspacesCacheOps;
@@ -79,7 +79,7 @@ export function WorkspaceRow({
 	);
 	const togglePin = usePinnedWorkspacesStore((state) => state.togglePin);
 	const subtitle = [
-		location,
+		hostName,
 		// A workspace named after its branch says it twice otherwise — common
 		// now that every project shows its `main`.
 		workspace.branch === workspace.name ? null : workspace.branch,
@@ -108,10 +108,7 @@ export function WorkspaceRow({
 			{/* Default press behavior on purpose: the system context-menu lift
 			    owns the hold animation, and custom press feedback fights it. */}
 			<Pressable
-				className={cn(
-					"bg-background flex-row items-center gap-3 rounded-xl py-2 pr-3",
-					location === undefined ? "pl-10" : "pl-4",
-				)}
+				className="bg-background flex-row items-center gap-3 rounded-xl py-2 pl-10 pr-3"
 				onPress={() =>
 					router.push(`/(authenticated)/workspace/${workspace.id}`)
 				}

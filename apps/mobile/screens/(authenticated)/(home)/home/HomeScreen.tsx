@@ -78,6 +78,7 @@ import {
 import { useNow } from "./hooks/useNow";
 import { useVisibleDiffStats } from "./hooks/useVisibleDiffStats";
 import {
+	ALL_HOSTS_SECTION_SCOPE,
 	collapsedProjectKey,
 	useCollapsedProjectsStore,
 } from "./stores/collapsedProjectsStore";
@@ -112,7 +113,10 @@ const NAVIGATION_BAR_HEIGHT = 44;
 type HomeListItem =
 	| {
 			kind: "projectHeader";
+			/** Where its "+" starts work. */
 			machineId: string;
+			/** The machine, or All hosts: collapse is remembered per scope. */
+			collapseScope: string;
 			projectId: string;
 			name: string;
 			iconUrl?: string | null;
@@ -122,7 +126,7 @@ type HomeListItem =
 	| {
 			kind: "workspace";
 			workspace: HostWorkspaceItem;
-			location?: string;
+			hostName?: string;
 	  }
 	| {
 			kind: "hostOffline";
@@ -139,7 +143,7 @@ type HomeListItem =
 function homeListItemKey(item: HomeListItem): string {
 	switch (item.kind) {
 		case "projectHeader":
-			return `project:${item.machineId}:${item.projectId}`;
+			return `project:${item.collapseScope}:${item.projectId}`;
 		case "workspace":
 			return `ws:${item.workspace.id}`;
 		case "periodHeader":
@@ -355,40 +359,24 @@ export function HomeScreen() {
 			return items;
 		}
 
-		// Under All hosts the rows are one list, as in Cloud: picking a machine
-		// is how you see one machine's projects.
-		if (allHostsScope) {
-			const hostNames = new Map(
-				scopedHosts.map((host) => [host.machineId, host.name]),
-			);
-			const projectNames = new Map(
-				Object.entries(projectsByHost).flatMap(([machineId, hostProjects]) =>
-					hostProjects.map((project): [string, string] => [
-						`${machineId}:${project.id}`,
-						project.name,
-					]),
-				),
-			);
-			for (const workspace of [...liveWorkspaces].sort(byPinThenActivity)) {
-				const location = [
-					hostNames.get(workspace.hostId),
-					workspace.projectId
-						? projectNames.get(`${workspace.hostId}:${workspace.projectId}`)
-						: undefined,
-				]
-					.filter(Boolean)
-					.join(" · ");
-				items.push({ kind: "workspace", workspace, location });
-			}
-			return items;
-		}
-
-		if (!selectedHost) return items;
+		// Under All hosts a section holds the project's workspaces from every
+		// machine that set it up, and each row names its machine.
+		const collapseScope = allHostsScope
+			? ALL_HOSTS_SECTION_SCOPE
+			: selectedHost?.machineId;
+		if (!collapseScope) return items;
+		const hostNames = new Map(
+			scopedHosts.map((host) => [host.machineId, host.name]),
+		);
 		const sections = buildProjectSections({
-			workspaces: liveWorkspaces.filter(
-				(workspace) => workspace.hostId === selectedHost.machineId,
-			),
-			projects: projectsByHost[selectedHost.machineId] ?? [],
+			workspaces: allHostsScope
+				? liveWorkspaces
+				: liveWorkspaces.filter(
+						(workspace) => workspace.hostId === selectedHost?.machineId,
+					),
+			projects: allHostsScope
+				? projects
+				: (projectsByHost[selectedHost?.machineId ?? ""] ?? []),
 			noProjectName: t({ message: "No project" }),
 			compareWorkspaces: byPinThenActivity,
 			activityTs,
@@ -396,12 +384,14 @@ export function HomeScreen() {
 		for (const section of sections) {
 			const isCollapsed =
 				collapseHydrated &&
-				!!collapsed[
-					collapsedProjectKey(selectedHost.machineId, section.projectId)
-				];
+				!!collapsed[collapsedProjectKey(collapseScope, section.projectId)];
+			const newest = section.workspaces.reduce((a, b) =>
+				activityTs(b) > activityTs(a) ? b : a,
+			);
 			items.push({
 				kind: "projectHeader",
-				machineId: selectedHost.machineId,
+				machineId: newest.hostId,
+				collapseScope,
 				projectId: section.projectId,
 				name: section.name,
 				iconUrl: section.iconUrl,
@@ -410,7 +400,11 @@ export function HomeScreen() {
 			});
 			if (isCollapsed) continue;
 			for (const workspace of section.workspaces) {
-				items.push({ kind: "workspace", workspace });
+				items.push({
+					kind: "workspace",
+					workspace,
+					hostName: allHostsScope ? hostNames.get(workspace.hostId) : undefined,
+				});
 			}
 		}
 
@@ -428,6 +422,7 @@ export function HomeScreen() {
 		selectedHost,
 		allHostsScope,
 		scopedHosts,
+		projects,
 		projectsByHost,
 		byPinThenActivity,
 		activityTs,
@@ -613,8 +608,8 @@ export function HomeScreen() {
 				);
 			}
 			if (item.kind === "projectHeader") {
-				// Only a single machine's projects get headers; Cloud and All hosts are flat.
-				const { machineId } = item;
+				// Only a machine's projects get headers — Cloud is a flat scope.
+				const { machineId, collapseScope } = item;
 				const isNoProject = item.projectId === NO_PROJECT_SECTION_ID;
 				return (
 					<ProjectSectionHeader
@@ -629,7 +624,7 @@ export function HomeScreen() {
 						collapsed={item.collapsed}
 						onToggle={() => {
 							void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-							toggleProject(machineId, item.projectId);
+							toggleProject(collapseScope, item.projectId);
 						}}
 						onNewWorkspace={() => {
 							void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -641,14 +636,14 @@ export function HomeScreen() {
 					/>
 				);
 			}
-			const { workspace, location } = item;
+			const { workspace, hostName } = item;
 			const repoPrefix = workspace.projectId
 				? repoPrefixesByProject.get(workspace.projectId)
 				: undefined;
 			return (
 				<WorkspaceRow
 					workspace={workspace}
-					location={location}
+					hostName={hostName}
 					pullRequest={
 						repoPrefix
 							? pullRequestsByRepoBranch.get(
