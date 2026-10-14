@@ -10,8 +10,9 @@ function workspace(
 	id: string,
 	projectId: string | null,
 	ts: number,
+	hostId = "mac",
 ): HostWorkspaceItem {
-	return { id, projectId, ts } as unknown as HostWorkspaceItem;
+	return { id, projectId, ts, hostId } as unknown as HostWorkspaceItem;
 }
 
 function project(id: string, name: string): HostProjectItem {
@@ -23,10 +24,13 @@ const activityTs = (item: HostWorkspaceItem) =>
 const byActivity = (a: HostWorkspaceItem, b: HostWorkspaceItem) =>
 	activityTs(b) - activityTs(a);
 
-function build(workspaces: HostWorkspaceItem[], projects: HostProjectItem[]) {
+function build(
+	workspaces: HostWorkspaceItem[],
+	projectsByHost: Record<string, HostProjectItem[]>,
+) {
 	return buildProjectSections({
 		workspaces,
-		projects,
+		projectsByHost,
 		noProjectName: "No project",
 		compareWorkspaces: byActivity,
 		activityTs,
@@ -41,7 +45,7 @@ describe("buildProjectSections", () => {
 				workspace("b1", "b", 5),
 				workspace("a2", "a", 3),
 			],
-			[project("a", "Alpha"), project("b", "Beta")],
+			{ mac: [project("a", "Alpha"), project("b", "Beta")] },
 		);
 		expect(sections.map((section) => section.projectId)).toEqual(["b", "a"]);
 		expect(sections[1]?.workspaces.map((row) => row.id)).toEqual(["a2", "a1"]);
@@ -49,8 +53,8 @@ describe("buildProjectSections", () => {
 
 	test("makes a project two hosts both report one section", () => {
 		const sections = build(
-			[workspace("mac", "a", 2), workspace("linux", "a", 1)],
-			[project("a", "Alpha"), project("a", "Alpha")],
+			[workspace("mac", "a", 2), workspace("linux", "a", 1, "linux")],
+			{ mac: [project("a", "Alpha")], linux: [project("a", "Alpha")] },
 		);
 		expect(sections).toHaveLength(1);
 		expect(sections[0]?.workspaces.map((row) => row.id)).toEqual([
@@ -60,17 +64,28 @@ describe("buildProjectSections", () => {
 	});
 
 	test("drops projects with no workspaces", () => {
-		const sections = build(
-			[workspace("a1", "a", 1)],
-			[project("a", "Alpha"), project("b", "Beta")],
-		);
+		const sections = build([workspace("a1", "a", 1)], {
+			mac: [project("a", "Alpha"), project("b", "Beta")],
+		});
 		expect(sections.map((section) => section.projectId)).toEqual(["a"]);
+	});
+
+	test("files a workspace under No project when only another host reports its project", () => {
+		const sections = build(
+			[workspace("mac", "a", 2), workspace("linux", "a", 1, "linux")],
+			{ mac: [project("a", "Alpha")], linux: [] },
+		);
+		expect(sections.map((section) => section.projectId)).toEqual([
+			"a",
+			NO_PROJECT_SECTION_ID,
+		]);
+		expect(sections[1]?.workspaces.map((row) => row.id)).toEqual(["linux"]);
 	});
 
 	test("files unknown and missing project ids under No project", () => {
 		const sections = build(
 			[workspace("x1", "gone", 2), workspace("x2", null, 1)],
-			[project("a", "Alpha")],
+			{ mac: [project("a", "Alpha")] },
 		);
 		expect(sections).toHaveLength(1);
 		expect(sections[0]?.projectId).toBe(NO_PROJECT_SECTION_ID);
@@ -87,7 +102,7 @@ describe("buildProjectSections", () => {
 				workspace("fresh", "a", 100),
 				workspace("b1", "b", 50),
 			],
-			projects: [project("a", "Alpha"), project("b", "Beta")],
+			projectsByHost: { mac: [project("a", "Alpha"), project("b", "Beta")] },
 			noProjectName: "No project",
 			compareWorkspaces: pinnedFirst,
 			activityTs,
@@ -100,10 +115,9 @@ describe("buildProjectSections", () => {
 	});
 
 	test("breaks activity ties by name", () => {
-		const sections = build(
-			[workspace("b1", "b", 1), workspace("a1", "a", 1)],
-			[project("b", "Beta"), project("a", "Alpha")],
-		);
+		const sections = build([workspace("b1", "b", 1), workspace("a1", "a", 1)], {
+			mac: [project("b", "Beta"), project("a", "Alpha")],
+		});
 		expect(sections.map((section) => section.name)).toEqual(["Alpha", "Beta"]);
 	});
 });

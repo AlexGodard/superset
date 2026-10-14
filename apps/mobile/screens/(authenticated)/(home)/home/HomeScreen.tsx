@@ -374,9 +374,7 @@ export function HomeScreen() {
 				: liveWorkspaces.filter(
 						(workspace) => workspace.hostId === selectedHost?.machineId,
 					),
-			projects: allHostsScope
-				? projects
-				: (projectsByHost[selectedHost?.machineId ?? ""] ?? []),
+			projectsByHost,
 			noProjectName: t({ message: "No project" }),
 			compareWorkspaces: byPinThenActivity,
 			activityTs,
@@ -422,7 +420,6 @@ export function HomeScreen() {
 		selectedHost,
 		allHostsScope,
 		scopedHosts,
-		projects,
 		projectsByHost,
 		byPinThenActivity,
 		activityTs,

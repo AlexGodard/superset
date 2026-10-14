@@ -11,32 +11,36 @@ export interface ProjectSection {
 }
 
 /**
- * Hosts that set up the same project share its id, so several machines'
- * workspaces and projects can be passed together; a shared project is one
- * section.
+ * Hosts that set up the same project share its id, so a project on several
+ * machines is one section.
  */
 export function buildProjectSections({
 	workspaces,
-	projects,
+	projectsByHost,
 	noProjectName,
 	compareWorkspaces,
 	activityTs,
 }: {
 	workspaces: HostWorkspaceItem[];
-	projects: HostProjectItem[];
+	projectsByHost: Readonly<Record<string, HostProjectItem[]>>;
 	noProjectName: string;
 	compareWorkspaces: (a: HostWorkspaceItem, b: HostWorkspaceItem) => number;
 	activityTs: (workspace: HostWorkspaceItem) => number;
 }): ProjectSection[] {
-	// A project id the host no longer reports is as good as none: grouping
-	// under it would render the workspace nowhere, since sections come from
-	// the reported list. Also covers the beat where workspaces have loaded
-	// and projects haven't.
-	const knownProjectIds = new Set(projects.map((project) => project.id));
+	// A project id the workspace's own host no longer reports is as good as
+	// none, even when another host still reports it: a section's "+" starts
+	// work on one of its workspaces' hosts. Also covers the beat where
+	// workspaces have loaded and projects haven't.
+	const knownProjectKeys = new Set(
+		Object.entries(projectsByHost).flatMap(([machineId, projects]) =>
+			projects.map((project) => `${machineId}:${project.id}`),
+		),
+	);
 	const byProject = new Map<string, HostWorkspaceItem[]>();
 	for (const workspace of workspaces) {
 		const projectId =
-			workspace.projectId && knownProjectIds.has(workspace.projectId)
+			workspace.projectId &&
+			knownProjectKeys.has(`${workspace.hostId}:${workspace.projectId}`)
 				? workspace.projectId
 				: NO_PROJECT_SECTION_ID;
 		const group = byProject.get(projectId);
@@ -45,7 +49,7 @@ export function buildProjectSections({
 	}
 
 	const uniqueProjects = new Map<string, HostProjectItem>();
-	for (const project of projects) {
+	for (const project of Object.values(projectsByHost).flat()) {
 		if (!uniqueProjects.has(project.id))
 			uniqueProjects.set(project.id, project);
 	}
