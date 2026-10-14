@@ -11051,6 +11051,9 @@ msgstr "Brak"
 msgid "none (session)"
 msgstr "brak (sesja)"
 
+msgid "None of your hosts are online"
+msgstr "Żaden z Twoich hostów nie jest online"
+
 msgid "None. This is the floor."
 msgstr "Brak. To jest poziom zerowy."
 

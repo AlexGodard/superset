@@ -11051,6 +11051,9 @@ msgstr "Geen"
 msgid "none (session)"
 msgstr "geen (sessie)"
 
+msgid "None of your hosts are online"
+msgstr "Geen van je hosts is online"
+
 msgid "None. This is the floor."
 msgstr "Geen. Dit is de bodem."
 

@@ -11051,6 +11051,9 @@ msgstr "Keine"
 msgid "none (session)"
 msgstr "keins (Sitzung)"
 
+msgid "None of your hosts are online"
+msgstr "Keiner deiner Hosts ist online"
+
 msgid "None. This is the floor."
 msgstr "Keine. Das ist der Boden."
 

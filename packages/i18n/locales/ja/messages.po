@@ -11051,6 +11051,9 @@ msgstr "なし"
 msgid "none (session)"
 msgstr "なし (セッション)"
 
+msgid "None of your hosts are online"
+msgstr "オンラインのホストがありません"
+
 msgid "None. This is the floor."
 msgstr "なし。ここが出発点です。"
 

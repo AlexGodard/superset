@@ -11051,6 +11051,9 @@ msgstr "Không có"
 msgid "none (session)"
 msgstr "không có (phiên)"
 
+msgid "None of your hosts are online"
+msgstr "Không có host nào của bạn đang trực tuyến"
+
 msgid "None. This is the floor."
 msgstr "Không có. Đây là mức sàn."
 

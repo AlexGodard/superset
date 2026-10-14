@@ -11051,6 +11051,9 @@ msgstr "Нет"
 msgid "none (session)"
 msgstr "нет (сессия)"
 
+msgid "None of your hosts are online"
+msgstr "Ни один из ваших хостов не в сети"
+
 msgid "None. This is the floor."
 msgstr "Нет. Это нижняя граница."
 

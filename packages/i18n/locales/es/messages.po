@@ -11051,6 +11051,9 @@ msgstr "Ninguno"
 msgid "none (session)"
 msgstr "ninguno (sesión)"
 
+msgid "None of your hosts are online"
+msgstr "Ninguno de tus hosts está en línea"
+
 msgid "None. This is the floor."
 msgstr "Ninguna. Este es el punto de partida."
 

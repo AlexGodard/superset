@@ -11051,6 +11051,9 @@ msgstr "Žádný"
 msgid "none (session)"
 msgstr "žádný (relace)"
 
+msgid "None of your hosts are online"
+msgstr "Žádný z vašich hostů není online"
+
 msgid "None. This is the floor."
 msgstr "Žádná. Tohle je základ."
 

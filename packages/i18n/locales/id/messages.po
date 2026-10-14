@@ -11051,6 +11051,9 @@ msgstr "Tidak ada"
 msgid "none (session)"
 msgstr "tidak ada (sesi)"
 
+msgid "None of your hosts are online"
+msgstr "Tidak ada host Anda yang online"
+
 msgid "None. This is the floor."
 msgstr "Tidak ada. Ini adalah lantai dasarnya."
 

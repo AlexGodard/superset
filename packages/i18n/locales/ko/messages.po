@@ -11051,6 +11051,9 @@ msgstr "없음"
 msgid "none (session)"
 msgstr "없음 (세션)"
 
+msgid "None of your hosts are online"
+msgstr "온라인 상태인 호스트가 없습니다"
+
 msgid "None. This is the floor."
 msgstr "없음. 여기가 바닥입니다."
 

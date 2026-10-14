@@ -11051,6 +11051,9 @@ msgstr "Yok"
 msgid "none (session)"
 msgstr "yok (oturum)"
 
+msgid "None of your hosts are online"
+msgstr "Host'larınızın hiçbiri çevrimiçi değil"
+
 msgid "None. This is the floor."
 msgstr "Yok. Bu, taban düzeydir."
 

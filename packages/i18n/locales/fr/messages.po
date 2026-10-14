@@ -11051,6 +11051,9 @@ msgstr "Aucun"
 msgid "none (session)"
 msgstr "aucun (session)"
 
+msgid "None of your hosts are online"
+msgstr "Aucun de vos hôtes n'est en ligne"
+
 msgid "None. This is the floor."
 msgstr "Aucune. C'est le point de départ."
 

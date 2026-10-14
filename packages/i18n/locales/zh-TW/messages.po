@@ -11051,6 +11051,9 @@ msgstr "無"
 msgid "none (session)"
 msgstr "無（會話）"
 
+msgid "None of your hosts are online"
+msgstr "你的主機都不在線上"
+
 msgid "None. This is the floor."
 msgstr "沒有。這是起點。"
 

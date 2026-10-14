@@ -840,9 +840,11 @@ export function HomeScreen() {
 													: presenceStatus === "unavailable" ||
 															Object.values(statusByHost).includes("error")
 														? t({ message: "Couldn't load workspaces" })
-														: t({
-																message: "No workspaces on your hosts yet",
-															})}
+														: scopedHosts.every((host) => !host.isOnline)
+															? t({ message: "None of your hosts are online" })
+															: t({
+																	message: "No workspaces on your hosts yet",
+																})}
 								</Text>
 							</View>
 						) : (

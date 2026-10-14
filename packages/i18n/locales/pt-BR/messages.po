@@ -11051,6 +11051,9 @@ msgstr "Nenhum"
 msgid "none (session)"
 msgstr "nenhum (sessão)"
 
+msgid "None of your hosts are online"
+msgstr "Nenhum dos seus hosts está online"
+
 msgid "None. This is the floor."
 msgstr "Nenhum. Este é o piso."
 
