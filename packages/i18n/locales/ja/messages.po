@@ -3262,9 +3262,6 @@ msgstr "アプリ全体のtooltipを統一できますか?"
 msgid "Can’t check {hostName}"
 msgstr "{hostName}を確認できません"
 
-msgid "Can’t check status"
-msgstr "状態を確認できません"
-
 msgid "Can't connect right now"
 msgstr "現在接続できません"
 
@@ -11005,9 +11002,6 @@ msgstr "バージョンはまだありません。"
 
 msgid "No workspace run command configured"
 msgstr "ワークスペース実行コマンドが設定されていません"
-
-msgid "No workspaces"
-msgstr "ワークスペースなし"
 
 msgid "No workspaces found."
 msgstr "ワークスペースが見つかりません。"

@@ -3262,9 +3262,6 @@ msgstr "Uygulama genelindeki tooltip'leri standartlaştırabilir misin?"
 msgid "Can’t check {hostName}"
 msgstr "{hostName} kontrol edilemiyor"
 
-msgid "Can’t check status"
-msgstr "Durum kontrol edilemiyor"
-
 msgid "Can't connect right now"
 msgstr "Şu anda bağlanamıyoruz"
 
@@ -11005,9 +11002,6 @@ msgstr "Henüz sürüm yok."
 
 msgid "No workspace run command configured"
 msgstr "Yapılandırılmış çalışma alanı çalıştırma komutu yok"
-
-msgid "No workspaces"
-msgstr "Çalışma alanı yok"
 
 msgid "No workspaces found."
 msgstr "Çalışma alanı bulunamadı."

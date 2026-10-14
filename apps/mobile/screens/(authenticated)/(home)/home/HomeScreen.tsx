@@ -55,10 +55,6 @@ import { usePinnedWorkspacesStore } from "@/screens/(authenticated)/stores/pinne
 import { pullRequestStatus } from "@/screens/(authenticated)/workspace/[id]/utils/pullRequest";
 import { CloudWorkspaceRow as CloudWorkspaceListRow } from "./components/CloudWorkspaceRow";
 import { HostOfflineView } from "./components/HostOfflineView";
-import {
-	HostSectionHeader,
-	type HostSectionState,
-} from "./components/HostSectionHeader";
 import { NewChatWidget } from "./components/NewChatWidget";
 import { targetKeyFor } from "./components/NewChatWidget/hooks/useNewChatTargets";
 import { useNewSessionPreferencesStore } from "./components/NewChatWidget/stores/newSessionPreferencesStore";
@@ -92,11 +88,8 @@ import {
 } from "./stores/workspacesFilterStore";
 import {
 	buildProjectSections,
-	latestSectionActivity,
 	NO_PROJECT_SECTION_ID,
-	type ProjectSection,
 } from "./utils/buildProjectSections";
-import { getHostSectionState } from "./utils/getHostSectionState";
 
 const VIEWABILITY_CONFIG = {
 	itemVisiblePercentThreshold: 50,
@@ -118,15 +111,6 @@ const NAVIGATION_BAR_HEIGHT = 44;
 
 type HomeListItem =
 	| {
-			kind: "hostHeader";
-			machineId: string;
-			name: string;
-			isOnline: boolean;
-			lastSeenAt: number | null | undefined;
-			state: HostSectionState;
-			isFirst: boolean;
-	  }
-	| {
 			kind: "projectHeader";
 			machineId: string;
 			projectId: string;
@@ -138,6 +122,7 @@ type HomeListItem =
 	| {
 			kind: "workspace";
 			workspace: HostWorkspaceItem;
+			location?: string;
 	  }
 	| {
 			kind: "hostOffline";
@@ -153,8 +138,6 @@ type HomeListItem =
 
 function homeListItemKey(item: HomeListItem): string {
 	switch (item.kind) {
-		case "hostHeader":
-			return `host:${item.machineId}`;
 		case "projectHeader":
 			return `project:${item.machineId}:${item.projectId}`;
 		case "workspace":
@@ -372,81 +355,64 @@ export function HomeScreen() {
 			return items;
 		}
 
-		const projectSections = (machineId: string) =>
-			buildProjectSections({
-				workspaces: liveWorkspaces.filter(
-					(workspace) => workspace.hostId === machineId,
+		// Under All hosts the rows are one list, as in Cloud: picking a machine
+		// is how you see one machine's projects.
+		if (allHostsScope) {
+			const hostNames = new Map(
+				scopedHosts.map((host) => [host.machineId, host.name]),
+			);
+			const projectNames = new Map(
+				Object.entries(projectsByHost).flatMap(([machineId, hostProjects]) =>
+					hostProjects.map((project): [string, string] => [
+						`${machineId}:${project.id}`,
+						project.name,
+					]),
 				),
-				projects: projectsByHost[machineId] ?? [],
-				noProjectName: t({ message: "No project" }),
-				compareWorkspaces: byPinThenActivity,
-				activityTs,
-			});
-
-		const pushSections = (machineId: string, sections: ProjectSection[]) => {
-			for (const section of sections) {
-				const isCollapsed =
-					collapseHydrated &&
-					!!collapsed[collapsedProjectKey(machineId, section.projectId)];
-				items.push({
-					kind: "projectHeader",
-					machineId,
-					projectId: section.projectId,
-					name: section.name,
-					iconUrl: section.iconUrl,
-					count: section.workspaces.length,
-					collapsed: isCollapsed,
-				});
-				if (isCollapsed) continue;
-				for (const workspace of section.workspaces) {
-					items.push({ kind: "workspace", workspace });
-				}
-			}
-		};
-
-		if (!allHostsScope) {
-			if (selectedHost) {
-				pushSections(
-					selectedHost.machineId,
-					projectSections(selectedHost.machineId),
-				);
+			);
+			for (const workspace of [...liveWorkspaces].sort(byPinThenActivity)) {
+				const location = [
+					hostNames.get(workspace.hostId),
+					workspace.projectId
+						? projectNames.get(`${workspace.hostId}:${workspace.projectId}`)
+						: undefined,
+				]
+					.filter(Boolean)
+					.join(" · ");
+				items.push({ kind: "workspace", workspace, location });
 			}
 			return items;
 		}
 
-		const groups = scopedHosts
-			.map((host) => {
-				const sections = host.isOnline ? projectSections(host.machineId) : [];
-				return {
-					host,
-					sections,
-					latest: latestSectionActivity(sections, activityTs),
-				};
-			})
-			.sort(
-				(a, b) =>
-					b.latest - a.latest ||
-					Number(b.host.isOnline) - Number(a.host.isOnline) ||
-					a.host.name.localeCompare(b.host.name),
-			);
-		groups.forEach(({ host, sections }, index) => {
-			items.push({
-				kind: "hostHeader",
-				machineId: host.machineId,
-				name: host.name,
-				isOnline: host.isOnline,
-				lastSeenAt: host.lastSeenAt,
-				state: getHostSectionState({
-					isOnline: host.isOnline,
-					presencePending,
-					lastSeenAt: host.lastSeenAt,
-					hasRows: sections.length > 0,
-					status: statusByHost[host.machineId],
-				}),
-				isFirst: index === 0,
-			});
-			pushSections(host.machineId, sections);
+		if (!selectedHost) return items;
+		const sections = buildProjectSections({
+			workspaces: liveWorkspaces.filter(
+				(workspace) => workspace.hostId === selectedHost.machineId,
+			),
+			projects: projectsByHost[selectedHost.machineId] ?? [],
+			noProjectName: t({ message: "No project" }),
+			compareWorkspaces: byPinThenActivity,
+			activityTs,
 		});
+		for (const section of sections) {
+			const isCollapsed =
+				collapseHydrated &&
+				!!collapsed[
+					collapsedProjectKey(selectedHost.machineId, section.projectId)
+				];
+			items.push({
+				kind: "projectHeader",
+				machineId: selectedHost.machineId,
+				projectId: section.projectId,
+				name: section.name,
+				iconUrl: section.iconUrl,
+				count: section.workspaces.length,
+				collapsed: isCollapsed,
+			});
+			if (isCollapsed) continue;
+			for (const workspace of section.workspaces) {
+				items.push({ kind: "workspace", workspace });
+			}
+		}
 
 		return items;
 	}, [
@@ -463,8 +429,6 @@ export function HomeScreen() {
 		allHostsScope,
 		scopedHosts,
 		projectsByHost,
-		statusByHost,
-		presencePending,
 		byPinThenActivity,
 		activityTs,
 		collapsed,
@@ -648,19 +612,8 @@ export function HomeScreen() {
 					</View>
 				);
 			}
-			if (item.kind === "hostHeader") {
-				return (
-					<HostSectionHeader
-						name={item.name}
-						isOnline={item.isOnline}
-						lastSeenAt={item.lastSeenAt}
-						state={item.state}
-						isFirst={item.isFirst}
-					/>
-				);
-			}
 			if (item.kind === "projectHeader") {
-				// Only a machine's projects get headers — Cloud is a flat scope.
+				// Only a single machine's projects get headers; Cloud and All hosts are flat.
 				const { machineId } = item;
 				const isNoProject = item.projectId === NO_PROJECT_SECTION_ID;
 				return (
@@ -688,13 +641,14 @@ export function HomeScreen() {
 					/>
 				);
 			}
-			const { workspace } = item;
+			const { workspace, location } = item;
 			const repoPrefix = workspace.projectId
 				? repoPrefixesByProject.get(workspace.projectId)
 				: undefined;
 			return (
 				<WorkspaceRow
 					workspace={workspace}
+					location={location}
 					pullRequest={
 						repoPrefix
 							? pullRequestsByRepoBranch.get(
@@ -879,9 +833,16 @@ export function HomeScreen() {
 												? t({
 														message: "No cloud workspaces yet",
 													})
-												: t({
-														message: "No projects on this host yet",
-													})}
+												: !allHostsScope
+													? t({
+															message: "No projects on this host yet",
+														})
+													: presenceStatus === "unavailable" ||
+															Object.values(statusByHost).includes("error")
+														? t({ message: "Couldn't load workspaces" })
+														: t({
+																message: "No workspaces on your hosts yet",
+															})}
 								</Text>
 							</View>
 						) : (

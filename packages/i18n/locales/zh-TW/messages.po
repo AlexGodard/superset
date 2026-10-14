@@ -3262,9 +3262,6 @@ msgstr "能把整個應用的tooltip樣式統一一下嗎？"
 msgid "Can’t check {hostName}"
 msgstr "無法檢查{hostName}"
 
-msgid "Can’t check status"
-msgstr "無法檢查狀態"
-
 msgid "Can't connect right now"
 msgstr "目前無法連線"
 
@@ -11005,9 +11002,6 @@ msgstr "還沒有任何版本。"
 
 msgid "No workspace run command configured"
 msgstr "未配置工作區執行命令"
-
-msgid "No workspaces"
-msgstr "暫無工作區"
 
 msgid "No workspaces found."
 msgstr "未找到工作區。"

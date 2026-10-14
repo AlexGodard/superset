@@ -3262,9 +3262,6 @@ msgstr "Bisakah kamu menyeragamkan tooltip di seluruh aplikasi?"
 msgid "Can’t check {hostName}"
 msgstr "Tidak dapat memeriksa {hostName}"
 
-msgid "Can’t check status"
-msgstr "Tidak dapat memeriksa status"
-
 msgid "Can't connect right now"
 msgstr "Belum bisa terhubung"
 
@@ -11005,9 +11002,6 @@ msgstr "Belum ada versi."
 
 msgid "No workspace run command configured"
 msgstr "Tidak ada perintah run workspace yang dikonfigurasi"
-
-msgid "No workspaces"
-msgstr "Tidak ada workspace"
 
 msgid "No workspaces found."
 msgstr "Tidak ada workspace ditemukan."

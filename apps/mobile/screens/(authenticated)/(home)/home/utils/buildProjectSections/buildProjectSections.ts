@@ -84,14 +84,3 @@ function newestActivity(
 		0,
 	);
 }
-
-export function latestSectionActivity(
-	sections: ProjectSection[],
-	activityTs: (workspace: HostWorkspaceItem) => number,
-): number {
-	return sections.reduce(
-		(newest, section) =>
-			Math.max(newest, newestActivity(section.workspaces, activityTs)),
-		0,
-	);
-}

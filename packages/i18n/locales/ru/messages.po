@@ -3262,9 +3262,6 @@ msgstr "Можешь стандартизировать подсказки во 
 msgid "Can’t check {hostName}"
 msgstr "Не удаётся проверить {hostName}"
 
-msgid "Can’t check status"
-msgstr "Не удаётся проверить статус"
-
 msgid "Can't connect right now"
 msgstr "Сейчас не удаётся подключиться"
 
@@ -11005,9 +11002,6 @@ msgstr "Версий пока нет."
 
 msgid "No workspace run command configured"
 msgstr "Команда запуска рабочей области не настроена"
-
-msgid "No workspaces"
-msgstr "Нет рабочих областей"
 
 msgid "No workspaces found."
 msgstr "Рабочие области не найдены."

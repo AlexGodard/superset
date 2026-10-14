@@ -3262,9 +3262,6 @@ msgstr "Puoi standardizzare i tooltip in tutta l'app?"
 msgid "Can’t check {hostName}"
 msgstr "Impossibile controllare {hostName}"
 
-msgid "Can’t check status"
-msgstr "Impossibile verificare lo stato"
-
 msgid "Can't connect right now"
 msgstr "Impossibile connettersi al momento"
 
@@ -11005,9 +11002,6 @@ msgstr "Ancora nessuna versione."
 
 msgid "No workspace run command configured"
 msgstr "Nessun comando di esecuzione del workspace configurato"
-
-msgid "No workspaces"
-msgstr "Nessun workspace"
 
 msgid "No workspaces found."
 msgstr "Nessun workspace trovato."

@@ -3262,9 +3262,6 @@ msgstr "Kun je de tooltips in de hele app standaardiseren?"
 msgid "Can’t check {hostName}"
 msgstr "Kan {hostName} niet controleren"
 
-msgid "Can’t check status"
-msgstr "Kan status niet controleren"
-
 msgid "Can't connect right now"
 msgstr "Verbinden lukt nu even niet"
 
@@ -11005,9 +11002,6 @@ msgstr "Nog geen versies."
 
 msgid "No workspace run command configured"
 msgstr "Geen run-commando voor de werkruimte geconfigureerd"
-
-msgid "No workspaces"
-msgstr "Geen werkruimtes"
 
 msgid "No workspaces found."
 msgstr "Geen werkruimtes gevonden."

@@ -3262,9 +3262,6 @@ msgstr "Můžeš sjednotit tooltipy napříč aplikací?"
 msgid "Can’t check {hostName}"
 msgstr "{hostName} nelze zkontrolovat"
 
-msgid "Can’t check status"
-msgstr "Stav nelze ověřit"
-
 msgid "Can't connect right now"
 msgstr "Teď se nelze připojit"
 
@@ -11005,9 +11002,6 @@ msgstr "Zatím žádné verze."
 
 msgid "No workspace run command configured"
 msgstr "Není nastavený žádný spouštěcí příkaz pracovního prostoru"
-
-msgid "No workspaces"
-msgstr "Žádné pracovní prostory"
 
 msgid "No workspaces found."
 msgstr "Nenalezeny žádné pracovní prostory."

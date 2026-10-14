@@ -3262,9 +3262,6 @@ msgstr "Dá para padronizar os tooltips do app inteiro?"
 msgid "Can’t check {hostName}"
 msgstr "Não foi possível verificar {hostName}"
 
-msgid "Can’t check status"
-msgstr "Não é possível verificar o status"
-
 msgid "Can't connect right now"
 msgstr "Não foi possível conectar agora"
 
@@ -11005,9 +11002,6 @@ msgstr "Nenhuma versão ainda."
 
 msgid "No workspace run command configured"
 msgstr "Nenhum comando de execução configurado para a área de trabalho"
-
-msgid "No workspaces"
-msgstr "Nenhuma área de trabalho"
 
 msgid "No workspaces found."
 msgstr "Nenhuma área de trabalho encontrada."

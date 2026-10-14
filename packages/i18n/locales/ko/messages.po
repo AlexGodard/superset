@@ -3262,9 +3262,6 @@ msgstr "앱 전반의 툴팁을 표준화해 줄 수 있나요?"
 msgid "Can’t check {hostName}"
 msgstr "{hostName}을(를) 확인할 수 없습니다"
 
-msgid "Can’t check status"
-msgstr "상태를 확인할 수 없습니다"
-
 msgid "Can't connect right now"
 msgstr "지금은 연결할 수 없어요"
 
@@ -11005,9 +11002,6 @@ msgstr "아직 버전이 없습니다."
 
 msgid "No workspace run command configured"
 msgstr "설정된 워크스페이스 실행 명령이 없습니다"
-
-msgid "No workspaces"
-msgstr "워크스페이스 없음"
 
 msgid "No workspaces found."
 msgstr "워크스페이스를 찾을 수 없습니다."

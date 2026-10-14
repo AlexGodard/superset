@@ -3,7 +3,6 @@ import type { HostProjectItem } from "@/hooks/useHostProjects";
 import type { HostWorkspaceItem } from "@/hooks/useHostWorkspaces";
 import {
 	buildProjectSections,
-	latestSectionActivity,
 	NO_PROJECT_SECTION_ID,
 } from "./buildProjectSections";
 
@@ -94,25 +93,5 @@ describe("buildProjectSections", () => {
 			[project("b", "Beta"), project("a", "Alpha")],
 		);
 		expect(sections.map((section) => section.name)).toEqual(["Alpha", "Beta"]);
-	});
-});
-
-describe("latestSectionActivity", () => {
-	test("finds the newest workspace even when a pin puts an older one first", () => {
-		const pinnedFirst = (a: HostWorkspaceItem, b: HostWorkspaceItem) =>
-			a.id === "pinned" ? -1 : b.id === "pinned" ? 1 : byActivity(a, b);
-		const sections = buildProjectSections({
-			workspaces: [workspace("pinned", "a", 1), workspace("fresh", "a", 100)],
-			projects: [project("a", "Alpha")],
-			noProjectName: "No project",
-			compareWorkspaces: pinnedFirst,
-			activityTs,
-		});
-		expect(sections[0]?.workspaces[0]?.id).toBe("pinned");
-		expect(latestSectionActivity(sections, activityTs)).toBe(100);
-	});
-
-	test("is zero for a host with nothing to show", () => {
-		expect(latestSectionActivity([], activityTs)).toBe(0);
 	});
 });

@@ -35,6 +35,7 @@ const MAX_SESSION_MARKS = 3;
 
 export function WorkspaceRow({
 	workspace,
+	location,
 	pullRequest,
 	diffStats,
 	cache,
@@ -44,6 +45,8 @@ export function WorkspaceRow({
 	onCopied,
 }: {
 	workspace: HostWorkspaceItem;
+	/** Host and project, for a flat list with no headers to say them. */
+	location?: string;
 	pullRequest?: SelectGithubPullRequest;
 	diffStats: DiffStats | null;
 	cache: HostWorkspacesCacheOps;
@@ -75,6 +78,14 @@ export function WorkspaceRow({
 		(state) => workspace.id in state.pinnedAt,
 	);
 	const togglePin = usePinnedWorkspacesStore((state) => state.togglePin);
+	const subtitle = [
+		location,
+		// A workspace named after its branch says it twice otherwise — common
+		// now that every project shows its `main`.
+		workspace.branch === workspace.name ? null : workspace.branch,
+	]
+		.filter(Boolean)
+		.join(" · ");
 
 	return (
 		<WorkspaceRowMenu
@@ -97,7 +108,10 @@ export function WorkspaceRow({
 			{/* Default press behavior on purpose: the system context-menu lift
 			    owns the hold animation, and custom press feedback fights it. */}
 			<Pressable
-				className="bg-background flex-row items-center gap-3 rounded-xl py-2 pl-10 pr-3"
+				className={cn(
+					"bg-background flex-row items-center gap-3 rounded-xl py-2 pr-3",
+					location === undefined ? "pl-10" : "pl-4",
+				)}
 				onPress={() =>
 					router.push(`/(authenticated)/workspace/${workspace.id}`)
 				}
@@ -159,22 +173,20 @@ export function WorkspaceRow({
 						{workspace.name}
 					</Text>
 					<View className="flex-row items-center gap-1">
-						{/* A workspace named after its branch says it twice otherwise —
-						    common now that every project shows its `main`. */}
-						{workspace.branch === workspace.name ? null : (
+						{subtitle ? (
 							<Text
 								className="text-muted-foreground shrink text-xs"
 								numberOfLines={1}
 							>
-								{workspace.branch}
+								{subtitle}
 							</Text>
-						)}
+						) : null}
 						{diffStats &&
 						(diffStats.additions > 0 || diffStats.deletions > 0) ? (
 							<>
-								{workspace.branch === workspace.name ? null : (
+								{subtitle ? (
 									<Text className="text-muted-foreground text-xs">•</Text>
-								)}
+								) : null}
 								<Text className="text-muted-foreground font-mono text-xs">
 									+{diffStats.additions} −{diffStats.deletions}
 								</Text>

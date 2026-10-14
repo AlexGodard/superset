@@ -3262,9 +3262,6 @@ msgstr "Kannst du die Tooltips in der ganzen App vereinheitlichen?"
 msgid "Can’t check {hostName}"
 msgstr "{hostName} kann nicht geprüft werden"
 
-msgid "Can’t check status"
-msgstr "Status kann nicht geprüft werden"
-
 msgid "Can't connect right now"
 msgstr "Verbindung gerade nicht möglich"
 
@@ -11005,9 +11002,6 @@ msgstr "Noch keine Versionen."
 
 msgid "No workspace run command configured"
 msgstr "Kein Run-Befehl für den Arbeitsbereich konfiguriert"
-
-msgid "No workspaces"
-msgstr "Keine Arbeitsbereiche"
 
 msgid "No workspaces found."
 msgstr "Keine Arbeitsbereiche gefunden."

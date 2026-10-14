@@ -3262,9 +3262,6 @@ msgstr "Bạn chuẩn hóa tooltip trên toàn ứng dụng được không?"
 msgid "Can’t check {hostName}"
 msgstr "Không thể kiểm tra {hostName}"
 
-msgid "Can’t check status"
-msgstr "Không thể kiểm tra trạng thái"
-
 msgid "Can't connect right now"
 msgstr "Chưa thể kết nối lúc này"
 
@@ -11005,9 +11002,6 @@ msgstr "Chưa có phiên bản nào."
 
 msgid "No workspace run command configured"
 msgstr "Chưa cấu hình lệnh chạy cho workspace"
-
-msgid "No workspaces"
-msgstr "Không có workspace nào"
 
 msgid "No workspaces found."
 msgstr "Không tìm thấy workspace nào."
