@@ -2992,6 +2992,9 @@ msgstr "Authorizing..."
 msgid "Auto"
 msgstr "Auto"
 
+msgid "Auto · {hostLabel}"
+msgstr "Auto · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Auto (system)"
 
@@ -4033,6 +4036,8 @@ msgstr "Choose where agents started from comments, design mode, and Pages open."
 
 msgid "Choose your default skin tone"
 msgstr "Choose your default skin tone"
+msgid "Choosing a host…"
+msgstr "Choosing a host…"
 
 msgid "CI failed"
 msgstr "CI failed"
@@ -11944,6 +11949,9 @@ msgstr "No public agent configs yet. This route is ready for future agent config
 
 msgid "No pull requests found."
 msgstr "No pull requests found."
+
+msgid "No ranked host fits; using this device"
+msgstr "No ranked host fits; using this device"
 
 msgid "No release notes at {url}"
 msgstr "No release notes at {url}"

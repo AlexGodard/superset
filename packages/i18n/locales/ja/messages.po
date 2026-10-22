@@ -2992,6 +2992,9 @@ msgstr "許可中..."
 msgid "Auto"
 msgstr "自動"
 
+msgid "Auto · {hostLabel}"
+msgstr "自動 · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "自動(システム)"
 
@@ -4033,6 +4036,8 @@ msgstr "コメント、デザインモード、Pages から起動したエージ
 
 msgid "Choose your default skin tone"
 msgstr "デフォルトの肌の色を選択"
+msgid "Choosing a host…"
+msgstr "ホストを選択中…"
 
 msgid "CI failed"
 msgstr "CIが失敗しました"
@@ -11944,6 +11949,9 @@ msgstr "公開されているエージェント設定はまだありません。
 
 msgid "No pull requests found."
 msgstr "プルリクエストが見つかりません。"
+
+msgid "No ranked host fits; using this device"
+msgstr "条件に合うホストがありません。このデバイスを使用します"
 
 msgid "No release notes at {url}"
 msgstr "{url} にリリースノートがありません"

@@ -2992,6 +2992,9 @@ msgstr "Autorizzazione..."
 msgid "Auto"
 msgstr "Auto"
 
+msgid "Auto · {hostLabel}"
+msgstr "Auto · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Auto (sistema)"
 
@@ -4033,6 +4036,8 @@ msgstr "Scegli dove aprire gli agenti avviati dai commenti, dalla modalità desi
 
 msgid "Choose your default skin tone"
 msgstr "Scegli il tono della pelle predefinito"
+msgid "Choosing a host…"
+msgstr "Scelta dell'host…"
 
 msgid "CI failed"
 msgstr "CI fallita"
@@ -11944,6 +11949,9 @@ msgstr "Ancora nessuna configurazione di agente pubblica. Questa sezione è pron
 
 msgid "No pull requests found."
 msgstr "Nessuna pull request trovata."
+
+msgid "No ranked host fits; using this device"
+msgstr "Nessun host classificato è adatto; uso questo dispositivo"
 
 msgid "No release notes at {url}"
 msgstr "Nessuna nota di rilascio su {url}"

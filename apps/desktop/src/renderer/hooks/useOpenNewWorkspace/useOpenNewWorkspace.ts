@@ -87,6 +87,7 @@ function resolveHandoffHostId(machineId: string | null | undefined) {
 	const currentHostId =
 		draftHostId ?? useV2WorkspaceCreateDefaultsStore.getState().lastHostId;
 	if (currentHostId === CLOUD_HOST_ID) return machineId ?? undefined;
+	if (useV2WorkspaceCreateDefaultsStore.getState().autoHost) return undefined;
 	return draftHostId ?? undefined;
 }
 

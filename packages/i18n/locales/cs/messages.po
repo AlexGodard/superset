@@ -2992,6 +2992,9 @@ msgstr "Autorizuji..."
 msgid "Auto"
 msgstr "Automaticky"
 
+msgid "Auto · {hostLabel}"
+msgstr "Automaticky · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Automaticky (systém)"
 
@@ -4033,6 +4036,8 @@ msgstr "Vyberte, kde se otevřou agenti spuštění z komentářů, režimu náv
 
 msgid "Choose your default skin tone"
 msgstr "Vyberte výchozí odstín pleti"
+msgid "Choosing a host…"
+msgstr "Vybírám host…"
 
 msgid "CI failed"
 msgstr "CI selhalo"
@@ -11944,6 +11949,9 @@ msgstr "Zatím žádné veřejné konfigurace agentů. Tato adresa je připraven
 
 msgid "No pull requests found."
 msgstr "Nenalezeny žádné pull requesty."
+
+msgid "No ranked host fits; using this device"
+msgstr "Žádný seřazený host nevyhovuje; použije se toto zařízení"
 
 msgid "No release notes at {url}"
 msgstr "Žádné poznámky k vydání na {url}"

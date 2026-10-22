@@ -2992,6 +2992,9 @@ msgstr "Autorizando..."
 msgid "Auto"
 msgstr "Automático"
 
+msgid "Auto · {hostLabel}"
+msgstr "Automático · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Automático (sistema)"
 
@@ -4033,6 +4036,8 @@ msgstr "Escolha onde abrir os agentes iniciados em comentários, no modo de desi
 
 msgid "Choose your default skin tone"
 msgstr "Escolha seu tom de pele padrão"
+msgid "Choosing a host…"
+msgstr "Escolhendo um host…"
 
 msgid "CI failed"
 msgstr "CI falhou"
@@ -11944,6 +11949,9 @@ msgstr "Nenhuma configuração de agente pública ainda. Esta rota já está pro
 
 msgid "No pull requests found."
 msgstr "Nenhum pull request encontrado."
+
+msgid "No ranked host fits; using this device"
+msgstr "Nenhum host classificado serve; usando este dispositivo"
 
 msgid "No release notes at {url}"
 msgstr "Nenhuma nota de versão em {url}"

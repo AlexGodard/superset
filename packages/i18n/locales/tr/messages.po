@@ -2992,6 +2992,9 @@ msgstr "Yetkilendiriliyor..."
 msgid "Auto"
 msgstr "Otomatik"
 
+msgid "Auto · {hostLabel}"
+msgstr "Otomatik · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Otomatik (sistem)"
 
@@ -4033,6 +4036,8 @@ msgstr "Yorumlardan, tasarım modundan ve Pages üzerinden başlatılan ajanlar�
 
 msgid "Choose your default skin tone"
 msgstr "Varsayılan ten rengini seç"
+msgid "Choosing a host…"
+msgstr "Host seçiliyor…"
 
 msgid "CI failed"
 msgstr "CI başarısız"
@@ -11944,6 +11949,9 @@ msgstr "Henüz herkese açık ajan yapılandırması yok. Bu bölüm gelecekteki
 
 msgid "No pull requests found."
 msgstr "Pull request bulunamadı."
+
+msgid "No ranked host fits; using this device"
+msgstr "Sıralanan hostlardan uygun olan yok; bu cihaz kullanılıyor"
 
 msgid "No release notes at {url}"
 msgstr "{url} adresinde sürüm notu yok"
