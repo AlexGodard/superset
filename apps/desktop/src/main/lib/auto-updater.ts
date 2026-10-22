@@ -57,7 +57,8 @@ function isPrereleaseBuild(): boolean {
 }
 
 const IS_PRERELEASE = isPrereleaseBuild();
-const IS_AUTO_UPDATE_PLATFORM = PLATFORM.IS_MAC || PLATFORM.IS_LINUX;
+// Self-built fork: the official feed would install Superset's own build over it.
+const IS_AUTO_UPDATE_PLATFORM = false;
 
 // Use explicit feed URLs to ensure we always fetch platform-specific manifests
 // (for example latest-mac.yml and latest-linux.yml) from the correct release.
