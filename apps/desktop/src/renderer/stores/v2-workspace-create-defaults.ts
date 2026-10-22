@@ -12,6 +12,8 @@ interface V2WorkspaceCreateDefaultsState {
 	lastProjectId: string | null;
 	baseBranchesByProjectId: Record<string, V2WorkspaceCreateBaseBranchDefault>;
 	lastHostId: string | null;
+	/** Let the host ranker pick the host; lastHostId keeps the last manual pick. */
+	autoHost: boolean;
 	/** User closed the sample-prompt suggestions on the create surface. */
 	samplePromptsDismissed: boolean;
 
@@ -23,6 +25,7 @@ interface V2WorkspaceCreateDefaultsState {
 	) => void;
 	clearBaseBranchDefault: (projectId: string) => void;
 	setLastHostId: (hostId: string | null) => void;
+	setAutoHost: (autoHost: boolean) => void;
 	setSamplePromptsDismissed: (dismissed: boolean) => void;
 }
 
@@ -34,6 +37,7 @@ export const useV2WorkspaceCreateDefaultsStore =
 					lastProjectId: null,
 					baseBranchesByProjectId: {},
 					lastHostId: null,
+					autoHost: false,
 					samplePromptsDismissed: false,
 
 					setLastProjectId: (projectId) => set({ lastProjectId: projectId }),
@@ -58,6 +62,8 @@ export const useV2WorkspaceCreateDefaultsStore =
 						}),
 
 					setLastHostId: (hostId) => set({ lastHostId: hostId }),
+
+					setAutoHost: (autoHost) => set({ autoHost }),
 
 					setSamplePromptsDismissed: (dismissed) =>
 						set({ samplePromptsDismissed: dismissed }),

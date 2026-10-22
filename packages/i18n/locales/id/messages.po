@@ -2871,6 +2871,9 @@ msgstr "Mengotorisasi..."
 msgid "Auto"
 msgstr "Otomatis"
 
+msgid "Auto · {hostLabel}"
+msgstr "Otomatis · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Otomatis (sistem)"
 
@@ -3867,6 +3870,9 @@ msgstr "Pilih kapan Paradev memberi tahu Anda."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Pilih tempat membuka agen yang dimulai dari komentar, mode desain, dan Pages."
+
+msgid "Choosing a host…"
+msgstr "Memilih host…"
 
 msgid "CI failed"
 msgstr "CI gagal"
@@ -11475,6 +11481,9 @@ msgstr "Belum ada konfigurasi agen publik. Rute ini siap untuk daftar konfiguras
 
 msgid "No pull requests found."
 msgstr "Tidak ada pull request ditemukan."
+
+msgid "No ranked host fits; using this device"
+msgstr "Tidak ada host peringkat yang cocok; menggunakan perangkat ini"
 
 msgid "No release notes at {url}"
 msgstr "Tidak ada catatan rilis di {url}"

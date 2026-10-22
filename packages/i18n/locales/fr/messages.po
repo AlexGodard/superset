@@ -2871,6 +2871,9 @@ msgstr "Autorisation..."
 msgid "Auto"
 msgstr "Auto"
 
+msgid "Auto · {hostLabel}"
+msgstr "Auto · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Auto (système)"
 
@@ -3867,6 +3870,9 @@ msgstr "Choisissez quand Paradev vous notifie."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Choisissez où ouvrir les agents lancés depuis les commentaires, le mode design et Pages."
+
+msgid "Choosing a host…"
+msgstr "Choix d'un hôte…"
 
 msgid "CI failed"
 msgstr "CI en échec"
@@ -11475,6 +11481,9 @@ msgstr "Aucune configuration d'agent publique pour l'instant. Cette page est pr�
 
 msgid "No pull requests found."
 msgstr "Aucune pull request trouvée."
+
+msgid "No ranked host fits; using this device"
+msgstr "Aucun hôte classé ne convient ; utilisation de cet appareil"
 
 msgid "No release notes at {url}"
 msgstr "Aucune note de version sur {url}"

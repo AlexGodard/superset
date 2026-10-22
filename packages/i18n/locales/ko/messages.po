@@ -2871,6 +2871,9 @@ msgstr "승인하는 중..."
 msgid "Auto"
 msgstr "자동"
 
+msgid "Auto · {hostLabel}"
+msgstr "자동 · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "자동(시스템)"
 
@@ -3867,6 +3870,9 @@ msgstr "Paradev가 언제 알릴지 선택하세요."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "댓글, 디자인 모드 및 Pages에서 시작한 에이전트를 열 위치를 선택하세요."
+
+msgid "Choosing a host…"
+msgstr "호스트 선택 중…"
 
 msgid "CI failed"
 msgstr "CI 실패"
@@ -11475,6 +11481,9 @@ msgstr "아직 공개된 에이전트 설정이 없습니다. 이 경로는 앞�
 
 msgid "No pull requests found."
 msgstr "풀 리퀘스트를 찾을 수 없습니다."
+
+msgid "No ranked host fits; using this device"
+msgstr "적합한 순위의 호스트가 없어 이 기기를 사용합니다"
 
 msgid "No release notes at {url}"
 msgstr "{url}에 릴리스 노트가 없습니다"

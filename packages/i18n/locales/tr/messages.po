@@ -2871,6 +2871,9 @@ msgstr "Yetkilendiriliyor..."
 msgid "Auto"
 msgstr "Otomatik"
 
+msgid "Auto · {hostLabel}"
+msgstr "Otomatik · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Otomatik (sistem)"
 
@@ -3867,6 +3870,9 @@ msgstr "Paradev'in sizi ne zaman uyaracağını seçin."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Yorumlardan, tasarım modundan ve Pages üzerinden başlatılan ajanların nerede açılacağını seçin."
+
+msgid "Choosing a host…"
+msgstr "Host seçiliyor…"
 
 msgid "CI failed"
 msgstr "CI başarısız"
@@ -11475,6 +11481,9 @@ msgstr "Henüz herkese açık ajan yapılandırması yok. Bu bölüm gelecekteki
 
 msgid "No pull requests found."
 msgstr "Pull request bulunamadı."
+
+msgid "No ranked host fits; using this device"
+msgstr "Sıralanan hostlardan uygun olan yok; bu cihaz kullanılıyor"
 
 msgid "No release notes at {url}"
 msgstr "{url} adresinde sürüm notu yok"

@@ -2871,6 +2871,9 @@ msgstr "正在授权..."
 msgid "Auto"
 msgstr "自动"
 
+msgid "Auto · {hostLabel}"
+msgstr "自动 · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "自动（跟随系统）"
 
@@ -3867,6 +3870,9 @@ msgstr "选择Paradev在什么时候通知你。"
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "选择从评论、设计模式和 Pages 启动的智能体的打开位置。"
+
+msgid "Choosing a host…"
+msgstr "正在选择主机…"
 
 msgid "CI failed"
 msgstr "CI失败"
@@ -11475,6 +11481,9 @@ msgstr "暂无公开的智能体配置。此页面已为将来的智能体配置
 
 msgid "No pull requests found."
 msgstr "未找到拉取请求。"
+
+msgid "No ranked host fits; using this device"
+msgstr "没有合适的已排名主机，使用此设备"
 
 msgid "No release notes at {url}"
 msgstr "{url} 上没有版本说明"
