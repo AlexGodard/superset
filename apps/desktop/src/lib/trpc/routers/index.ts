@@ -14,6 +14,7 @@ import { createDownloadsRouter } from "./downloads";
 import { createExternalRouter } from "./external";
 import { createFilesystemRouter } from "./filesystem";
 import { createGithubStarRouter } from "./github-star";
+import { createHostRankingRouter } from "./host-ranking";
 import { createHostServiceCoordinatorRouter } from "./host-service-coordinator";
 import { createKeyboardLayoutRouter } from "./keyboardLayout";
 import { createMenuRouter } from "./menu";
@@ -71,6 +72,7 @@ export const createAppRouter = (getWindow: () => BrowserWindow | null) => {
 		uiState: createUiStateRouter(),
 		ringtone: createRingtoneRouter(getWindow),
 		hostServiceCoordinator: createHostServiceCoordinatorRouter(),
+		hostRanking: createHostRankingRouter(),
 		keyboardLayout: createKeyboardLayoutRouter(),
 		migration: createMigrationRouter(),
 	});

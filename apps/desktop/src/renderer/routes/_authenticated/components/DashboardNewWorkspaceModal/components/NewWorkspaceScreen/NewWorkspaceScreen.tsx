@@ -94,6 +94,7 @@ import { AgentPickerPill } from "./components/AgentPickerPill";
 import { SamplePrompts } from "./components/SamplePrompts";
 import { PROMPT_PLACEHOLDERS } from "./components/SamplePrompts/constants";
 import { SupersetIcon } from "./components/SupersetIcon";
+import { useAutoHostSelection } from "./hooks/useAutoHostSelection";
 import { useConsumeHostIntent } from "./hooks/useConsumeHostIntent";
 import { useGitHubRepositoryProjects } from "./hooks/useGitHubRepositoryProjects";
 import { useLinkedIssueNaming } from "./hooks/useLinkedIssueNaming";
@@ -166,9 +167,16 @@ export function NewWorkspaceScreen({
 	const setLastHostId = useV2WorkspaceCreateDefaultsStore(
 		(state) => state.setLastHostId,
 	);
+	// Auto's pick stands in for the saved host while Auto is on; lastHostId
+	// keeps the last manual pick.
+	const [autoPickedHostId, setAutoPickedHostId] = useState<string | null>(null);
+	const applyAutoHost = useCallback(
+		(patch: { hostId: string }) => setAutoPickedHostId(patch.hostId),
+		[],
+	);
 	const hostId = resolveLaunchHost({
 		intentHostId: preSelectedHostId,
-		savedHostId: lastHostId,
+		savedHostId: autoPickedHostId ?? lastHostId,
 		machineId,
 	});
 	const clearHostIntent = useCallback(() => {
@@ -491,9 +499,31 @@ export function NewWorkspaceScreen({
 		),
 	);
 
+	const { otherHosts, hostsSettled } = useWorkspaceHostOptions();
+	const autoHostSelection = useAutoHostSelection({
+		projectId,
+		isSession,
+		hostId,
+		machineId,
+		localHostIsReachable: !!activeHostUrl,
+		otherHosts,
+		hostsSettled,
+		preSelectedHostId,
+		updateDraft: applyAutoHost,
+	});
+	const isAutoHostActive = autoHostSelection.active;
+	useEffect(() => {
+		if (!isAutoHostActive) setAutoPickedHostId(null);
+	}, [isAutoHostActive]);
+	const deselectAutoHost = autoHostSelection.deselect;
+
 	const handleSelectHostId = useCallback(
-		(next: string | null) => setLastHostId(next),
-		[setLastHostId],
+		(next: string | null) => {
+			deselectAutoHost();
+			setAutoPickedHostId(null);
+			setLastHostId(next);
+		},
+		[deselectAutoHost, setLastHostId],
 	);
 	const handleSelectProject = useCallback(
 		(selectedProjectId: string | null) => {
@@ -729,7 +759,6 @@ export function NewWorkspaceScreen({
 		};
 	}, [selectedAgent, setSelectedAgent, v2Agents]);
 
-	const { otherHosts, hostsSettled } = useWorkspaceHostOptions();
 	const selectedRemoteHostPresence = useMemo(
 		() =>
 			resolveRemoteHostPresence({
@@ -809,6 +838,8 @@ export function NewWorkspaceScreen({
 			return t({
 				message: "Select a project",
 			});
+		if (autoHostSelection.isResolving)
+			return t({ message: "Choosing a host…" });
 		if (!hostId)
 			return t({
 				message: "No active host",
@@ -835,6 +866,7 @@ export function NewWorkspaceScreen({
 		selectedRemoteHostPresence,
 		isCloudTargetLoading,
 		resolvedEnvironment,
+		autoHostSelection.isResolving,
 		t,
 	]);
 
@@ -880,9 +912,10 @@ export function NewWorkspaceScreen({
 			}
 			return;
 		}
-		void createWorkspace();
+		void autoHostSelection.submitAndReportPlacement(createWorkspace);
 	}, [
 		activeHostUrl,
+		autoHostSelection.submitAndReportPlacement,
 		createWorkspace,
 		hostId,
 		handleGoToSetup,
@@ -957,7 +990,19 @@ export function NewWorkspaceScreen({
 		/>
 	);
 	const devicePicker = (
-		<DevicePicker hostId={hostId} onSelectHostId={handleSelectHostId} />
+		<DevicePicker
+			hostId={hostId}
+			onSelectHostId={handleSelectHostId}
+			auto={
+				autoHostSelection.available
+					? {
+							selected: autoHostSelection.active,
+							reason: autoHostSelection.reason,
+							onSelect: autoHostSelection.select,
+						}
+					: undefined
+			}
+		/>
 	);
 	const contextPickers = (
 		<>

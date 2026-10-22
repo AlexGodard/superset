@@ -3287,6 +3287,9 @@ msgstr "Wird autorisiert..."
 msgid "Auto"
 msgstr "Automatisch"
 
+msgid "Auto · {hostLabel}"
+msgstr "Automatisch · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Automatisch (System)"
 
@@ -4389,6 +4392,8 @@ msgstr "Wähle, wo aus Kommentaren, dem Designmodus und Pages gestartete Agenten
 
 msgid "Choose your default skin tone"
 msgstr "Standard-Hautton wählen"
+msgid "Choosing a host…"
+msgstr "Host wird gewählt…"
 
 msgid "Choosing this removes any credential saved here for {label}."
 msgstr "Damit werden alle hier für {label} gespeicherten Zugangsdaten entfernt."
@@ -13023,6 +13028,9 @@ msgstr "Noch keine öffentlichen Agenten-Konfigurationen. Diese Seite ist für k
 
 msgid "No pull requests found."
 msgstr "Keine Pull Requests gefunden."
+
+msgid "No ranked host fits; using this device"
+msgstr "Kein bewerteter Host passt; dieses Gerät wird verwendet"
 
 msgid "No release notes at {url}"
 msgstr "Keine Release Notes unter {url}"
