@@ -2838,6 +2838,9 @@ msgstr "Đang cấp quyền..."
 msgid "Auto"
 msgstr "Tự động"
 
+msgid "Auto · {hostLabel}"
+msgstr "Tự động · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Tự động (theo hệ thống)"
 
@@ -3834,6 +3837,9 @@ msgstr "Chọn khi nào Superset báo cho bạn."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Chọn nơi mở tác nhân được khởi chạy từ bình luận, chế độ thiết kế và Pages."
+
+msgid "Choosing a host…"
+msgstr "Đang chọn host…"
 
 msgid "CI failed"
 msgstr "CI thất bại"
@@ -11430,6 +11436,9 @@ msgstr "Chưa có cấu hình agent công khai nào. Đường dẫn này đã s
 
 msgid "No pull requests found."
 msgstr "Không tìm thấy pull request nào."
+
+msgid "No ranked host fits; using this device"
+msgstr "Không có host nào trong bảng xếp hạng phù hợp; dùng thiết bị này"
 
 msgid "No release notes at {url}"
 msgstr "Không có ghi chú phát hành tại {url}"

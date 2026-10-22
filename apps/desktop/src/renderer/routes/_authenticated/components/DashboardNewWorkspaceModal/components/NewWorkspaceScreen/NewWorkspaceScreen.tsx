@@ -118,6 +118,7 @@ import { SamplePromptCards } from "./components/SamplePromptCards";
 import { SamplePrompts } from "./components/SamplePrompts";
 import { PROMPT_PLACEHOLDERS } from "./components/SamplePrompts/constants";
 import { SupersetIcon } from "./components/SupersetIcon";
+import { useAutoHostSelection } from "./hooks/useAutoHostSelection";
 import { useGitHubRepositoryProjects } from "./hooks/useGitHubRepositoryProjects";
 import { useProjectPreselection } from "./hooks/useProjectPreselection";
 import { useSamplePromptSelection } from "./hooks/useSamplePromptSelection";
@@ -609,6 +610,17 @@ export function NewWorkspaceScreen({
 			}),
 		[draft.hostId, machineId, otherHosts, hostsSettled],
 	);
+	const autoHostSelection = useAutoHostSelection({
+		projectId,
+		isSession: draft.isSession,
+		hostId: draft.hostId,
+		machineId,
+		localHostIsReachable: !!activeHostUrl,
+		otherHosts,
+		hostsSettled,
+		preSelectedHostId,
+		updateDraft,
+	});
 
 	// ── Base branch ──────────────────────────────────────────────────
 	const { pickerProps } = useBranchPickerController({
@@ -686,6 +698,8 @@ export function NewWorkspaceScreen({
 			return t({
 				message: "Select a project",
 			});
+		if (autoHostSelection.isResolving)
+			return t({ message: "Choosing a host…" });
 		if (!selectedHostId)
 			return t({
 				message: "No active host",
@@ -712,6 +726,7 @@ export function NewWorkspaceScreen({
 		isCloudTargetLoading,
 		defaultHint,
 		projectRepositoryFullName,
+		autoHostSelection.isResolving,
 		t,
 	]);
 
@@ -757,9 +772,10 @@ export function NewWorkspaceScreen({
 			}
 			return;
 		}
-		void createWorkspace();
+		void autoHostSelection.submitAndReportPlacement(createWorkspace);
 	}, [
 		activeHostUrl,
+		autoHostSelection.submitAndReportPlacement,
 		createWorkspace,
 		draft.hostId,
 		handleGoToSetup,
@@ -1137,9 +1153,19 @@ export function NewWorkspaceScreen({
 							<DevicePicker
 								hostId={draft.hostId}
 								onSelectHostId={(next) => {
+									autoHostSelection.deselect();
 									setLastHostId(next);
 									updateDraft({ hostId: next });
 								}}
+								auto={
+									autoHostSelection.available
+										? {
+												selected: autoHostSelection.active,
+												reason: autoHostSelection.reason,
+												onSelect: autoHostSelection.select,
+											}
+										: undefined
+								}
 							/>
 							<ProjectPickerPill
 								selectedProject={selectedProject}

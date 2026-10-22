@@ -2838,6 +2838,9 @@ msgstr "Autoryzowanie..."
 msgid "Auto"
 msgstr "Auto"
 
+msgid "Auto · {hostLabel}"
+msgstr "Auto · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Auto (systemowy)"
 
@@ -3834,6 +3837,9 @@ msgstr "Wybierz, kiedy Superset ma Cię powiadamiać."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Wybierz, gdzie otwierać agentów uruchamianych z komentarzy, trybu projektowania i Pages."
+
+msgid "Choosing a host…"
+msgstr "Wybieranie hosta…"
 
 msgid "CI failed"
 msgstr "CI nie przeszło"
@@ -11430,6 +11436,9 @@ msgstr "Brak publicznych konfiguracji agentów. Ta ścieżka jest gotowa na przy
 
 msgid "No pull requests found."
 msgstr "Nie znaleziono pull requestów."
+
+msgid "No ranked host fits; using this device"
+msgstr "Żaden host z rankingu nie pasuje; używane jest to urządzenie"
 
 msgid "No release notes at {url}"
 msgstr "Brak informacji o wydaniu pod {url}"

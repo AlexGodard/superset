@@ -18,6 +18,7 @@ import {
 	HiCheck,
 	HiChevronUpDown,
 	HiOutlineComputerDesktop,
+	HiOutlineScale,
 	HiOutlineServer,
 } from "react-icons/hi2";
 import { CloudGlyph } from "renderer/routes/_authenticated/components/CloudGlyph";
@@ -50,6 +51,13 @@ function OnlineDot({ online }: { online: boolean }) {
 	);
 }
 
+interface AutoHostOption {
+	selected: boolean;
+	/** Why the ranker chose the host; null while it is still choosing. */
+	reason: string | null;
+	onSelect: () => void;
+}
+
 interface DevicePickerProps {
 	hostId: string | null;
 	onSelectHostId: (hostId: string | null) => void;
@@ -65,6 +73,8 @@ interface DevicePickerProps {
 	 * the event that opens a DropdownMenu.
 	 */
 	disabled?: boolean;
+	/** Offers "Auto": the host ranker picks, and hostId is its pick. */
+	auto?: AutoHostOption;
 }
 
 function getSelectedIcon(hostId: string | null, machineId: string | null) {
@@ -83,6 +93,7 @@ export function DevicePicker({
 	className,
 	showLocalOnlineState = false,
 	disabled,
+	auto,
 }: DevicePickerProps) {
 	const { t } = useLingui();
 	const { machineId } = useLocalHostService();
@@ -97,8 +108,9 @@ export function DevicePicker({
 			onSelectHostId(machineId);
 		}
 	}, [cloudEnabled, hostId, machineId, onSelectHostId]);
+	const isAuto = auto?.selected === true;
 	const isLocal = hostId === null || hostId === machineId;
-	const selectedLabel =
+	const hostLabel =
 		hostId === CLOUD_HOST_ID
 			? t({
 					message: "Cloud",
@@ -112,6 +124,11 @@ export function DevicePicker({
 					t({
 						message: "Unknown Host",
 					}));
+	const selectedLabel = !isAuto
+		? hostLabel
+		: auto.reason === null
+			? t({ message: "Auto" })
+			: t({ message: `Auto · ${hostLabel}` });
 	// For direct (local) use the app itself is the host, so it's tautologically
 	// online and gets no indicator. Relay-dispatched contexts opt into showing
 	// the local device's relay connectivity instead.
@@ -131,9 +148,13 @@ export function DevicePicker({
 					aria-label={t({
 						message: `Device: ${selectedLabel}`,
 					})}
-					title={selectedLabel}
+					title={isAuto && auto.reason ? auto.reason : selectedLabel}
 				>
-					{getSelectedIcon(hostId, machineId)}
+					{isAuto ? (
+						<HiOutlineScale className="size-4 shrink-0" />
+					) : (
+						getSelectedIcon(hostId, machineId)
+					)}
 					<span className="truncate">{selectedLabel}</span>
 					{selectedOnline !== null && <OnlineDot online={selectedOnline} />}
 					<HiChevronUpDown className="size-3 shrink-0" />
@@ -143,13 +164,20 @@ export function DevicePicker({
 				align="start"
 				className={cn("w-72", FORM_PICKER_MENU_CLASS)}
 			>
+				{auto && (
+					<DropdownMenuItem onSelect={auto.onSelect}>
+						<HiOutlineScale className="size-4" />
+						<span className="flex-1">{t({ message: "Auto" })}</span>
+						{isAuto && <HiCheck className="size-4" />}
+					</DropdownMenuItem>
+				)}
 				<DropdownMenuItem onSelect={() => onSelectHostId(machineId)}>
 					<HiOutlineComputerDesktop className="size-4" />
 					<span className="flex-1">
 						<Trans>Local Device</Trans>
 					</span>
 					{localOnline !== null && <OnlineDot online={localOnline} />}
-					{isLocal && <HiCheck className="size-4" />}
+					{isLocal && !isAuto && <HiCheck className="size-4" />}
 				</DropdownMenuItem>
 				{cloudEnabled && (
 					<DropdownMenuItem onSelect={() => onSelectHostId(CLOUD_HOST_ID)}>
@@ -172,7 +200,7 @@ export function DevicePicker({
 								className={cn("w-72", FORM_PICKER_MENU_CLASS)}
 							>
 								{otherHosts.map((host) => {
-									const isSelected = hostId === host.id;
+									const isSelected = hostId === host.id && !isAuto;
 
 									return (
 										<DropdownMenuItem
