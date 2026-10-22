@@ -2753,6 +2753,9 @@ msgstr "Autorizuji..."
 msgid "Auto"
 msgstr "Automaticky"
 
+msgid "Auto · {hostLabel}"
+msgstr "Automaticky · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Automaticky (systém)"
 
@@ -3713,6 +3716,9 @@ msgstr "Zvolte, kdy vás Superset upozorní."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Vyberte, kde se otevřou agenti spuštění z komentářů, režimu návrhu a stránek Pages."
+
+msgid "Choosing a host…"
+msgstr "Vybírám host…"
 
 msgid "CI failed"
 msgstr "CI selhalo"
@@ -11198,6 +11204,9 @@ msgstr "Zatím žádné veřejné konfigurace agentů. Tato adresa je připraven
 
 msgid "No pull requests found."
 msgstr "Nenalezeny žádné pull requesty."
+
+msgid "No ranked host fits; using this device"
+msgstr "Žádný seřazený host nevyhovuje; použije se toto zařízení"
 
 msgid "No release notes at {url}"
 msgstr "Žádné poznámky k vydání na {url}"

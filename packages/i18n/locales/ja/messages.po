@@ -2753,6 +2753,9 @@ msgstr "許可中..."
 msgid "Auto"
 msgstr "自動"
 
+msgid "Auto · {hostLabel}"
+msgstr "自動 · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "自動(システム)"
 
@@ -3713,6 +3716,9 @@ msgstr "Supersetから通知するタイミングを選びます。"
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "コメント、デザインモード、Pages から起動したエージェントを開く場所を選択します。"
+
+msgid "Choosing a host…"
+msgstr "ホストを選択中…"
 
 msgid "CI failed"
 msgstr "CIが失敗しました"
@@ -11198,6 +11204,9 @@ msgstr "公開されているエージェント設定はまだありません。
 
 msgid "No pull requests found."
 msgstr "プルリクエストが見つかりません。"
+
+msgid "No ranked host fits; using this device"
+msgstr "条件に合うホストがありません。このデバイスを使用します"
 
 msgid "No release notes at {url}"
 msgstr "{url} にリリースノートがありません"

@@ -2753,6 +2753,9 @@ msgstr "正在授權..."
 msgid "Auto"
 msgstr "自動"
 
+msgid "Auto · {hostLabel}"
+msgstr "自動 · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "自動（跟隨系統）"
 
@@ -3713,6 +3716,9 @@ msgstr "選擇Superset在什麼時候通知你。"
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "選擇從留言、設計模式和 Pages 啟動的代理程式的開啟位置。"
+
+msgid "Choosing a host…"
+msgstr "正在選擇主機…"
 
 msgid "CI failed"
 msgstr "CI失敗"
@@ -11198,6 +11204,9 @@ msgstr "暫無公開的代理程式配置。此頁面已為將來的代理程式
 
 msgid "No pull requests found."
 msgstr "未找到拉取請求。"
+
+msgid "No ranked host fits; using this device"
+msgstr "沒有合適的已排名主機，使用此裝置"
 
 msgid "No release notes at {url}"
 msgstr "{url} 上沒有版本說明"

@@ -2753,6 +2753,9 @@ msgstr "Autoriseren..."
 msgid "Auto"
 msgstr "Automatisch"
 
+msgid "Auto · {hostLabel}"
+msgstr "Automatisch · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Automatisch (systeem)"
 
@@ -3713,6 +3716,9 @@ msgstr "Kies wanneer Superset je een seintje geeft."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Kies waar agents worden geopend die vanuit opmerkingen, de ontwerpmodus en Pages worden gestart."
+
+msgid "Choosing a host…"
+msgstr "Host kiezen…"
 
 msgid "CI failed"
 msgstr "CI mislukt"
@@ -11198,6 +11204,9 @@ msgstr "Nog geen publieke agentconfiguraties. Deze route is klaar voor toekomsti
 
 msgid "No pull requests found."
 msgstr "Geen pull requests gevonden."
+
+msgid "No ranked host fits; using this device"
+msgstr "Geen gerangschikte host past; dit apparaat wordt gebruikt"
 
 msgid "No release notes at {url}"
 msgstr "Geen releasenotes op {url}"

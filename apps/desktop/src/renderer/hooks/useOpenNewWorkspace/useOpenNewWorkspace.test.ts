@@ -21,6 +21,7 @@ function resetStores() {
 	useNewWorkspaceDraftStore.getState().updateDraft({ hostId: null });
 	useNewWorkspaceDraftStore.getState().resetDraft();
 	useV2WorkspaceCreateDefaultsStore.getState().setLastHostId(null);
+	useV2WorkspaceCreateDefaultsStore.getState().setAutoHost(false);
 	useNewWorkspaceModalStore.getState().closeModal();
 }
 
@@ -99,6 +100,15 @@ test("project handoff keeps a draft remote host over a remembered cloud host", (
 		}),
 	);
 	expect(useNewWorkspaceDraftStore.getState().hostId).toBe("other-machine");
+});
+
+test("project handoff leaves the host to Auto when Auto picks hosts", () => {
+	useV2WorkspaceCreateDefaultsStore.getState().setAutoHost(true);
+	useNewWorkspaceDraftStore.getState().updateDraft({ hostId: "other-machine" });
+	openNewWorkspace(v2, "project-a");
+	expect(navigate).toHaveBeenCalledWith(
+		expect.objectContaining({ search: { projectId: "project-a" } }),
+	);
 });
 
 test("session handoff keeps a draft remote host over a remembered cloud host", () => {

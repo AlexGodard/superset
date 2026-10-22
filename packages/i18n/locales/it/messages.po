@@ -2753,6 +2753,9 @@ msgstr "Autorizzazione..."
 msgid "Auto"
 msgstr "Auto"
 
+msgid "Auto · {hostLabel}"
+msgstr "Auto · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Auto (sistema)"
 
@@ -3713,6 +3716,9 @@ msgstr "Scegli quando Superset ti avvisa."
 
 msgid "Choose where agents started from comments, design mode, and Pages open."
 msgstr "Scegli dove aprire gli agenti avviati dai commenti, dalla modalità design e da Pages."
+
+msgid "Choosing a host…"
+msgstr "Scelta dell'host…"
 
 msgid "CI failed"
 msgstr "CI fallita"
@@ -11198,6 +11204,9 @@ msgstr "Ancora nessuna configurazione di agente pubblica. Questa sezione è pron
 
 msgid "No pull requests found."
 msgstr "Nessuna pull request trovata."
+
+msgid "No ranked host fits; using this device"
+msgstr "Nessun host classificato è adatto; uso questo dispositivo"
 
 msgid "No release notes at {url}"
 msgstr "Nessuna nota di rilascio su {url}"
