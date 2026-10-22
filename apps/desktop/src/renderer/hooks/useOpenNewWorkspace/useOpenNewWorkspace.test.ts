@@ -2,6 +2,7 @@ import { afterEach, beforeEach, expect, mock, test } from "bun:test";
 import type { useNavigate } from "@tanstack/react-router";
 import { useNewWorkspaceDraftStore } from "renderer/stores/new-workspace-draft";
 import { useNewWorkspaceModalStore } from "renderer/stores/new-workspace-modal";
+import { useV2WorkspaceCreateDefaultsStore } from "renderer/stores/v2-workspace-create-defaults";
 import {
 	openNewSession,
 	openNewWorkspace,
@@ -18,6 +19,8 @@ const v2 = {
 
 function resetStores() {
 	useNewWorkspaceDraftStore.getState().resetDraft();
+	useV2WorkspaceCreateDefaultsStore.getState().setLastHostId(null);
+	useV2WorkspaceCreateDefaultsStore.getState().setAutoHost(false);
 	useNewWorkspaceModalStore.getState().closeModal();
 }
 
@@ -65,6 +68,15 @@ test("a host the caller asks for goes in the URL", () => {
 		expect.objectContaining({
 			search: { projectId: "project-a", host: "cloud" },
 		}),
+	);
+});
+
+test("project handoff leaves the host to Auto when Auto picks hosts", () => {
+	useV2WorkspaceCreateDefaultsStore.getState().setAutoHost(true);
+	useV2WorkspaceCreateDefaultsStore.getState().setLastHostId("other-machine");
+	openNewWorkspace(v2, "project-a");
+	expect(navigate).toHaveBeenCalledWith(
+		expect.objectContaining({ search: { projectId: "project-a" } }),
 	);
 });
 

@@ -3345,6 +3345,9 @@ msgstr "Авторизация..."
 msgid "Auto"
 msgstr "Авто"
 
+msgid "Auto · {hostLabel}"
+msgstr "Авто · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Авто (система)"
 
@@ -4464,6 +4467,8 @@ msgstr "Выберите, где открывать агентов, запуще
 
 msgid "Choose your default skin tone"
 msgstr "Выберите оттенок кожи по умолчанию"
+msgid "Choosing a host…"
+msgstr "Выбор хоста…"
 
 msgid "Choosing this removes any credential saved here for {label}."
 msgstr "При выборе этого варианта все сохранённые здесь учётные данные {label} будут удалены."
@@ -13159,6 +13164,9 @@ msgstr "Публичных конфигураций агентов пока не
 
 msgid "No pull requests found."
 msgstr "Пул-реквесты не найдены."
+
+msgid "No ranked host fits; using this device"
+msgstr "Нет подходящего хоста из рейтинга; используется это устройство"
 
 msgid "No release notes at {url}"
 msgstr "Нет заметок о релизе по адресу {url}"

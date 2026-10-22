@@ -78,6 +78,8 @@ interface V2WorkspaceCreateDefaultsState {
 	checkout: "worktree" | "local";
 	/** Keyed by project id, `NO_PROJECT_KEY` for none. Capped at `MAX_CLOUD_CHOICES`. */
 	cloudChoices: Record<string, CloudCreateChoice>;
+	/** Let the host ranker pick the host; lastHostId keeps the last manual pick. */
+	autoHost: boolean;
 	/** User closed the sample-prompt suggestions on the create surface. */
 	samplePromptsDismissed: boolean;
 
@@ -98,6 +100,7 @@ interface V2WorkspaceCreateDefaultsState {
 		key: string,
 		patch: Partial<Omit<CloudCreateChoice, "usedAt">>,
 	) => void;
+	setAutoHost: (autoHost: boolean) => void;
 	setSamplePromptsDismissed: (dismissed: boolean) => void;
 }
 
@@ -112,6 +115,7 @@ export const useV2WorkspaceCreateDefaultsStore =
 					lastHostId: null,
 					checkout: "worktree",
 					cloudChoices: {},
+					autoHost: false,
 					samplePromptsDismissed: false,
 
 					setLastProjectId: (projectId) => set({ lastProjectId: projectId }),
@@ -156,6 +160,8 @@ export const useV2WorkspaceCreateDefaultsStore =
 								Date.now(),
 							),
 						})),
+
+					setAutoHost: (autoHost) => set({ autoHost }),
 
 					setSamplePromptsDismissed: (dismissed) =>
 						set({ samplePromptsDismissed: dismissed }),

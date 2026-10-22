@@ -3339,6 +3339,9 @@ msgstr "Авторизація..."
 msgid "Auto"
 msgstr "Авто"
 
+msgid "Auto · {hostLabel}"
+msgstr "Авто · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Авто (як у системі)"
 
@@ -4458,6 +4461,9 @@ msgstr "Виберіть, де відкриваються агенти, запу
 
 msgid "Choose your default skin tone"
 msgstr "Виберіть тон шкіри за замовчуванням"
+
+msgid "Choosing a host…"
+msgstr "Вибір хоста…"
 
 msgid "Choosing this removes any credential saved here for {label}."
 msgstr "Якщо вибрати це, усі збережені тут облікові дані для {label} буде видалено."
@@ -13153,6 +13159,9 @@ msgstr "Публічних конфігурацій агентів ще нема
 
 msgid "No pull requests found."
 msgstr "Пул-реквестів не знайдено."
+
+msgid "No ranked host fits; using this device"
+msgstr "Жоден хост із рейтингу не підходить; використовується цей пристрій"
 
 msgid "No release notes at {url}"
 msgstr "Немає нотаток до релізу за адресою {url}"

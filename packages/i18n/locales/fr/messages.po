@@ -3345,6 +3345,9 @@ msgstr "Autorisation..."
 msgid "Auto"
 msgstr "Auto"
 
+msgid "Auto · {hostLabel}"
+msgstr "Auto · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Auto (système)"
 
@@ -4464,6 +4467,8 @@ msgstr "Choisissez où ouvrir les agents lancés depuis les commentaires, le mod
 
 msgid "Choose your default skin tone"
 msgstr "Choisissez votre teinte de peau par défaut"
+msgid "Choosing a host…"
+msgstr "Choix d'un hôte…"
 
 msgid "Choosing this removes any credential saved here for {label}."
 msgstr "Ce choix supprime tout identifiant enregistré ici pour {label}."
@@ -13159,6 +13164,9 @@ msgstr "Aucune configuration d'agent publique pour l'instant. Cette page est pr�
 
 msgid "No pull requests found."
 msgstr "Aucune pull request trouvée."
+
+msgid "No ranked host fits; using this device"
+msgstr "Aucun hôte classé ne convient ; utilisation de cet appareil"
 
 msgid "No release notes at {url}"
 msgstr "Aucune note de version sur {url}"

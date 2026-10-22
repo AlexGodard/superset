@@ -3345,6 +3345,9 @@ msgstr "Đang cấp quyền..."
 msgid "Auto"
 msgstr "Tự động"
 
+msgid "Auto · {hostLabel}"
+msgstr "Tự động · {hostLabel}"
+
 msgid "Auto (system)"
 msgstr "Tự động (theo hệ thống)"
 
@@ -4464,6 +4467,8 @@ msgstr "Chọn nơi mở tác nhân được khởi chạy từ bình luận, ch
 
 msgid "Choose your default skin tone"
 msgstr "Chọn màu da mặc định"
+msgid "Choosing a host…"
+msgstr "Đang chọn host…"
 
 msgid "Choosing this removes any credential saved here for {label}."
 msgstr "Chọn mục này sẽ xóa mọi thông tin xác thực đã lưu ở đây cho {label}."
@@ -13159,6 +13164,9 @@ msgstr "Chưa có cấu hình agent công khai nào. Đường dẫn này đã s
 
 msgid "No pull requests found."
 msgstr "Không tìm thấy pull request nào."
+
+msgid "No ranked host fits; using this device"
+msgstr "Không có host nào trong bảng xếp hạng phù hợp; dùng thiết bị này"
 
 msgid "No release notes at {url}"
 msgstr "Không có ghi chú phát hành tại {url}"
