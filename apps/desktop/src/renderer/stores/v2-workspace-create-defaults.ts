@@ -12,7 +12,11 @@ interface V2WorkspaceCreateDefaultsState {
 	lastProjectId: string | null;
 	baseBranchesByProjectId: Record<string, V2WorkspaceCreateBaseBranchDefault>;
 	lastHostId: string | null;
-	/** Let the host ranker pick the host; lastHostId keeps the last manual pick. */
+	/**
+	 * Let the host ranker pick the host. On by default: a host picked by hand
+	 * is that one workspace's (the draft's autoHostDeclined), and lastHostId
+	 * keeps it for the surfaces that read it.
+	 */
 	autoHost: boolean;
 	/** User closed the sample-prompt suggestions on the create surface. */
 	samplePromptsDismissed: boolean;
@@ -37,7 +41,7 @@ export const useV2WorkspaceCreateDefaultsStore =
 					lastProjectId: null,
 					baseBranchesByProjectId: {},
 					lastHostId: null,
-					autoHost: false,
+					autoHost: true,
 					samplePromptsDismissed: false,
 
 					setLastProjectId: (projectId) => set({ lastProjectId: projectId }),
@@ -70,11 +74,12 @@ export const useV2WorkspaceCreateDefaultsStore =
 				}),
 				{
 					name: "v2-workspace-create-defaults",
-					version: 2,
+					version: 3,
 					migrate: (state, fromVersion) => {
-						if (fromVersion < 2 && state && typeof state === "object") {
-							const prev = state as Record<string, unknown>;
-							const oldTarget = prev.lastHostTarget as
+						if (!state || typeof state !== "object") return state;
+						let next = state as Record<string, unknown>;
+						if (fromVersion < 2) {
+							const oldTarget = next.lastHostTarget as
 								| { kind: "local" }
 								| { kind: "host"; hostId: string }
 								| null
@@ -83,10 +88,12 @@ export const useV2WorkspaceCreateDefaultsStore =
 								oldTarget && oldTarget.kind === "host"
 									? oldTarget.hostId
 									: null;
-							const { lastHostTarget: _omit, ...rest } = prev;
-							return { ...rest, lastHostId };
+							const { lastHostTarget: _omit, ...rest } = next;
+							next = { ...rest, lastHostId };
 						}
-						return state;
+						// Version 3 made Auto the default; a manual pick no longer turns it off.
+						if (fromVersion < 3) next = { ...next, autoHost: true };
+						return next;
 					},
 				},
 			),

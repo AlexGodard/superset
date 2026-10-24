@@ -111,6 +111,28 @@ test("project handoff leaves the host to Auto when Auto picks hosts", () => {
 	);
 });
 
+test("project handoff keeps a host picked by hand over Auto", () => {
+	useV2WorkspaceCreateDefaultsStore.getState().setAutoHost(true);
+	useNewWorkspaceDraftStore.getState().updateDraft({ hostId: "other-machine" });
+	useNewWorkspaceDraftStore.setState({ autoHostDeclined: true });
+	openNewWorkspace(v2, "project-a");
+	expect(navigate).toHaveBeenCalledWith(
+		expect.objectContaining({
+			search: { projectId: "project-a", host: "other-machine" },
+		}),
+	);
+});
+
+test("a host picked by hand is that workspace's: the next draft starts on Auto", () => {
+	useNewWorkspaceDraftStore.getState().updateDraft({ hostId: "other-machine" });
+	useNewWorkspaceDraftStore.setState({ autoHostDeclined: true });
+	useNewWorkspaceDraftStore.getState().resetDraft();
+	expect(useNewWorkspaceDraftStore.getState()).toMatchObject({
+		hostId: "other-machine",
+		autoHostDeclined: false,
+	});
+});
+
 test("session handoff keeps a draft remote host over a remembered cloud host", () => {
 	useV2WorkspaceCreateDefaultsStore.getState().setLastHostId("cloud");
 	useNewWorkspaceDraftStore.getState().updateDraft({ hostId: "other-machine" });

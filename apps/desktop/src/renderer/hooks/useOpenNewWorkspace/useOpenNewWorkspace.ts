@@ -83,11 +83,16 @@ export function useOpenNewWorkspace() {
 // The cloud host has no project picker, so a project or session handoff must
 // leave it. A draft host goes in the URL so the page's restore can't replace it.
 function resolveHandoffHostId(machineId: string | null | undefined) {
-	const draftHostId = useNewWorkspaceDraftStore.getState().hostId;
+	const draft = useNewWorkspaceDraftStore.getState();
+	const draftHostId = draft.hostId;
 	const currentHostId =
 		draftHostId ?? useV2WorkspaceCreateDefaultsStore.getState().lastHostId;
 	if (currentHostId === CLOUD_HOST_ID) return machineId ?? undefined;
-	if (useV2WorkspaceCreateDefaultsStore.getState().autoHost) return undefined;
+	if (
+		useV2WorkspaceCreateDefaultsStore.getState().autoHost &&
+		!draft.autoHostDeclined
+	)
+		return undefined;
 	return draftHostId ?? undefined;
 }
 
