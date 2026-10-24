@@ -80,6 +80,34 @@ test("project handoff leaves the host to Auto when Auto picks hosts", () => {
 	);
 });
 
+// The hand-picked host is the saved one now, and the handoff names no host, so
+// the screen reads it from the store as long as the draft still declines Auto.
+test("project handoff keeps a host picked by hand over Auto", () => {
+	useV2WorkspaceCreateDefaultsStore.getState().setAutoHost(true);
+	useV2WorkspaceCreateDefaultsStore.getState().setLastHostId("other-machine");
+	useNewWorkspaceDraftStore.setState({ autoHostDeclined: true });
+	openNewWorkspace(v2, "project-a");
+	expect(navigate).toHaveBeenCalledWith(
+		expect.objectContaining({
+			search: { projectId: "project-a", host: undefined },
+		}),
+	);
+	expect(useNewWorkspaceDraftStore.getState().autoHostDeclined).toBe(true);
+	expect(useV2WorkspaceCreateDefaultsStore.getState().lastHostId).toBe(
+		"other-machine",
+	);
+});
+
+test("a host picked by hand is that workspace's: the next draft starts on Auto", () => {
+	useV2WorkspaceCreateDefaultsStore.getState().setLastHostId("other-machine");
+	useNewWorkspaceDraftStore.setState({ autoHostDeclined: true });
+	useNewWorkspaceDraftStore.getState().resetDraft();
+	expect(useNewWorkspaceDraftStore.getState().autoHostDeclined).toBe(false);
+	expect(useV2WorkspaceCreateDefaultsStore.getState().lastHostId).toBe(
+		"other-machine",
+	);
+});
+
 test("session handoff names no host and selects the session", () => {
 	openNewSession(v2);
 	expect(navigate).toHaveBeenCalledWith(

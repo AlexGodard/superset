@@ -78,7 +78,11 @@ interface V2WorkspaceCreateDefaultsState {
 	checkout: "worktree" | "local";
 	/** Keyed by project id, `NO_PROJECT_KEY` for none. Capped at `MAX_CLOUD_CHOICES`. */
 	cloudChoices: Record<string, CloudCreateChoice>;
-	/** Let the host ranker pick the host; lastHostId keeps the last manual pick. */
+	/**
+	 * Let the host ranker pick the host. On by default: a host picked by hand
+	 * is that one workspace's (the draft's autoHostDeclined), and lastHostId
+	 * keeps it for the surfaces that read it.
+	 */
 	autoHost: boolean;
 	/** User closed the sample-prompt suggestions on the create surface. */
 	samplePromptsDismissed: boolean;
@@ -115,7 +119,7 @@ export const useV2WorkspaceCreateDefaultsStore =
 					lastHostId: null,
 					checkout: "worktree",
 					cloudChoices: {},
-					autoHost: false,
+					autoHost: true,
 					samplePromptsDismissed: false,
 
 					setLastProjectId: (projectId) => set({ lastProjectId: projectId }),
@@ -168,7 +172,7 @@ export const useV2WorkspaceCreateDefaultsStore =
 				}),
 				{
 					name: "v2-workspace-create-defaults",
-					version: 3,
+					version: 4,
 					migrate: (state, fromVersion) => {
 						let next = state as Record<string, unknown>;
 						if (fromVersion < 2 && next && typeof next === "object") {
@@ -197,6 +201,11 @@ export const useV2WorkspaceCreateDefaultsStore =
 								checkout: "worktree",
 								cloudChoices: {},
 							};
+						}
+						// Version 4 made Auto the default; a manual pick no longer turns it
+						// off. (Upstream took version 3 for the project choice.)
+						if (fromVersion < 4 && next && typeof next === "object") {
+							next = { ...next, autoHost: true };
 						}
 						return next as unknown as V2WorkspaceCreateDefaultsState;
 					},
