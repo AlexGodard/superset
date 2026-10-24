@@ -64,6 +64,12 @@ export interface NewWorkspaceDraft {
 
 interface NewWorkspaceDraftState extends NewWorkspaceDraft {
 	resetKey: number;
+	/**
+	 * This workspace's host was picked by hand over Auto (useAutoHostSelection).
+	 * Not a target preference like hostId: a reset clears it, so the next
+	 * workspace starts on Auto again.
+	 */
+	autoHostDeclined: boolean;
 	updateDraft: (patch: Partial<NewWorkspaceDraft>) => void;
 	selectProject: (projectId: string) => void;
 	selectSession: () => void;
@@ -100,6 +106,7 @@ export const useNewWorkspaceDraftStore = create<NewWorkspaceDraftState>(
 	(set) => ({
 		...buildInitialDraft(),
 		resetKey: 0,
+		autoHostDeclined: false,
 		updateDraft: (patch) => set((state) => ({ ...state, ...patch })),
 		// The only writers of the selectedProjectId/isSession pair — a project
 		// selection that leaves isSession behind makes submit reject PR
@@ -149,6 +156,7 @@ export const useNewWorkspaceDraftStore = create<NewWorkspaceDraftState>(
 				environmentId: state.environmentId,
 				machineSize: state.machineSize,
 				resetKey: state.resetKey + 1,
+				autoHostDeclined: false,
 			})),
 	}),
 );
