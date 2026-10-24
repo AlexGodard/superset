@@ -57,8 +57,10 @@ export function useAutoHostSelection({
 		if (preSelectedHostId) setOverridden(true);
 	}, [preSelectedHostId]);
 
+	// A host picked by hand in this draft wins over Auto for this workspace only.
+	const declined = useNewWorkspaceDraftStore((state) => state.autoHostDeclined);
 	const available = ranked !== null;
-	const active = autoHost && available && !overridden;
+	const active = autoHost && available && !overridden && !declined;
 	const key = `${projectId ?? ""}|${isSession}`;
 
 	const rankedIds = useMemo(
@@ -129,10 +131,14 @@ export function useAutoHostSelection({
 	const select = useCallback(() => {
 		setAutoHost(true);
 		setOverridden(false);
+		useNewWorkspaceDraftStore.setState({ autoHostDeclined: false });
 		setApplied(null);
 	}, [setAutoHost]);
 
-	const deselect = useCallback(() => setAutoHost(false), [setAutoHost]);
+	const deselect = useCallback(
+		() => useNewWorkspaceDraftStore.setState({ autoHostDeclined: true }),
+		[],
+	);
 
 	/** Runs the create, then reports the placement if it went where Auto chose. */
 	const submitAndReportPlacement = useCallback(
