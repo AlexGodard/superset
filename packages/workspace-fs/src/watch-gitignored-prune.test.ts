@@ -3,6 +3,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { FsWatcherManager, isRelPathUnderPrunedDirs } from "./watch";
+import type { NativeWatchBackend } from "./watch-backend";
 
 const tempRoots: string[] = [];
 const managers: FsWatcherManager[] = [];
@@ -277,4 +278,34 @@ describe("FsWatcherManager.refreshIgnores", () => {
 		// No shrink → no swap.
 		expect(await manager.refreshIgnores(rootPath)).toBe(false);
 	}, 30_000);
+
+	for (const watchesEachPath of [true, false]) {
+		it(`${watchesEachPath ? "re-attaches" : "does not re-attach"} when a dir becomes ignored after attach on a backend that ${watchesEachPath ? "watches" : "does not watch"} each path`, async () => {
+			const rootPath = await createTempRoot();
+			const ignoreLists: string[][] = [];
+			const backend: NativeWatchBackend = {
+				name: "recording",
+				watchesEachPath,
+				async subscribe(request) {
+					ignoreLists.push(request.ignore);
+					return { unsubscribe: async () => {} };
+				},
+			};
+			let ignored: string[] = [];
+			const manager = new FsWatcherManager({
+				backend,
+				useDefaultIgnores: false,
+				listGitIgnoredDirs: async () => ignored,
+			});
+			managers.push(manager);
+			await manager.subscribe({ absolutePath: rootPath }, () => {});
+
+			ignored = ["node_modules"];
+			expect(await manager.refreshIgnores(rootPath)).toBe(watchesEachPath);
+			expect(ignoreLists.length).toBe(watchesEachPath ? 2 : 1);
+			expect(
+				ignoreLists.at(-1)?.some((glob) => glob.startsWith("node_modules")),
+			).toBe(watchesEachPath);
+		});
+	}
 });

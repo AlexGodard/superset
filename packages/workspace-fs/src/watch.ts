@@ -819,8 +819,10 @@ export class FsWatcherManager {
 	 * swap the native subscription to it. Needed when a directory is
 	 * UN-ignored: the attach-time prune otherwise keeps suppressing its events
 	 * until process restart (VS Code re-subscribes on watcherExclude changes
-	 * for the same reason). Growth of the set never requires this — new
-	 * ignored dirs are filtered downstream.
+	 * for the same reason). Also needed when the set grows on a backend that
+	 * watches each path: a dir that became ignored after attach (a fresh
+	 * worktree's `node_modules`) keeps one native watch per entry until a
+	 * re-attach prunes it. On other backends growth is filtered downstream.
 	 *
 	 * The old stream stays attached until the new one is live, but its events
 	 * are dropped by the generation guard once attach begins, so a short gap
@@ -828,9 +830,9 @@ export class FsWatcherManager {
 	 * they derive from events; the search index is invalidated here.
 	 *
 	 * Returns true when the subscription was actually swapped. No-swap cases:
-	 * the fresh ignore set still contains every currently-pruned dir (growth
-	 * is handled downstream without re-attach), or the root is absent,
-	 * suspended, or recovering (the next attach re-runs the providers anyway).
+	 * the fresh ignore set still contains every currently-pruned dir and adds
+	 * none the backend needs pruned, or the root is absent, suspended, or
+	 * recovering (the next attach re-runs the providers anyway).
 	 */
 	async refreshIgnores(rootAbsolutePath: string): Promise<boolean> {
 		const state = this.watchers.get(normalizeAbsolutePath(rootAbsolutePath));
@@ -842,8 +844,10 @@ export class FsWatcherManager {
 			this.computeGitIgnoredRelDirs(state.realPath, state.controller.signal),
 		]);
 		const fresh = new Set([...nestedRepoRelDirs, ...gitIgnoredRelDirs]);
+		const pruned = new Set(state.prunedRelPrefixes);
 		const shrunk = state.prunedRelPrefixes.some((dir) => !fresh.has(dir));
-		if (!shrunk) {
+		const grew = [...fresh].some((dir) => !pruned.has(dir));
+		if (!shrunk && !(grew && this.backend.watchesEachPath)) {
 			return false;
 		}
 		if (
