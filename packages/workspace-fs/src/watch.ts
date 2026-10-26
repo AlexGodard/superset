@@ -629,7 +629,10 @@ export class FsWatcherManager {
 	 * Split from createWatcher so root-deletion recovery can re-attach to the
 	 * same WatcherState without dropping its listeners.
 	 */
-	private async attachNativeSubscription(state: WatcherState): Promise<void> {
+	private async attachNativeSubscription(
+		state: WatcherState,
+		gitIgnoredListing?: readonly string[],
+	): Promise<void> {
 		const { realPath, realPathNormalized, realPathDiffers } =
 			await this.normalizePath(state.absolutePath);
 		state.realPath = realPath;
@@ -647,7 +650,11 @@ export class FsWatcherManager {
 		// about is pruned via whatever git itself considers fully ignored.
 		const [nestedRepoRelDirs, gitIgnoredRelDirs] = await Promise.all([
 			this.computeNestedRepoRelDirs(realPath, state.controller.signal),
-			this.computeGitIgnoredRelDirs(realPath, state.controller.signal),
+			this.computeGitIgnoredRelDirs(
+				realPath,
+				state.controller.signal,
+				gitIgnoredListing,
+			),
 		]);
 		state.controller.signal.throwIfAborted();
 		state.prunedRelPrefixes = [...nestedRepoRelDirs, ...gitIgnoredRelDirs];
@@ -792,12 +799,14 @@ export class FsWatcherManager {
 	private async computeGitIgnoredRelDirs(
 		realPath: string,
 		signal: AbortSignal,
+		listing?: readonly string[],
 	): Promise<string[]> {
-		if (!this.listGitIgnoredDirs) {
+		if (!listing && !this.listGitIgnoredDirs) {
 			return [];
 		}
 		try {
-			const dirs = await this.listGitIgnoredDirs(realPath, signal);
+			const dirs =
+				listing ?? (await this.listGitIgnoredDirs?.(realPath, signal)) ?? [];
 			return dirs.filter(
 				(dir) =>
 					dir.length > 0 &&
@@ -824,6 +833,10 @@ export class FsWatcherManager {
 	 * worktree's `node_modules`) keeps one native watch per entry until a
 	 * re-attach prunes it. On other backends growth is filtered downstream.
 	 *
+	 * `gitIgnoredListing` is a caller's fresh `listGitIgnoredDirs` result. It
+	 * replaces a second scan for both the decision and the re-attach: a scan
+	 * that fails reads as `[]`, which would leave a newly ignored dir watched.
+	 *
 	 * The old stream stays attached until the new one is live, but its events
 	 * are dropped by the generation guard once attach begins, so a short gap
 	 * is possible. Callers should follow up with a broad refresh of whatever
@@ -834,14 +847,21 @@ export class FsWatcherManager {
 	 * none the backend needs pruned, or the root is absent, suspended, or
 	 * recovering (the next attach re-runs the providers anyway).
 	 */
-	async refreshIgnores(rootAbsolutePath: string): Promise<boolean> {
+	async refreshIgnores(
+		rootAbsolutePath: string,
+		gitIgnoredListing?: readonly string[],
+	): Promise<boolean> {
 		const state = this.watchers.get(normalizeAbsolutePath(rootAbsolutePath));
 		if (!state || !state.subscription || state.recoveryTimer) {
 			return false;
 		}
 		const [nestedRepoRelDirs, gitIgnoredRelDirs] = await Promise.all([
 			this.computeNestedRepoRelDirs(state.realPath, state.controller.signal),
-			this.computeGitIgnoredRelDirs(state.realPath, state.controller.signal),
+			this.computeGitIgnoredRelDirs(
+				state.realPath,
+				state.controller.signal,
+				gitIgnoredListing,
+			),
 		]);
 		const fresh = new Set([...nestedRepoRelDirs, ...gitIgnoredRelDirs]);
 		const pruned = new Set(state.prunedRelPrefixes);
@@ -876,7 +896,7 @@ export class FsWatcherManager {
 			return false;
 		}
 		try {
-			await this.attachNativeSubscription(state);
+			await this.attachNativeSubscription(state, gitIgnoredListing);
 		} catch (error) {
 			// The root is now unwatched; a transient failure must not leave it
 			// that way silently. Reuse the root-recovery poll, which re-attaches,

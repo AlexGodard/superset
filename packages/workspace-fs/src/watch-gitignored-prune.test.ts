@@ -308,4 +308,38 @@ describe("FsWatcherManager.refreshIgnores", () => {
 			).toBe(watchesEachPath);
 		});
 	}
+
+	it("prunes a caller's listing without scanning again, so a scan that fails cannot undo it", async () => {
+		const rootPath = await createTempRoot();
+		const ignoreLists: string[][] = [];
+		const backend: NativeWatchBackend = {
+			name: "recording",
+			watchesEachPath: true,
+			async subscribe(request) {
+				ignoreLists.push(request.ignore);
+				return { unsubscribe: async () => {} };
+			},
+		};
+		let scans = 0;
+		const manager = new FsWatcherManager({
+			backend,
+			useDefaultIgnores: false,
+			listGitIgnoredDirs: async () => {
+				scans++;
+				return [];
+			},
+		});
+		managers.push(manager);
+		await manager.subscribe({ absolutePath: rootPath }, () => {});
+		expect(scans).toBe(1);
+
+		expect(await manager.refreshIgnores(rootPath, ["node_modules"])).toBe(true);
+		expect(scans).toBe(1);
+		expect(
+			ignoreLists.at(-1)?.some((glob) => glob.startsWith("node_modules")),
+		).toBe(true);
+		expect(
+			manager.isPathPruned(rootPath, path.join(rootPath, "node_modules", "x")),
+		).toBe(true);
+	});
 });

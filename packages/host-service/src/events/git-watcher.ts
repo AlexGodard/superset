@@ -219,6 +219,8 @@ interface IgnoredDirsState {
 	 * watcher's attach-time prune went stale (a dir was UN-ignored).
 	 */
 	rulesChanged: boolean;
+	/** The last native-prune refresh threw; the next listing retries it. */
+	watcherRefreshPending: boolean;
 }
 
 /**
@@ -410,6 +412,7 @@ export class GitWatcher {
 				refreshing: false,
 				lastRefreshAt: 0,
 				rulesChanged: false,
+				watcherRefreshPending: false,
 			};
 			this.ignoredDirs.set(workspaceId, state);
 		}
@@ -451,21 +454,23 @@ export class GitWatcher {
 				state.dirs = new Set(dirs);
 				state.lastRefreshAt = Date.now();
 				const gained = previous !== null && dirs.some((d) => !previous.has(d));
-				if (rulesChanged || gained) {
+				if (rulesChanged || gained || state.watcherRefreshPending) {
 					// The native watcher's attach-time prune is stale: a dir was
 					// UN-ignored (its events silently suppressed until restart), or
 					// one became ignored after attach (a watch per entry on a
-					// backend that watches each path). refreshIgnores re-derives
-					// the set and swaps the subscription only when that matters;
+					// backend that watches each path). refreshIgnores applies this
+					// listing and swaps the subscription only when that matters;
 					// after a swap, force one broad status refresh to cover
 					// anything written during the swap gap.
+					state.watcherRefreshPending = false;
 					const swapped = await this.filesystem
-						.refreshWatcherIgnores(workspaceId)
+						.refreshWatcherIgnores(workspaceId, dirs)
 						.catch((error) => {
 							console.error("[git-watcher] watcher ignore refresh failed", {
 								workspaceId,
 								error,
 							});
+							state.watcherRefreshPending = true;
 							return false;
 						});
 					if (!stillCurrent()) return;

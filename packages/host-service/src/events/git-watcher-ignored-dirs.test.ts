@@ -34,7 +34,7 @@ async function waitFor(check: () => boolean) {
 test("a dir that becomes gitignored after attach makes the native watcher re-derive its prune", async () => {
 	const repo = await mkdtemp(join(tmpdir(), "git-watch-ignored-"));
 	await simpleGit(repo).init();
-	await writeFile(join(repo, ".gitignore"), "node_modules/\n");
+	await writeFile(join(repo, ".gitignore"), "node_modules/\ndist/\n");
 	const workspaceId = "ignored-growth";
 	const row = { id: workspaceId, worktreePath: repo };
 	const db = {
@@ -48,11 +48,16 @@ test("a dir that becomes gitignored after attach makes the native watcher re-der
 			return: async () => ({ done: true, value: undefined }),
 		}),
 	};
-	const watcherRefreshes: string[] = [];
+	const watcherRefreshes: Array<[string, readonly string[] | undefined]> = [];
+	let failNextRefresh = false;
 	const filesystem = {
 		getServiceForWorkspace: () => ({ watchPath: () => quietStream }),
-		refreshWatcherIgnores: async (id: string) => {
-			watcherRefreshes.push(id);
+		refreshWatcherIgnores: async (id: string, listing?: readonly string[]) => {
+			watcherRefreshes.push([id, listing && [...listing].sort()]);
+			if (failNextRefresh) {
+				failNextRefresh = false;
+				throw new Error("refresh failed");
+			}
 			return false;
 		},
 		isWatchAttachBackingOff: () => false,
@@ -81,8 +86,21 @@ test("a dir that becomes gitignored after attach makes the native watcher re-der
 	await writeFile(join(repo, "node_modules", "pkg", "index.js"), "");
 	await refreshAndSettle();
 	expect([...state().dirs]).toEqual(["node_modules"]);
-	expect(watcherRefreshes).toEqual([workspaceId]);
+	expect(watcherRefreshes).toEqual([[workspaceId, ["node_modules"]]]);
 
 	await refreshAndSettle();
-	expect(watcherRefreshes).toEqual([workspaceId]);
+	expect(watcherRefreshes.length).toBe(1);
+
+	await mkdir(join(repo, "dist"));
+	await writeFile(join(repo, "dist", "main.js"), "");
+	failNextRefresh = true;
+	await refreshAndSettle();
+	expect(watcherRefreshes.length).toBe(2);
+	await refreshAndSettle();
+	expect(watcherRefreshes.at(-1)).toEqual([
+		workspaceId,
+		["dist", "node_modules"],
+	]);
+	await refreshAndSettle();
+	expect(watcherRefreshes.length).toBe(3);
 });
