@@ -4,27 +4,25 @@ import { getHostServiceClientByUrl } from "renderer/lib/host-service-client";
 export const hostProjectListQueryKey = (hostUrl: string | null) =>
 	["project", "list", hostUrl] as const;
 
-export const hostProjectIdsQueryOptions = (hostUrl: string | null) => ({
-	queryKey: hostProjectListQueryKey(hostUrl),
-	enabled: !!hostUrl,
-	queryFn: async () => {
-		if (!hostUrl) return null;
-		try {
-			const client = getHostServiceClientByUrl(hostUrl);
-			const rows = await client.project.list.query();
-			return new Set(rows.map((row) => row.id));
-		} catch {
-			return null;
-		}
-	},
-});
-
 /**
  * IDs of projects already set up on the given host. Returns `null` when the
  * host couldn't be reached (treat as "unknown" — no setup indicator).
  */
 export function useHostProjectIds(hostUrl: string | null): Set<string> | null {
-	const { data } = useQuery(hostProjectIdsQueryOptions(hostUrl));
+	const { data } = useQuery({
+		queryKey: hostProjectListQueryKey(hostUrl),
+		enabled: !!hostUrl,
+		queryFn: async () => {
+			if (!hostUrl) return null;
+			try {
+				const client = getHostServiceClientByUrl(hostUrl);
+				const rows = await client.project.list.query();
+				return new Set(rows.map((row) => row.id));
+			} catch {
+				return null;
+			}
+		},
+	});
 
 	return data ?? null;
 }

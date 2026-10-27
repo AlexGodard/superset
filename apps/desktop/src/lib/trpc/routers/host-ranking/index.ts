@@ -15,6 +15,15 @@ const rankedHostsSchema = z.array(
 
 export type RankedHost = z.infer<typeof rankedHostsSchema>[number];
 
+const skippedHostsSchema = z.array(
+	z.object({
+		machineId: z.string().min(1),
+		why: z.enum(["offline", "no-project", "unreachable"]),
+	}),
+);
+
+export type SkippedHost = z.infer<typeof skippedHostsSchema>[number];
+
 type Exec = typeof execWithShellEnv;
 
 async function isExecutable(path: string): Promise<boolean> {
@@ -44,9 +53,15 @@ export async function rankHosts(
 	}
 }
 
-/** Tells the ranker a workspace went to a host, so it can count it next time. */
+/**
+ * Tells the ranker a workspace went to a host, so it can count it next time,
+ * and which better-ranked hosts Auto passed over and why. Those go in the
+ * environment: a ranker that predates them ignores it, where an unknown flag
+ * would fail the whole report.
+ */
 export async function reportPlacement(
 	machineId: string,
+	skipped: SkippedHost[] = [],
 	rankerPath = RANKER_PATH,
 	exec: Exec = execWithShellEnv,
 ): Promise<boolean> {
@@ -54,6 +69,9 @@ export async function reportPlacement(
 	try {
 		await exec(rankerPath, ["--placed", machineId], {
 			timeout: PLACED_TIMEOUT_MS,
+			...(skipped.length > 0 && {
+				env: { SUPERSET_AUTO_SKIPPED: JSON.stringify(skipped) },
+			}),
 		});
 		return true;
 	} catch (error) {
@@ -66,7 +84,12 @@ export const createHostRankingRouter = () => {
 	return router({
 		rank: publicProcedure.query(() => rankHosts()),
 		placed: publicProcedure
-			.input(z.object({ machineId: z.string().min(1) }))
-			.mutation(({ input }) => reportPlacement(input.machineId)),
+			.input(
+				z.object({
+					machineId: z.string().min(1),
+					skipped: skippedHostsSchema.default([]),
+				}),
+			)
+			.mutation(({ input }) => reportPlacement(input.machineId, input.skipped)),
 	});
 };

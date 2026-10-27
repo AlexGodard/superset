@@ -44,15 +44,28 @@ describe("rankHosts", () => {
 describe("reportPlacement", () => {
 	test("passes the host to the ranker", async () => {
 		const exec = execPrinting("");
-		expect(await reportPlacement("mini", rankerPath, exec)).toBe(true);
+		expect(await reportPlacement("mini", [], rankerPath, exec)).toBe(true);
 		expect(exec).toHaveBeenCalledWith(rankerPath, ["--placed", "mini"], {
 			timeout: 5_000,
 		});
 	});
 
+	test("passes the hosts Auto passed over in the environment", async () => {
+		const exec = execPrinting("");
+		const skipped = [
+			{ machineId: "gaming", why: "unreachable" as const },
+			{ machineId: "hetzner", why: "no-project" as const },
+		];
+		expect(await reportPlacement("mac", skipped, rankerPath, exec)).toBe(true);
+		expect(exec).toHaveBeenCalledWith(rankerPath, ["--placed", "mac"], {
+			timeout: 5_000,
+			env: { SUPERSET_AUTO_SKIPPED: JSON.stringify(skipped) },
+		});
+	});
+
 	test("does nothing when no ranker is installed", async () => {
 		const exec = execPrinting("");
-		expect(await reportPlacement("mini", missingPath, exec)).toBe(false);
+		expect(await reportPlacement("mini", [], missingPath, exec)).toBe(false);
 		expect(exec).not.toHaveBeenCalled();
 	});
 });
