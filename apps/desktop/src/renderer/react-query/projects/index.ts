@@ -5,7 +5,6 @@ export {
 	useFinalizeProjectSetup,
 } from "./useFinalizeProjectSetup";
 export {
-	hostProjectIdsQueryOptions,
 	hostProjectListQueryKey,
 	useHostProjectIds,
 } from "./useHostProjectIds";
