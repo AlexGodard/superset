@@ -531,6 +531,10 @@ msgstr "{0} projektů"
 msgid "{0} Running"
 msgstr "Běží {0}"
 
+#. placeholder {0}: selected.length
+msgid "{0} selected"
+msgstr "Vybráno: {0}"
+
 #. placeholder {0}: result.killedCount
 msgid "{0} sessions terminated"
 msgstr "Ukončeno relací: {0}"
@@ -1216,12 +1220,6 @@ msgstr "{received} z {total}"
 msgid "{remaining} tokens left"
 msgstr "Zbývající tokeny: {remaining}"
 
-msgid "{repositoryFullName} isn't on {installedAccountLogin}, where this organization's GitHub App is installed."
-msgstr "{repositoryFullName} není v účtu {installedAccountLogin}, kde je nainstalovaná GitHub App této organizace."
-
-msgid "{repositoryFullName} isn't shared with the Paradev GitHub App yet."
-msgstr "{repositoryFullName} zatím není sdílený s GitHub App Paradev."
-
 msgid "{seconds}s"
 msgstr "{seconds} s"
 
@@ -1344,6 +1342,9 @@ msgstr "před {years} r."
 #. placeholder {0}: connection.login
 msgid "@{0} · cloud workspaces commit, push and open pull requests as you"
 msgstr "@{0} · cloudové pracovní prostory commitují, pushují a otevírají pull requesty vaším jménem"
+
+msgid "@{accountLogin}"
+msgstr "@{accountLogin}"
 
 msgid "@superset"
 msgstr "@superset"
@@ -1978,9 +1979,6 @@ msgstr "Přidejte prompt, např. hledej pády v $sentry"
 
 msgid "Add reaction…"
 msgstr "Přidat reakci…"
-
-msgid "Add repository"
-msgstr "Přidat repozitář"
 
 msgid "Add script"
 msgstr "Přidat skript"
@@ -2760,6 +2758,9 @@ msgstr "apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx"
 msgid "Archive"
 msgstr "Archivovat"
 
+msgid "Archive {environmentName}?"
+msgstr "Archivovat {environmentName}?"
+
 msgid "Archive {name}?"
 msgstr "Archivovat {name}?"
 
@@ -3215,6 +3216,9 @@ msgstr "Základní adresář pro nové worktree na {selectedHostLabel}"
 
 msgid "Base directory for new worktrees on {selectedHostName}."
 msgstr "Základní adresář pro nové worktree na {selectedHostName}."
+
+msgid "Base image · no checkpoint yet"
+msgstr "Základní obraz · zatím bez kontrolního bodu"
 
 msgid "Base URL"
 msgstr "Základní URL"
@@ -3980,6 +3984,10 @@ msgstr "Kontrolní bod"
 msgid "Checkpoint · before tooltip refactor"
 msgstr "Kontrolní bod · před refaktorem tooltipů"
 
+#. placeholder {0}: formatRelativeTime(new Date(row.updatedAt))
+msgid "Checkpoint saved {0}"
+msgstr "Kontrolní bod uložen {0}"
+
 msgid "Checks"
 msgstr "Kontroly"
 
@@ -4042,6 +4050,9 @@ msgstr "Vyberte MCP servery pro tuto zprávu"
 
 msgid "Choose the model"
 msgstr "Vybrat model"
+
+msgid "Choose the primary repository"
+msgstr "Vyberte hlavní repozitář"
 
 msgid "Choose what to clear from the in-app browser."
 msgstr "Vyberte, co se má z vestavěného prohlížeče vymazat."
@@ -4404,8 +4415,14 @@ msgstr "Zavřením tohoto terminálu ukončíte běžící proces."
 msgid "Cloud"
 msgstr "Cloud"
 
+msgid "Cloud environment setup"
+msgstr "Nastavení cloudového prostředí"
+
 msgid "Cloud environments"
 msgstr "Cloudová prostředí"
+
+msgid "Cloud environments check out your repositories from GitHub. Connect these first; you only do this once."
+msgstr "Cloudová prostředí si stahují vaše repozitáře z GitHubu. Nejdřív je propojte; děláte to jen jednou."
 
 msgid "Cloud GB-hours per seat each month"
 msgstr "Cloudové GB-hodiny na místo měsíčně"
@@ -4429,20 +4446,20 @@ msgstr "Cloudové pracovní prostory"
 msgid "serverError.cloudWorkspace.cloudSandboxesAreInternalOnly"
 msgstr "Cloudové pracovní prostory nejsou pro {account} zapnuté. Jsou součástí plánů Team a Ultra: přejděte na vyšší plán v Nastavení, Fakturace."
 
+msgid "Cloud workspaces commit, push and open pull requests as you"
+msgstr "Cloudové pracovní prostory commitují, pushují a otevírají pull requesty vaším jménem"
+
 msgid "Cloud workspaces ignore this variable. Agents sign in under Settings › Agents instead."
 msgstr "Cloudové pracovní prostory tuto proměnnou ignorují. Agenti se místo toho přihlašují v Nastavení › Agenti."
-
-msgid "Cloud workspaces need a project for now"
-msgstr "Cloudové pracovní prostory zatím potřebují projekt"
 
 msgid "Cloud workspaces need the Team or Ultra plan. Upgrade in Settings, Billing to start one."
 msgstr "Cloudové pracovní prostory vyžadují plán Team nebo Ultra. Přejděte na vyšší plán v Nastavení, Fakturace, abyste ho mohli spustit."
 
+msgid "Cloud workspaces open on it, and its .superset/config.json runs setup. The others are checked out beside it."
+msgstr "Cloudové pracovní prostory se otevírají v něm a jeho .superset/config.json spouští nastavení. Ostatní se stáhnou vedle něj."
+
 msgid "Cloud workspaces will stop running {agentLabel} with it."
 msgstr "Cloudové workspacy s tím přestanou spouštět {agentLabel}."
-
-msgid "Cloud workspaces without a project are coming. Pick a project for now."
-msgstr "Cloudové pracovní prostory bez projektu brzy přibudou. Zatím vyberte projekt."
 
 msgid "Co-founder & CTO, TrainLoop (YC W25)"
 msgstr "Spoluzakladatel a CTO, TrainLoop (YC W25)"
@@ -4679,6 +4696,9 @@ msgstr "config.json musí být objekt JSON"
 msgid "Configure"
 msgstr "Nastavit"
 
+msgid "Configure access"
+msgstr "Nastavit přístup"
+
 msgid "Configure agents…"
 msgstr "Nastavit agenty…"
 
@@ -4690,9 +4710,6 @@ msgstr "Nastavte obecné předvolby aplikace"
 
 msgid "Configure git branch and worktree behavior"
 msgstr "Nastavte chování git větví a worktree"
-
-msgid "Configure GitHub App"
-msgstr "Nastavit GitHub App"
 
 msgid "Configure GitHub App…"
 msgstr "Nastavit GitHub App…"
@@ -4769,9 +4786,6 @@ msgstr "Připojte externí služby a synchronizujte data."
 
 msgid "Connect GitHub"
 msgstr "Připojit GitHub"
-
-msgid "Connect GitHub in Integrations to add {repositoryFullName}."
-msgstr "Připojte GitHub v Integracích a přidejte {repositoryFullName}."
 
 msgid "Connect GitHub in Settings to act on pull requests as yourself"
 msgstr "Připojte GitHub v Nastavení, abyste s pull requesty pracovali sami za sebe"
@@ -4871,6 +4885,9 @@ msgstr "Připojeno k"
 
 msgid "Connected to {connectedOrgName}"
 msgstr "Připojeno k {connectedOrgName}"
+
+msgid "Connected to GitHub as {accountLogin}"
+msgstr "Propojeno s GitHubem jako {accountLogin}"
 
 msgid "Connected via subscription"
 msgstr "Připojeno přes předplatné"
@@ -5829,6 +5846,9 @@ msgstr "Vytvořit „{newLabel}“"
 msgid "Create a channel"
 msgstr "Vytvořit kanál"
 
+msgid "Create a cloud environment"
+msgstr "Vytvořit cloudové prostředí"
+
 msgid "Create a Dev"
 msgstr "Vytvořit Deva"
 
@@ -5985,6 +6005,7 @@ msgctxt "github release action"
 msgid "Created"
 msgstr "Vytvořeno"
 
+#. placeholder {0}: formatRelativeTime(new Date(row.createdAt))
 #. placeholder {0}: issue.identifier
 #. placeholder {0}: result.task.slug
 msgid "Created {0}"
@@ -7297,11 +7318,11 @@ msgstr "Enterprise"
 msgid "Environment"
 msgstr "Prostředí"
 
-msgid "Environment created"
-msgstr "Prostředí vytvořeno"
+msgid "Environment archived"
+msgstr "Prostředí archivováno"
 
-msgid "Environment saved"
-msgstr "Prostředí uloženo"
+msgid "Environment not found"
+msgstr "Prostředí nebylo nalezeno"
 
 msgid "Environment setup, flaky tests, and credential plumbing, the boring failure modes that killed unattended runs in 2025, are mostly engineered away rather than modeled away."
 msgstr "Příprava prostředí, nestabilní testy a rozvody přihlašovacích údajů — nudné příčiny selhání, které v roce 2025 zabíjely běhy bez dozoru — se většinou vyřeší inženýrsky, ne modelem."
@@ -9563,6 +9584,9 @@ msgstr "Instalujte, autorizujte a omezujte MCP servery napříč všemi pracovn�
 msgid "Install."
 msgstr "Nainstalujte."
 
+msgid "Installed on {appAccountLogin}"
+msgstr "Nainstalováno na {appAccountLogin}"
+
 #. js-lingui-explicit-id
 msgid "serverError.plugins.marketplaceHasInstalls"
 msgstr "Nainstalované pluginy pocházejí z {name}: {plugins}. Nejprve je odeberte."
@@ -10225,6 +10249,9 @@ msgstr "před méně než minutou"
 msgid "Let the agent drive."
 msgstr "Nechte agenta řídit."
 
+msgid "Lets your organization list and clone repositories"
+msgstr "Umožňuje organizaci vypisovat a klonovat repozitáře"
+
 msgid "Letter spacing (px)"
 msgstr "Rozestup písmen (px)"
 
@@ -10346,6 +10373,9 @@ msgstr "Propojit tento úkol"
 
 msgid "Linked {slug} to workspace"
 msgstr "{slug} propojeno s pracovním prostorem"
+
+msgid "Linked to {projectName}"
+msgstr "Propojeno s {projectName}"
 
 msgid "Liquid Glass"
 msgstr "Liquid Glass"
@@ -10684,6 +10714,9 @@ msgstr "Správa účtů…"
 
 msgid "Manage billing"
 msgstr "Spravovat fakturaci"
+
+msgid "Manage environments"
+msgstr "Spravovat prostředí"
 
 msgid "Manage integrations in the web app to connect and configure services."
 msgstr "Integrace spravujte ve webové aplikaci, kde služby připojíte a nastavíte."
@@ -11026,6 +11059,9 @@ msgstr "Zmeškaná"
 
 msgid "Missed <0>· 7d</0>"
 msgstr "Zmeškaná <0>· 7 d</0>"
+
+msgid "Missing a repository?"
+msgstr "Chybí repozitář?"
 
 msgid "Missing authorization code. Re-run"
 msgstr "Chybí autorizační kód. Spusťte znovu"
@@ -11704,17 +11740,14 @@ msgstr "Zatím žádná stahování"
 msgid "No emoji found"
 msgstr "Žádné emoji nenalezeno"
 
-msgid "No environment for {repositoryFullName}"
-msgstr "Žádné prostředí pro {repositoryFullName}"
+msgid "No environments are linked to this project yet."
+msgstr "S tímto projektem zatím není propojeno žádné prostředí."
 
 msgid "No environments available"
 msgstr "Žádná dostupná prostředí"
 
 msgid "No environments found."
 msgstr "Nenalezena žádná prostředí."
-
-msgid "No environments yet"
-msgstr "Zatím žádná prostředí"
 
 msgid "No environments yet."
 msgstr "Zatím žádná prostředí. Vytvořte jedno a spusťte z něj cloudový pracovní prostor."
@@ -11835,9 +11868,6 @@ msgstr "Žádní odpovídající členové organizace."
 
 msgid "No matching pages"
 msgstr "Žádné odpovídající stránky"
-
-msgid "No matching repositories."
-msgstr "Žádné odpovídající repozitáře."
 
 msgid "No MCP servers found"
 msgstr "Nenalezeny žádné MCP servery"
@@ -11975,6 +12005,9 @@ msgstr "Žádný projekt neodpovídá."
 msgid "No projects on this host yet"
 msgstr "Na tomto hostu zatím nejsou žádné projekty"
 
+msgid "No projects to link."
+msgstr "Žádné projekty k propojení."
+
 msgid "No projects were deleted in the last 30 days."
 msgstr "Za posledních 30 dní nebyly smazány žádné projekty."
 
@@ -11996,11 +12029,11 @@ msgstr "Nenalezeny žádné pull requesty."
 msgid "No release notes at {url}"
 msgstr "Žádné poznámky k vydání na {url}"
 
+msgid "No repositories found."
+msgstr "Nenalezeny žádné repozitáře."
+
 msgid "No repositories found. Make sure your GitHub App has access to repositories."
 msgstr "Nenalezeny žádné repozitáře. Ověřte, že vaše GitHub App má k repozitářům přístup."
-
-msgid "No repositories. Connect GitHub in Integrations, then refresh."
-msgstr "Žádné repozitáře. Připojte GitHub v Integracích a poté obnovte."
 
 msgid "No results"
 msgstr "Žádné výsledky"
@@ -12134,6 +12167,9 @@ msgstr "Na tomto zařízení nebyly nalezeny žádné projekty v1."
 msgid "No v1 terminal scripts found."
 msgstr "Nebyly nalezeny žádné terminálové skripty v1."
 
+msgid "No variables set yet."
+msgstr "Zatím nejsou nastaveny žádné proměnné."
+
 msgid "No versions yet"
 msgstr "Zatím žádné verze"
 
@@ -12184,6 +12220,9 @@ msgstr "Nikdo kvůli tomu nereviduje jinak."
 
 msgid "None"
 msgstr "Žádný"
+
+msgid "None selected"
+msgstr "Nic nevybráno"
 
 msgid "None. This is the floor."
 msgstr "Žádná. Tohle je základ."
@@ -13097,12 +13136,6 @@ msgstr "Otevírání stránek"
 msgid "Opening worktree..."
 msgstr "Otevírám worktree..."
 
-msgid "Opens a cloud workspace where an agent installs what the project needs and writes its .superset/config.json"
-msgstr "Otevře cloudový pracovní prostor, kde agent nainstaluje vše, co projekt potřebuje, a zapíše jeho .superset/config.json"
-
-msgid "Opens on"
-msgstr "Otevře se v"
-
 msgid "Operator"
 msgstr "Operátor"
 
@@ -13205,6 +13238,9 @@ msgstr "Ostatní aplikace"
 
 msgid "Other devices"
 msgstr "Ostatní zařízení"
+
+msgid "Other environments"
+msgstr "Ostatní prostředí"
 
 msgid "Other Hosts"
 msgstr "Ostatní hosty"
@@ -13422,6 +13458,9 @@ msgstr "Paradev pro váš tým"
 
 msgid "Paradev forwards the ports a remote workspace opens while you have it selected."
 msgstr "Paradev přesměruje porty, které vzdálený pracovní prostor otevře, dokud máte tento pracovní prostor vybraný."
+
+msgid "Paradev GitHub App"
+msgstr "Paradev GitHub App"
 
 msgid "Paradev has a free tier. The source code is available on GitHub under Elastic License 2.0 (ELv2), so you can inspect and self-host it subject to the license terms."
 msgstr "Paradev má bezplatný tarif. Zdrojový kód je na GitHubu pod licencí Elastic License 2.0 (ELv2), takže si ho můžete prohlédnout a za podmínek licence provozovat sami."
@@ -13776,6 +13815,9 @@ msgstr "Vyberte novou složku projektu na {hostName}."
 msgid "Pick the project worktree folder on {hostName}."
 msgstr "Vyberte složku pro worktree projektu na {hostName}."
 
+msgid "Pick the repositories it checks out. An agent on this machine works out what to install and gets it running in the cloud."
+msgstr "Vyberte repozitáře, které si stáhne. Agent na tomto počítači zjistí, co nainstalovat, a zprovozní to v cloudu."
+
 msgid "Pick the worktree folder on {hostName}."
 msgstr "Vyberte složku pro worktree na {hostName}."
 
@@ -14090,6 +14132,9 @@ msgstr "Ceník"
 msgid "Pricing depends on your team and use case. Get in touch and we'll put together a plan that works for you."
 msgstr "Cena závisí na vašem týmu a způsobu použití. Ozvěte se nám a sestavíme plán, který vám bude sedět."
 
+msgid "primary"
+msgstr "hlavní"
+
 msgid "Primary"
 msgstr "Primární"
 
@@ -14214,6 +14259,9 @@ msgstr "Projekt není na tomto hostu nastaven"
 msgid "Project not trusted in Codex"
 msgstr "Projekt není v Codexu důvěryhodný"
 
+msgid "Project on another device"
+msgstr "Projekt na jiném zařízení"
+
 msgid "Project ready — open it from the sidebar."
 msgstr "Projekt je připravený — otevřete ho v postranním panelu."
 
@@ -14249,9 +14297,6 @@ msgstr "Host projektu není dostupný — teď nelze přejmenovat"
 
 msgid "Projects"
 msgstr "Projekty"
-
-msgid "Promoted from a workspace, so its repositories and region are fixed. Promote a workspace again to change them."
-msgstr "Povýšeno z pracovního prostoru, takže repozitáře a region jsou pevné. Pro změnu znovu povyšte pracovní prostor."
 
 msgid "Prompt"
 msgstr "Prompt"
@@ -14766,9 +14811,6 @@ msgstr "Obnovit metriky"
 msgid "Refresh pull requests"
 msgstr "Obnovit pull requesty"
 
-msgid "Refresh repositories"
-msgstr "Obnovit repozitáře"
-
 msgid "Refreshes when Claude Code next runs."
 msgstr "Obnoví se při příštím spuštění Claude Code."
 
@@ -14874,9 +14916,6 @@ msgstr "Odebrat {label}?"
 
 msgid "Remove {name}"
 msgstr "Odebrat {name}"
-
-msgid "Remove {repositoryName}"
-msgstr "Odebrat {repositoryName}"
 
 msgid "Remove attachment"
 msgstr "Odebrat přílohu"
@@ -16508,6 +16547,9 @@ msgstr "Relace"
 msgid "Sessions · top {0} by cost"
 msgstr "Relace · top {0} podle nákladů"
 
+msgid "Set"
+msgstr "Nastaveno"
+
 msgid "Set a notification schedule"
 msgstr "Nastavit plán oznámení"
 
@@ -16540,7 +16582,7 @@ msgstr "Nastavit tento projekt"
 msgid "Set up"
 msgstr "Nastavit"
 
-#. placeholder {0}: name.trim()
+#. placeholder {0}: environment.name
 msgid "Set up {0}"
 msgstr "Nastavit {0}"
 
@@ -16550,9 +16592,6 @@ msgstr "Nastavit host přes SSH"
 msgid "Set up an automation"
 msgstr "Nastavte automatizaci"
 
-msgid "Set up environment"
-msgstr "Nastavit prostředí"
-
 msgid "Set up project on {hostName}"
 msgstr "Nastavit projekt na {hostName}"
 
@@ -16561,9 +16600,6 @@ msgstr "Nastavit projekt…"
 
 msgid "Set up this project for Paradev"
 msgstr "Připravit tento projekt pro Paradev"
-
-msgid "Set up with an agent"
-msgstr "Nastavit pomocí agenta"
 
 msgid "Set up your organization to get started"
 msgstr "Nastavte si organizaci a můžete začít"
@@ -17115,6 +17151,9 @@ msgstr "Smajlíci a lidé"
 
 msgid "Smoother onboarding"
 msgstr "Plynulejší onboarding"
+
+msgid "Snapshot"
+msgstr "Snímek"
 
 msgid "Snapshots this workspace as it is now, with everything installed in it. New workspaces from the environment start from that snapshot."
 msgstr "Vytvoří snímek tohoto pracovního prostoru v aktuálním stavu se vším, co je v něm nainstalované. Nové pracovní prostory z tohoto prostředí začnou z tohoto snímku."
@@ -18863,6 +18902,9 @@ msgstr "Tato cesta existuje, ale není to adresář."
 msgid "This path is a directory"
 msgstr "Tato cesta je adresář"
 
+msgid "This permanently removes the saved environment for everyone with access to it. Workspaces already running from it stay available."
+msgstr "Uložené prostředí se trvale odebere pro všechny, kdo k němu mají přístup. Pracovní prostory, které z něj už běží, zůstanou dostupné."
+
 msgid "This port is still in use"
 msgstr "Tento port se stále používá"
 
@@ -19588,6 +19630,9 @@ msgstr "Neznámý pracovní prostor"
 
 msgid "Unlimited"
 msgstr "Neomezeně"
+
+msgid "Unlink project"
+msgstr "Zrušit propojení projektu"
 
 msgid "Unlink task"
 msgstr "Odpojit úkol"
@@ -20929,6 +20974,9 @@ msgstr "Byli jste pozváni do {organization}"
 msgid "you@example.com"
 msgstr "you@example.com"
 
+msgid "Your account can be connected later in Settings → Connections"
+msgstr "Účet můžete propojit později v Nastavení → Připojení"
+
 msgid "Your account is deactivated and will be permanently deleted soon. Reactivate to restore it exactly as you left it."
 msgstr "Váš účet je deaktivovaný a brzy bude trvale smazán. Obnovte ho a bude přesně takový, jaký jste ho opustili."
 
@@ -20968,6 +21016,9 @@ msgstr "Váš e-mail (nepovinné)"
 msgid "Your first agent"
 msgstr "Váš první agent"
 
+msgid "Your GitHub account"
+msgstr "Váš účet na GitHubu"
+
 msgid "Your GitHub account cannot reach a repository in this environment"
 msgstr "Váš účet GitHub nemá přístup k repozitáři tohoto prostředí"
 
@@ -20989,6 +21040,9 @@ msgstr "Vaše organizace dosáhla limitu využití cloudu. Pro spuštění tohot
 #. placeholder {0}: params?.limit
 msgid "Your organization has reached its environment limit ({0}). Archive an environment, or upgrade in Settings, Billing to add more."
 msgstr "Vaše organizace dosáhla limitu prostředí ({0}). Archivujte některé prostředí, nebo přejděte na vyšší tarif v Nastavení, Fakturace a přidejte další."
+
+msgid "Your organization has reached its limit of {reachedLimit} environments. Archive one to make room."
+msgstr "Vaše organizace dosáhla limitu {reachedLimit} prostředí. Jedno archivujte, abyste uvolnili místo."
 
 msgid "Your organization reached its cloud usage limit. This workspace stops in a few minutes unless the limit is raised."
 msgstr "Vaše organizace dosáhla limitu využití cloudu. Tento pracovní prostor se za několik minut zastaví, pokud limit nezvýšíte."

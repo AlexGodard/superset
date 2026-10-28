@@ -531,6 +531,10 @@ msgstr "{0} projecten"
 msgid "{0} Running"
 msgstr "{0} bezig"
 
+#. placeholder {0}: selected.length
+msgid "{0} selected"
+msgstr "{0} geselecteerd"
+
 #. placeholder {0}: result.killedCount
 msgid "{0} sessions terminated"
 msgstr "{0} sessies beëindigd"
@@ -1216,12 +1220,6 @@ msgstr "{received} van {total}"
 msgid "{remaining} tokens left"
 msgstr "Nog {remaining} tokens over"
 
-msgid "{repositoryFullName} isn't on {installedAccountLogin}, where this organization's GitHub App is installed."
-msgstr "{repositoryFullName} staat niet op {installedAccountLogin}, waar de GitHub App van deze organisatie is geïnstalleerd."
-
-msgid "{repositoryFullName} isn't shared with the Paradev GitHub App yet."
-msgstr "{repositoryFullName} is nog niet gedeeld met de Paradev GitHub App."
-
 msgid "{seconds}s"
 msgstr "{seconds} s"
 
@@ -1344,6 +1342,9 @@ msgstr "{years}j geleden"
 #. placeholder {0}: connection.login
 msgid "@{0} · cloud workspaces commit, push and open pull requests as you"
 msgstr "@{0} · cloudwerkruimtes committen, pushen en openen pull requests als jou"
+
+msgid "@{accountLogin}"
+msgstr "@{accountLogin}"
 
 msgid "@superset"
 msgstr "@superset"
@@ -1978,9 +1979,6 @@ msgstr "Voeg een prompt toe, bijv. zoek naar crashes in $sentry"
 
 msgid "Add reaction…"
 msgstr "Reactie toevoegen…"
-
-msgid "Add repository"
-msgstr "Repository toevoegen"
 
 msgid "Add script"
 msgstr "Script toevoegen"
@@ -2760,6 +2758,9 @@ msgstr "apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx"
 msgid "Archive"
 msgstr "Archiveren"
 
+msgid "Archive {environmentName}?"
+msgstr "{environmentName} archiveren?"
+
 msgid "Archive {name}?"
 msgstr "{name} archiveren?"
 
@@ -3215,6 +3216,9 @@ msgstr "Basismap voor nieuwe worktrees op {selectedHostLabel}"
 
 msgid "Base directory for new worktrees on {selectedHostName}."
 msgstr "Basismap voor nieuwe worktrees op {selectedHostName}."
+
+msgid "Base image · no checkpoint yet"
+msgstr "Basisimage · nog geen checkpoint"
 
 msgid "Base URL"
 msgstr "Basis-URL"
@@ -3980,6 +3984,10 @@ msgstr "Checkpoint"
 msgid "Checkpoint · before tooltip refactor"
 msgstr "Checkpoint · voor de tooltip-refactor"
 
+#. placeholder {0}: formatRelativeTime(new Date(row.updatedAt))
+msgid "Checkpoint saved {0}"
+msgstr "Checkpoint opgeslagen {0}"
+
 msgid "Checks"
 msgstr "Checks"
 
@@ -4042,6 +4050,9 @@ msgstr "Kies MCP-servers voor dit bericht"
 
 msgid "Choose the model"
 msgstr "Model kiezen"
+
+msgid "Choose the primary repository"
+msgstr "Kies de primaire repository"
 
 msgid "Choose what to clear from the in-app browser."
 msgstr "Kies wat je uit de ingebouwde browser wilt wissen."
@@ -4404,8 +4415,14 @@ msgstr "Als je deze terminal sluit, wordt het draaiende proces beëindigd."
 msgid "Cloud"
 msgstr "Cloud"
 
+msgid "Cloud environment setup"
+msgstr "Cloudomgeving instellen"
+
 msgid "Cloud environments"
 msgstr "Cloudomgevingen"
+
+msgid "Cloud environments check out your repositories from GitHub. Connect these first; you only do this once."
+msgstr "Cloudomgevingen halen je repositories op van GitHub. Verbind deze eerst; dat doe je maar één keer."
 
 msgid "Cloud GB-hours per seat each month"
 msgstr "Cloud-GB-uren per gebruiker per maand"
@@ -4429,20 +4446,20 @@ msgstr "Cloudwerkruimtes"
 msgid "serverError.cloudWorkspace.cloudSandboxesAreInternalOnly"
 msgstr "Cloudwerkruimtes zijn niet ingeschakeld voor {account}. Ze horen bij de Team- en Ultra-abonnementen: upgrade in Instellingen, Facturering."
 
+msgid "Cloud workspaces commit, push and open pull requests as you"
+msgstr "Cloudwerkruimtes committen, pushen en openen pull requests als jou"
+
 msgid "Cloud workspaces ignore this variable. Agents sign in under Settings › Agents instead."
 msgstr "Cloudworkspaces negeren deze variabele. Agents melden zich in plaats daarvan aan via Instellingen › Agents."
-
-msgid "Cloud workspaces need a project for now"
-msgstr "Cloudwerkruimtes hebben voorlopig een project nodig"
 
 msgid "Cloud workspaces need the Team or Ultra plan. Upgrade in Settings, Billing to start one."
 msgstr "Cloudwerkruimtes vereisen het Team- of Ultra-abonnement. Upgrade in Instellingen, Facturering om er een te starten."
 
+msgid "Cloud workspaces open on it, and its .superset/config.json runs setup. The others are checked out beside it."
+msgstr "Cloudwerkruimtes openen erop, en de .superset/config.json ervan voert de setup uit. De andere worden ernaast uitgecheckt."
+
 msgid "Cloud workspaces will stop running {agentLabel} with it."
 msgstr "Cloudworkspaces stoppen met het uitvoeren van {agentLabel} hiermee."
-
-msgid "Cloud workspaces without a project are coming. Pick a project for now."
-msgstr "Cloudwerkruimtes zonder project komen eraan. Kies voorlopig een project."
 
 msgid "Co-founder & CTO, TrainLoop (YC W25)"
 msgstr "Medeoprichter en CTO, TrainLoop (YC W25)"
@@ -4679,6 +4696,9 @@ msgstr "config.json moet een JSON-object zijn"
 msgid "Configure"
 msgstr "Configureren"
 
+msgid "Configure access"
+msgstr "Toegang configureren"
+
 msgid "Configure agents…"
 msgstr "Agents configureren…"
 
@@ -4690,9 +4710,6 @@ msgstr "Configureer algemene app-voorkeuren"
 
 msgid "Configure git branch and worktree behavior"
 msgstr "Configureer het gedrag van git-branches en worktrees"
-
-msgid "Configure GitHub App"
-msgstr "GitHub App configureren"
 
 msgid "Configure GitHub App…"
 msgstr "GitHub App configureren…"
@@ -4769,9 +4786,6 @@ msgstr "Verbind externe diensten om gegevens te synchroniseren."
 
 msgid "Connect GitHub"
 msgstr "GitHub koppelen"
-
-msgid "Connect GitHub in Integrations to add {repositoryFullName}."
-msgstr "Koppel GitHub in Integraties om {repositoryFullName} toe te voegen."
 
 msgid "Connect GitHub in Settings to act on pull requests as yourself"
 msgstr "Koppel GitHub in Instellingen om pull requests met je eigen account te beheren"
@@ -4871,6 +4885,9 @@ msgstr "Verbonden met"
 
 msgid "Connected to {connectedOrgName}"
 msgstr "Verbonden met {connectedOrgName}"
+
+msgid "Connected to GitHub as {accountLogin}"
+msgstr "Verbonden met GitHub als {accountLogin}"
 
 msgid "Connected via subscription"
 msgstr "Verbonden via abonnement"
@@ -5829,6 +5846,9 @@ msgstr "\"{newLabel}\" maken"
 msgid "Create a channel"
 msgstr "Kanaal maken"
 
+msgid "Create a cloud environment"
+msgstr "Een cloudomgeving maken"
+
 msgid "Create a Dev"
 msgstr "Een Dev maken"
 
@@ -5985,6 +6005,7 @@ msgctxt "github release action"
 msgid "Created"
 msgstr "Aangemaakt"
 
+#. placeholder {0}: formatRelativeTime(new Date(row.createdAt))
 #. placeholder {0}: issue.identifier
 #. placeholder {0}: result.task.slug
 msgid "Created {0}"
@@ -7297,11 +7318,11 @@ msgstr "Enterprise"
 msgid "Environment"
 msgstr "Omgeving"
 
-msgid "Environment created"
-msgstr "Omgeving aangemaakt"
+msgid "Environment archived"
+msgstr "Omgeving gearchiveerd"
 
-msgid "Environment saved"
-msgstr "Omgeving opgeslagen"
+msgid "Environment not found"
+msgstr "Omgeving niet gevonden"
 
 msgid "Environment setup, flaky tests, and credential plumbing, the boring failure modes that killed unattended runs in 2025, are mostly engineered away rather than modeled away."
 msgstr "Omgevingsopzet, flaky tests en credential-geknutsel — de saaie faalvormen die onbewaakte runs in 2025 om zeep hielpen — zijn grotendeels weggewerkt met engineering in plaats van met modellen."
@@ -9563,6 +9584,9 @@ msgstr "Installeer, autoriseer en begrens MCP-servers voor al je werkruimtes van
 msgid "Install."
 msgstr "Installeer."
 
+msgid "Installed on {appAccountLogin}"
+msgstr "Geïnstalleerd op {appAccountLogin}"
+
 #. js-lingui-explicit-id
 msgid "serverError.plugins.marketplaceHasInstalls"
 msgstr "Geïnstalleerde plugins komen uit {name}: {plugins}. Verwijder ze eerst."
@@ -10225,6 +10249,9 @@ msgstr "minder dan een minuut geleden"
 msgid "Let the agent drive."
 msgstr "Laat de agent sturen."
 
+msgid "Lets your organization list and clone repositories"
+msgstr "Laat je organisatie repositories weergeven en klonen"
+
 msgid "Letter spacing (px)"
 msgstr "Letterafstand (px)"
 
@@ -10346,6 +10373,9 @@ msgstr "Deze taak koppelen"
 
 msgid "Linked {slug} to workspace"
 msgstr "{slug} gekoppeld aan werkruimte"
+
+msgid "Linked to {projectName}"
+msgstr "Gekoppeld aan {projectName}"
 
 msgid "Liquid Glass"
 msgstr "Liquid Glass"
@@ -10684,6 +10714,9 @@ msgstr "Accounts beheren…"
 
 msgid "Manage billing"
 msgstr "Facturering beheren"
+
+msgid "Manage environments"
+msgstr "Omgevingen beheren"
 
 msgid "Manage integrations in the web app to connect and configure services."
 msgstr "Beheer integraties in de webapp om diensten te verbinden en te configureren."
@@ -11026,6 +11059,9 @@ msgstr "Gemist"
 
 msgid "Missed <0>· 7d</0>"
 msgstr "Gemist <0>· 7d</0>"
+
+msgid "Missing a repository?"
+msgstr "Mist er een repository?"
 
 msgid "Missing authorization code. Re-run"
 msgstr "Autorisatiecode ontbreekt. Voer opnieuw uit"
@@ -11704,17 +11740,14 @@ msgstr "Nog geen downloads"
 msgid "No emoji found"
 msgstr "Geen emoji gevonden"
 
-msgid "No environment for {repositoryFullName}"
-msgstr "Geen omgeving voor {repositoryFullName}"
+msgid "No environments are linked to this project yet."
+msgstr "Er zijn nog geen omgevingen aan dit project gekoppeld."
 
 msgid "No environments available"
 msgstr "Geen omgevingen beschikbaar"
 
 msgid "No environments found."
 msgstr "Geen omgevingen gevonden."
-
-msgid "No environments yet"
-msgstr "Nog geen omgevingen"
 
 msgid "No environments yet."
 msgstr "Nog geen omgevingen. Maak er een aan om er een cloudwerkruimte vanaf te starten."
@@ -11835,9 +11868,6 @@ msgstr "Geen overeenkomende leden in de organisatie."
 
 msgid "No matching pages"
 msgstr "Geen overeenkomende pagina's"
-
-msgid "No matching repositories."
-msgstr "Geen overeenkomende repository's."
 
 msgid "No MCP servers found"
 msgstr "Geen MCP-servers gevonden"
@@ -11975,6 +12005,9 @@ msgstr "Geen overeenkomende projecten."
 msgid "No projects on this host yet"
 msgstr "Nog geen projecten op deze host"
 
+msgid "No projects to link."
+msgstr "Geen projecten om te koppelen."
+
 msgid "No projects were deleted in the last 30 days."
 msgstr "Er zijn de afgelopen 30 dagen geen projecten verwijderd."
 
@@ -11996,11 +12029,11 @@ msgstr "Geen pull requests gevonden."
 msgid "No release notes at {url}"
 msgstr "Geen releasenotes op {url}"
 
+msgid "No repositories found."
+msgstr "Geen repositories gevonden."
+
 msgid "No repositories found. Make sure your GitHub App has access to repositories."
 msgstr "Geen repository's gevonden. Controleer of je GitHub App toegang heeft tot repository's."
-
-msgid "No repositories. Connect GitHub in Integrations, then refresh."
-msgstr "Geen repositories. Koppel GitHub bij Integraties en vernieuw daarna."
 
 msgid "No results"
 msgstr "Geen resultaten"
@@ -12134,6 +12167,9 @@ msgstr "Geen v1-projecten op dit apparaat gevonden."
 msgid "No v1 terminal scripts found."
 msgstr "Geen v1-terminalscripts gevonden."
 
+msgid "No variables set yet."
+msgstr "Nog geen variabelen ingesteld."
+
 msgid "No versions yet"
 msgstr "Nog geen versies"
 
@@ -12184,6 +12220,9 @@ msgstr "Niemand reviewt er anders door."
 
 msgid "None"
 msgstr "Geen"
+
+msgid "None selected"
+msgstr "Niets geselecteerd"
 
 msgid "None. This is the floor."
 msgstr "Geen. Dit is de bodem."
@@ -13097,12 +13136,6 @@ msgstr "Pagina's openen"
 msgid "Opening worktree..."
 msgstr "Worktree openen..."
 
-msgid "Opens a cloud workspace where an agent installs what the project needs and writes its .superset/config.json"
-msgstr "Opent een cloudwerkruimte waarin een agent installeert wat het project nodig heeft en zijn .superset/config.json schrijft"
-
-msgid "Opens on"
-msgstr "Opent in"
-
 msgid "Operator"
 msgstr "Operator"
 
@@ -13205,6 +13238,9 @@ msgstr "Andere apps"
 
 msgid "Other devices"
 msgstr "Andere apparaten"
+
+msgid "Other environments"
+msgstr "Andere omgevingen"
 
 msgid "Other Hosts"
 msgstr "Andere hosts"
@@ -13422,6 +13458,9 @@ msgstr "Paradev voor je team"
 
 msgid "Paradev forwards the ports a remote workspace opens while you have it selected."
 msgstr "Paradev stuurt de poorten door die een externe werkruimte opent terwijl je die hebt geselecteerd."
+
+msgid "Paradev GitHub App"
+msgstr "Paradev GitHub App"
 
 msgid "Paradev has a free tier. The source code is available on GitHub under Elastic License 2.0 (ELv2), so you can inspect and self-host it subject to the license terms."
 msgstr "Paradev heeft een gratis niveau. De broncode staat op GitHub onder Elastic License 2.0 (ELv2), dus je kunt hem inzien en zelf hosten binnen de licentievoorwaarden."
@@ -13776,6 +13815,9 @@ msgstr "Kies de nieuwe projectmap op {hostName}."
 msgid "Pick the project worktree folder on {hostName}."
 msgstr "Kies de worktree-map van het project op {hostName}."
 
+msgid "Pick the repositories it checks out. An agent on this machine works out what to install and gets it running in the cloud."
+msgstr "Kies de repositories die ze ophaalt. Een agent op deze machine zoekt uit wat er geïnstalleerd moet worden en laat het in de cloud draaien."
+
 msgid "Pick the worktree folder on {hostName}."
 msgstr "Kies de worktree-map op {hostName}."
 
@@ -14090,6 +14132,9 @@ msgstr "Prijzen"
 msgid "Pricing depends on your team and use case. Get in touch and we'll put together a plan that works for you."
 msgstr "De prijs hangt af van je team en use case. Neem contact op, dan stellen we een plan samen dat bij je past."
 
+msgid "primary"
+msgstr "primair"
+
 msgid "Primary"
 msgstr "Primair"
 
@@ -14214,6 +14259,9 @@ msgstr "Project is niet ingesteld op deze host"
 msgid "Project not trusted in Codex"
 msgstr "Project niet vertrouwd in Codex"
 
+msgid "Project on another device"
+msgstr "Project op een ander apparaat"
+
 msgid "Project ready — open it from the sidebar."
 msgstr "Project klaar — open het via de zijbalk."
 
@@ -14249,9 +14297,6 @@ msgstr "De host van het project is onbereikbaar — naam kan nu niet worden gewi
 
 msgid "Projects"
 msgstr "Projecten"
-
-msgid "Promoted from a workspace, so its repositories and region are fixed. Promote a workspace again to change them."
-msgstr "Gepromoveerd vanuit een werkruimte, dus de repository's en regio liggen vast. Promoveer opnieuw een werkruimte om ze te wijzigen."
 
 msgid "Prompt"
 msgstr "Prompt"
@@ -14766,9 +14811,6 @@ msgstr "Statistieken vernieuwen"
 msgid "Refresh pull requests"
 msgstr "Pull requests vernieuwen"
 
-msgid "Refresh repositories"
-msgstr "Repositories vernieuwen"
-
 msgid "Refreshes when Claude Code next runs."
 msgstr "Wordt vernieuwd zodra Claude Code opnieuw draait."
 
@@ -14874,9 +14916,6 @@ msgstr "{label} verwijderen?"
 
 msgid "Remove {name}"
 msgstr "{name} verwijderen"
-
-msgid "Remove {repositoryName}"
-msgstr "{repositoryName} verwijderen"
 
 msgid "Remove attachment"
 msgstr "Bijlage verwijderen"
@@ -16508,6 +16547,9 @@ msgstr "Sessies"
 msgid "Sessions · top {0} by cost"
 msgstr "Sessies · top {0} op kosten"
 
+msgid "Set"
+msgstr "Ingesteld"
+
 msgid "Set a notification schedule"
 msgstr "Meldingsschema instellen"
 
@@ -16540,7 +16582,7 @@ msgstr "Dit project instellen"
 msgid "Set up"
 msgstr "Instellen"
 
-#. placeholder {0}: name.trim()
+#. placeholder {0}: environment.name
 msgid "Set up {0}"
 msgstr "{0} instellen"
 
@@ -16550,9 +16592,6 @@ msgstr "Host instellen via SSH"
 msgid "Set up an automation"
 msgstr "Stel een automatisering in"
 
-msgid "Set up environment"
-msgstr "Omgeving instellen"
-
 msgid "Set up project on {hostName}"
 msgstr "Project instellen op {hostName}"
 
@@ -16561,9 +16600,6 @@ msgstr "Project instellen…"
 
 msgid "Set up this project for Paradev"
 msgstr "Dit project instellen voor Paradev"
-
-msgid "Set up with an agent"
-msgstr "Instellen met een agent"
 
 msgid "Set up your organization to get started"
 msgstr "Stel je organisatie in om te beginnen"
@@ -17115,6 +17151,9 @@ msgstr "Smileys en mensen"
 
 msgid "Smoother onboarding"
 msgstr "Soepelere onboarding"
+
+msgid "Snapshot"
+msgstr "Snapshot"
 
 msgid "Snapshots this workspace as it is now, with everything installed in it. New workspaces from the environment start from that snapshot."
 msgstr "Maakt een snapshot van deze workspace zoals die nu is, met alles wat erin is geïnstalleerd. Nieuwe workspaces uit deze omgeving starten vanaf die snapshot."
@@ -18863,6 +18902,9 @@ msgstr "Dit pad bestaat, maar is geen map."
 msgid "This path is a directory"
 msgstr "Dit pad is een map"
 
+msgid "This permanently removes the saved environment for everyone with access to it. Workspaces already running from it stay available."
+msgstr "De opgeslagen omgeving wordt definitief verwijderd voor iedereen met toegang. Werkruimten die er al vanaf draaien, blijven beschikbaar."
+
 msgid "This port is still in use"
 msgstr "Deze poort is nog in gebruik"
 
@@ -19588,6 +19630,9 @@ msgstr "Onbekende werkruimte"
 
 msgid "Unlimited"
 msgstr "Onbeperkt"
+
+msgid "Unlink project"
+msgstr "Project ontkoppelen"
 
 msgid "Unlink task"
 msgstr "Taak ontkoppelen"
@@ -20929,6 +20974,9 @@ msgstr "Je bent uitgenodigd voor {organization}"
 msgid "you@example.com"
 msgstr "you@example.com"
 
+msgid "Your account can be connected later in Settings → Connections"
+msgstr "Je kunt je account later verbinden in Instellingen → Verbindingen"
+
 msgid "Your account is deactivated and will be permanently deleted soon. Reactivate to restore it exactly as you left it."
 msgstr "Je account is gedeactiveerd en wordt binnenkort definitief verwijderd. Reactiveer het om alles terug te krijgen zoals je het achterliet."
 
@@ -20968,6 +21016,9 @@ msgstr "Je e-mailadres (optioneel)"
 msgid "Your first agent"
 msgstr "Je eerste agent"
 
+msgid "Your GitHub account"
+msgstr "Je GitHub-account"
+
 msgid "Your GitHub account cannot reach a repository in this environment"
 msgstr "Je GitHub-account kan een repository van deze omgeving niet bereiken"
 
@@ -20989,6 +21040,9 @@ msgstr "Je organisatie heeft haar limiet voor cloudgebruik bereikt. Verhoog de l
 #. placeholder {0}: params?.limit
 msgid "Your organization has reached its environment limit ({0}). Archive an environment, or upgrade in Settings, Billing to add more."
 msgstr "Je organisatie heeft haar limiet voor omgevingen ({0}) bereikt. Archiveer een omgeving of upgrade in Instellingen, Facturering om er meer toe te voegen."
+
+msgid "Your organization has reached its limit of {reachedLimit} environments. Archive one to make room."
+msgstr "Je organisatie heeft de limiet van {reachedLimit} omgevingen bereikt. Archiveer er een om ruimte te maken."
 
 msgid "Your organization reached its cloud usage limit. This workspace stops in a few minutes unless the limit is raised."
 msgstr "Je organisatie heeft haar limiet voor cloudgebruik bereikt. Deze werkruimte stopt over een paar minuten, tenzij de limiet wordt verhoogd."

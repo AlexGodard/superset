@@ -531,6 +531,10 @@ msgstr "{0}件のプロジェクト"
 msgid "{0} Running"
 msgstr "{0}件実行中"
 
+#. placeholder {0}: selected.length
+msgid "{0} selected"
+msgstr "{0} 件選択"
+
 #. placeholder {0}: result.killedCount
 msgid "{0} sessions terminated"
 msgstr "{0}件のセッションを終了しました"
@@ -1216,12 +1220,6 @@ msgstr "{received}/{total}"
 msgid "{remaining} tokens left"
 msgstr "残り {remaining} トークン"
 
-msgid "{repositoryFullName} isn't on {installedAccountLogin}, where this organization's GitHub App is installed."
-msgstr "{repositoryFullName} は、この組織の GitHub App がインストールされている {installedAccountLogin} にありません。"
-
-msgid "{repositoryFullName} isn't shared with the Paradev GitHub App yet."
-msgstr "{repositoryFullName} はまだ Paradev の GitHub App と共有されていません。"
-
 msgid "{seconds}s"
 msgstr "{seconds}秒"
 
@@ -1344,6 +1342,9 @@ msgstr "{years}年前"
 #. placeholder {0}: connection.login
 msgid "@{0} · cloud workspaces commit, push and open pull requests as you"
 msgstr "@{0} · クラウドワークスペースはあなたとしてコミット、プッシュ、プルリクエストの作成を行います"
+
+msgid "@{accountLogin}"
+msgstr "@{accountLogin}"
 
 msgid "@superset"
 msgstr "@superset"
@@ -1978,9 +1979,6 @@ msgstr "プロンプトを追加 例: $sentryでクラッシュを探す"
 
 msgid "Add reaction…"
 msgstr "リアクションを追加…"
-
-msgid "Add repository"
-msgstr "リポジトリを追加"
 
 msgid "Add script"
 msgstr "スクリプトを追加"
@@ -2760,6 +2758,9 @@ msgstr "apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx"
 msgid "Archive"
 msgstr "アーカイブ"
 
+msgid "Archive {environmentName}?"
+msgstr "{environmentName} をアーカイブしますか？"
+
 msgid "Archive {name}?"
 msgstr "{name} をアーカイブしますか？"
 
@@ -3215,6 +3216,9 @@ msgstr "{selectedHostLabel}の新規ワークツリーのベースディレク�
 
 msgid "Base directory for new worktrees on {selectedHostName}."
 msgstr "{selectedHostName}の新規ワークツリーのベースディレクトリ。"
+
+msgid "Base image · no checkpoint yet"
+msgstr "ベースイメージ · チェックポイントはまだありません"
 
 msgid "Base URL"
 msgstr "ベースURL"
@@ -3980,6 +3984,10 @@ msgstr "Checkpoint"
 msgid "Checkpoint · before tooltip refactor"
 msgstr "チェックポイント · tooltipリファクタリング前"
 
+#. placeholder {0}: formatRelativeTime(new Date(row.updatedAt))
+msgid "Checkpoint saved {0}"
+msgstr "チェックポイント保存 {0}"
+
 msgid "Checks"
 msgstr "チェック"
 
@@ -4042,6 +4050,9 @@ msgstr "このメッセージで使うMCPサーバーを選択"
 
 msgid "Choose the model"
 msgstr "モデルを選択"
+
+msgid "Choose the primary repository"
+msgstr "メインのリポジトリを選択"
 
 msgid "Choose what to clear from the in-app browser."
 msgstr "アプリ内ブラウザから消去する項目を選択してください。"
@@ -4404,8 +4415,14 @@ msgstr "このターミナルを閉じると実行中のプロセスが終了し
 msgid "Cloud"
 msgstr "クラウド"
 
+msgid "Cloud environment setup"
+msgstr "クラウド環境のセットアップ"
+
 msgid "Cloud environments"
 msgstr "クラウド環境"
+
+msgid "Cloud environments check out your repositories from GitHub. Connect these first; you only do this once."
+msgstr "クラウド環境は GitHub からリポジトリをチェックアウトします。まずこれらを接続してください。一度だけで済みます。"
 
 msgid "Cloud GB-hours per seat each month"
 msgstr "1席あたりの毎月のクラウド GB 時間"
@@ -4429,20 +4446,20 @@ msgstr "クラウドワークスペース"
 msgid "serverError.cloudWorkspace.cloudSandboxesAreInternalOnly"
 msgstr "{account} ではクラウドワークスペースが有効になっていません。Team と Ultra プランで利用できます。設定の請求からアップグレードしてください。"
 
+msgid "Cloud workspaces commit, push and open pull requests as you"
+msgstr "クラウドワークスペースがあなたとしてコミット、プッシュし、プルリクエストを作成します"
+
 msgid "Cloud workspaces ignore this variable. Agents sign in under Settings › Agents instead."
 msgstr "クラウドワークスペースはこの変数を無視します。エージェントは代わりに「設定 › エージェント」でサインインします。"
-
-msgid "Cloud workspaces need a project for now"
-msgstr "現在、クラウドワークスペースにはプロジェクトが必要です"
 
 msgid "Cloud workspaces need the Team or Ultra plan. Upgrade in Settings, Billing to start one."
 msgstr "クラウドワークスペースには Team または Ultra プランが必要です。起動するには設定の請求からアップグレードしてください。"
 
+msgid "Cloud workspaces open on it, and its .superset/config.json runs setup. The others are checked out beside it."
+msgstr "クラウドワークスペースはこのリポジトリで開き、その .superset/config.json がセットアップを実行します。ほかのリポジトリは横にチェックアウトされます。"
+
 msgid "Cloud workspaces will stop running {agentLabel} with it."
 msgstr "クラウドワークスペースはこれを使って{agentLabel}を実行しなくなります。"
-
-msgid "Cloud workspaces without a project are coming. Pick a project for now."
-msgstr "プロジェクトなしのクラウドワークスペースは近日対応予定です。今はプロジェクトを選択してください。"
 
 msgid "Co-founder & CTO, TrainLoop (YC W25)"
 msgstr "共同創業者兼CTO、TrainLoop (YC W25)"
@@ -4679,6 +4696,9 @@ msgstr "config.json は JSON オブジェクトである必要があります"
 msgid "Configure"
 msgstr "設定"
 
+msgid "Configure access"
+msgstr "アクセスを設定"
+
 msgid "Configure agents…"
 msgstr "エージェントを設定…"
 
@@ -4690,9 +4710,6 @@ msgstr "アプリの全般設定"
 
 msgid "Configure git branch and worktree behavior"
 msgstr "gitブランチとワークツリーの動作を設定"
-
-msgid "Configure GitHub App"
-msgstr "GitHub App を設定"
 
 msgid "Configure GitHub App…"
 msgstr "GitHub App を設定…"
@@ -4769,9 +4786,6 @@ msgstr "外部サービスを接続してデータを同期します。"
 
 msgid "Connect GitHub"
 msgstr "GitHub を接続"
-
-msgid "Connect GitHub in Integrations to add {repositoryFullName}."
-msgstr "{repositoryFullName} を追加するには、連携で GitHub を接続してください。"
 
 msgid "Connect GitHub in Settings to act on pull requests as yourself"
 msgstr "自分としてプルリクエストを操作するには、設定で GitHub を接続してください"
@@ -4871,6 +4885,9 @@ msgstr "接続先"
 
 msgid "Connected to {connectedOrgName}"
 msgstr "{connectedOrgName}に接続済み"
+
+msgid "Connected to GitHub as {accountLogin}"
+msgstr "{accountLogin} として GitHub に接続済み"
 
 msgid "Connected via subscription"
 msgstr "サブスクリプションで接続済み"
@@ -5829,6 +5846,9 @@ msgstr "「{newLabel}」を作成"
 msgid "Create a channel"
 msgstr "チャンネルを作成"
 
+msgid "Create a cloud environment"
+msgstr "クラウド環境を作成"
+
 msgid "Create a Dev"
 msgstr "Devを作成"
 
@@ -5985,6 +6005,7 @@ msgctxt "github release action"
 msgid "Created"
 msgstr "作成"
 
+#. placeholder {0}: formatRelativeTime(new Date(row.createdAt))
 #. placeholder {0}: issue.identifier
 #. placeholder {0}: result.task.slug
 msgid "Created {0}"
@@ -7297,11 +7318,11 @@ msgstr "エンタープライズ"
 msgid "Environment"
 msgstr "環境"
 
-msgid "Environment created"
-msgstr "環境を作成しました"
+msgid "Environment archived"
+msgstr "環境をアーカイブしました"
 
-msgid "Environment saved"
-msgstr "環境を保存しました"
+msgid "Environment not found"
+msgstr "環境が見つかりません"
 
 msgid "Environment setup, flaky tests, and credential plumbing, the boring failure modes that killed unattended runs in 2025, are mostly engineered away rather than modeled away."
 msgstr "環境構築、不安定なテスト、認証情報の受け渡し。2025年に無人実行を潰していた退屈な失敗要因は、モデルの進歩ではなくエンジニアリングでほぼ取り除かれます。"
@@ -9563,6 +9584,9 @@ msgstr "すべてのワークスペースにまたがるMCPサーバーのイン
 msgid "Install."
 msgstr "インストール。"
 
+msgid "Installed on {appAccountLogin}"
+msgstr "{appAccountLogin} にインストール済み"
+
 #. js-lingui-explicit-id
 msgid "serverError.plugins.marketplaceHasInstalls"
 msgstr "インストール済みのプラグインが {name} 由来です: {plugins}。先に削除してください。"
@@ -10225,6 +10249,9 @@ msgstr "1分未満前"
 msgid "Let the agent drive."
 msgstr "エージェントに操作させる。"
 
+msgid "Lets your organization list and clone repositories"
+msgstr "組織がリポジトリを一覧表示してクローンできるようにします"
+
 msgid "Letter spacing (px)"
 msgstr "字間 (px)"
 
@@ -10346,6 +10373,9 @@ msgstr "このタスクをリンク"
 
 msgid "Linked {slug} to workspace"
 msgstr "{slug}をワークスペースにリンクしました"
+
+msgid "Linked to {projectName}"
+msgstr "{projectName} にリンク済み"
 
 msgid "Liquid Glass"
 msgstr "Liquid Glass"
@@ -10684,6 +10714,9 @@ msgstr "アカウントを管理…"
 
 msgid "Manage billing"
 msgstr "請求を管理"
+
+msgid "Manage environments"
+msgstr "環境を管理"
 
 msgid "Manage integrations in the web app to connect and configure services."
 msgstr "Webアプリで連携を管理し、サービスを接続・設定します。"
@@ -11026,6 +11059,9 @@ msgstr "未実行"
 
 msgid "Missed <0>· 7d</0>"
 msgstr "未実行 <0>· 7日</0>"
+
+msgid "Missing a repository?"
+msgstr "リポジトリが見つからない場合"
 
 msgid "Missing authorization code. Re-run"
 msgstr "認可コードがありません。再実行してください"
@@ -11704,17 +11740,14 @@ msgstr "ダウンロードはまだありません"
 msgid "No emoji found"
 msgstr "絵文字が見つかりません"
 
-msgid "No environment for {repositoryFullName}"
-msgstr "{repositoryFullName} の環境はありません"
+msgid "No environments are linked to this project yet."
+msgstr "このプロジェクトにリンクされた環境はまだありません。"
 
 msgid "No environments available"
 msgstr "利用可能な環境はありません"
 
 msgid "No environments found."
 msgstr "環境が見つかりません。"
-
-msgid "No environments yet"
-msgstr "環境はまだありません"
 
 msgid "No environments yet."
 msgstr "環境はまだありません。作成すると、そこからクラウドワークスペースを起動できます。"
@@ -11835,9 +11868,6 @@ msgstr "一致する組織メンバーがいません。"
 
 msgid "No matching pages"
 msgstr "一致するページはありません"
-
-msgid "No matching repositories."
-msgstr "一致するリポジトリがありません。"
 
 msgid "No MCP servers found"
 msgstr "MCPサーバーが見つかりません"
@@ -11975,6 +12005,9 @@ msgstr "一致するプロジェクトがありません。"
 msgid "No projects on this host yet"
 msgstr "このホストにはまだプロジェクトがありません"
 
+msgid "No projects to link."
+msgstr "リンクできるプロジェクトはありません。"
+
 msgid "No projects were deleted in the last 30 days."
 msgstr "過去 30 日間に削除されたプロジェクトはありません。"
 
@@ -11996,11 +12029,11 @@ msgstr "プルリクエストが見つかりません。"
 msgid "No release notes at {url}"
 msgstr "{url} にリリースノートがありません"
 
+msgid "No repositories found."
+msgstr "リポジトリが見つかりません。"
+
 msgid "No repositories found. Make sure your GitHub App has access to repositories."
 msgstr "リポジトリが見つかりません。GitHub Appにリポジトリへのアクセス権があるか確認してください。"
-
-msgid "No repositories. Connect GitHub in Integrations, then refresh."
-msgstr "リポジトリがありません。「連携」で GitHub を接続してから更新してください。"
 
 msgid "No results"
 msgstr "結果がありません"
@@ -12134,6 +12167,9 @@ msgstr "このデバイスにv1プロジェクトが見つかりません。"
 msgid "No v1 terminal scripts found."
 msgstr "v1ターミナルスクリプトが見つかりません。"
 
+msgid "No variables set yet."
+msgstr "変数はまだ設定されていません。"
+
 msgid "No versions yet"
 msgstr "バージョンはまだありません"
 
@@ -12184,6 +12220,9 @@ msgstr "それによってレビューのやり方が変わることはない。
 
 msgid "None"
 msgstr "なし"
+
+msgid "None selected"
+msgstr "未選択"
 
 msgid "None. This is the floor."
 msgstr "なし。ここが出発点です。"
@@ -13097,12 +13136,6 @@ msgstr "ページを開く"
 msgid "Opening worktree..."
 msgstr "ワークツリーを開いています..."
 
-msgid "Opens a cloud workspace where an agent installs what the project needs and writes its .superset/config.json"
-msgstr "クラウドワークスペースを開き、エージェントがプロジェクトに必要なものをインストールして .superset/config.json を書き込みます"
-
-msgid "Opens on"
-msgstr "開くリポジトリ"
-
 msgid "Operator"
 msgstr "オペレーター"
 
@@ -13205,6 +13238,9 @@ msgstr "他のアプリ"
 
 msgid "Other devices"
 msgstr "その他のデバイス"
+
+msgid "Other environments"
+msgstr "その他の環境"
 
 msgid "Other Hosts"
 msgstr "その他のホスト"
@@ -13422,6 +13458,9 @@ msgstr "チームのためのParadev"
 
 msgid "Paradev forwards the ports a remote workspace opens while you have it selected."
 msgstr "リモートワークスペースを選択している間、Paradevはそのワークスペースが開くポートを転送します。"
+
+msgid "Paradev GitHub App"
+msgstr "Paradev GitHub App"
 
 msgid "Paradev has a free tier. The source code is available on GitHub under Elastic License 2.0 (ELv2), so you can inspect and self-host it subject to the license terms."
 msgstr "Paradevには無料プランがあります。ソースコードはElastic License 2.0(ELv2)のもとGitHubで公開されており、ライセンス条件の範囲で内容を確認したりセルフホストしたりできます。"
@@ -13776,6 +13815,9 @@ msgstr "{hostName}の新しいプロジェクトフォルダを選択してく�
 msgid "Pick the project worktree folder on {hostName}."
 msgstr "{hostName}のプロジェクトのワークツリーフォルダを選択してください。"
 
+msgid "Pick the repositories it checks out. An agent on this machine works out what to install and gets it running in the cloud."
+msgstr "チェックアウトするリポジトリを選んでください。このマシン上のエージェントが必要なものを判断し、クラウドで動く状態にします。"
+
 msgid "Pick the worktree folder on {hostName}."
 msgstr "{hostName}のワークツリーフォルダを選択してください。"
 
@@ -14090,6 +14132,9 @@ msgstr "料金"
 msgid "Pricing depends on your team and use case. Get in touch and we'll put together a plan that works for you."
 msgstr "料金はチームの規模と用途によって異なります。ご連絡いただければ、最適なプランをご提案します。"
 
+msgid "primary"
+msgstr "メイン"
+
 msgid "Primary"
 msgstr "プライマリ"
 
@@ -14214,6 +14259,9 @@ msgstr "このホストにプロジェクトがセットアップされていま
 msgid "Project not trusted in Codex"
 msgstr "Codexで信頼されていないプロジェクト"
 
+msgid "Project on another device"
+msgstr "別のデバイスのプロジェクト"
+
 msgid "Project ready — open it from the sidebar."
 msgstr "プロジェクトの準備ができました — サイドバーから開いてください。"
 
@@ -14249,9 +14297,6 @@ msgstr "プロジェクトのホストに到達できません — 今は名前�
 
 msgid "Projects"
 msgstr "プロジェクト"
-
-msgid "Promoted from a workspace, so its repositories and region are fixed. Promote a workspace again to change them."
-msgstr "ワークスペースから昇格したため、リポジトリとリージョンは固定です。変更するには再度ワークスペースを昇格してください。"
 
 msgid "Prompt"
 msgstr "プロンプト"
@@ -14766,9 +14811,6 @@ msgstr "メトリクスを更新"
 msgid "Refresh pull requests"
 msgstr "プルリクエストを更新"
 
-msgid "Refresh repositories"
-msgstr "リポジトリを更新"
-
 msgid "Refreshes when Claude Code next runs."
 msgstr "次に Claude Code を実行すると更新されます。"
 
@@ -14874,9 +14916,6 @@ msgstr "{label}を削除しますか?"
 
 msgid "Remove {name}"
 msgstr "{name} を削除"
-
-msgid "Remove {repositoryName}"
-msgstr "{repositoryName} を削除"
 
 msgid "Remove attachment"
 msgstr "添付ファイルを削除"
@@ -16508,6 +16547,9 @@ msgstr "セッション"
 msgid "Sessions · top {0} by cost"
 msgstr "セッション · コスト上位{0}件"
 
+msgid "Set"
+msgstr "設定済み"
+
 msgid "Set a notification schedule"
 msgstr "通知スケジュールを設定"
 
@@ -16540,7 +16582,7 @@ msgstr "このプロジェクトに設定"
 msgid "Set up"
 msgstr "設定する"
 
-#. placeholder {0}: name.trim()
+#. placeholder {0}: environment.name
 msgid "Set up {0}"
 msgstr "{0} をセットアップ"
 
@@ -16550,9 +16592,6 @@ msgstr "SSH でホストを設定"
 msgid "Set up an automation"
 msgstr "自動化を設定する"
 
-msgid "Set up environment"
-msgstr "環境をセットアップ"
-
 msgid "Set up project on {hostName}"
 msgstr "{hostName}でプロジェクトをセットアップ"
 
@@ -16561,9 +16600,6 @@ msgstr "プロジェクトをセットアップ…"
 
 msgid "Set up this project for Paradev"
 msgstr "このプロジェクトをParadev向けにセットアップ"
-
-msgid "Set up with an agent"
-msgstr "エージェントでセットアップ"
 
 msgid "Set up your organization to get started"
 msgstr "組織をセットアップして始めましょう"
@@ -17115,6 +17151,9 @@ msgstr "スマイリーと人"
 
 msgid "Smoother onboarding"
 msgstr "よりスムーズなオンボーディング"
+
+msgid "Snapshot"
+msgstr "スナップショット"
 
 msgid "Snapshots this workspace as it is now, with everything installed in it. New workspaces from the environment start from that snapshot."
 msgstr "このワークスペースを、インストール済みのものも含めて現在の状態でスナップショットします。この環境から作る新しいワークスペースは、そのスナップショットから始まります。"
@@ -18863,6 +18902,9 @@ msgstr "このパスは存在しますが、ディレクトリではありませ
 msgid "This path is a directory"
 msgstr "このパスはディレクトリです"
 
+msgid "This permanently removes the saved environment for everyone with access to it. Workspaces already running from it stay available."
+msgstr "保存された環境は、アクセスできるすべてのユーザーから完全に削除されます。この環境からすでに実行中のワークスペースは引き続き利用できます。"
+
 msgid "This port is still in use"
 msgstr "このポートはまだ使用中です"
 
@@ -19588,6 +19630,9 @@ msgstr "不明なワークスペース"
 
 msgid "Unlimited"
 msgstr "無制限"
+
+msgid "Unlink project"
+msgstr "プロジェクトのリンクを解除"
 
 msgid "Unlink task"
 msgstr "タスクのリンクを解除"
@@ -20929,6 +20974,9 @@ msgstr "{organization}への招待が届いています"
 msgid "you@example.com"
 msgstr "you@example.com"
 
+msgid "Your account can be connected later in Settings → Connections"
+msgstr "アカウントは後で 設定 → 接続 から接続できます"
+
 msgid "Your account is deactivated and will be permanently deleted soon. Reactivate to restore it exactly as you left it."
 msgstr "アカウントは無効化されており、まもなく完全に削除されます。再有効化すると元の状態に戻ります。"
 
@@ -20968,6 +21016,9 @@ msgstr "メールアドレス（任意）"
 msgid "Your first agent"
 msgstr "最初のエージェント"
 
+msgid "Your GitHub account"
+msgstr "あなたの GitHub アカウント"
+
 msgid "Your GitHub account cannot reach a repository in this environment"
 msgstr "あなたの GitHub アカウントはこの環境のリポジトリにアクセスできません"
 
@@ -20989,6 +21040,9 @@ msgstr "組織がクラウドの利用上限に達しました。このワーク
 #. placeholder {0}: params?.limit
 msgid "Your organization has reached its environment limit ({0}). Archive an environment, or upgrade in Settings, Billing to add more."
 msgstr "組織が環境数の上限（{0}）に達しました。環境をアーカイブするか、「設定」の「請求」でアップグレードして追加してください。"
+
+msgid "Your organization has reached its limit of {reachedLimit} environments. Archive one to make room."
+msgstr "組織の環境数が上限の {reachedLimit} に達しました。空きを作るには 1 つアーカイブしてください。"
 
 msgid "Your organization reached its cloud usage limit. This workspace stops in a few minutes unless the limit is raised."
 msgstr "組織がクラウドの利用上限に達しました。上限を引き上げない限り、このワークスペースは数分後に停止します。"

@@ -531,6 +531,10 @@ msgstr "{0} proyek"
 msgid "{0} Running"
 msgstr "{0} Berjalan"
 
+#. placeholder {0}: selected.length
+msgid "{0} selected"
+msgstr "{0} dipilih"
+
 #. placeholder {0}: result.killedCount
 msgid "{0} sessions terminated"
 msgstr "{0} sesi dihentikan"
@@ -1216,12 +1220,6 @@ msgstr "{received} dari {total}"
 msgid "{remaining} tokens left"
 msgstr "Sisa {remaining} token"
 
-msgid "{repositoryFullName} isn't on {installedAccountLogin}, where this organization's GitHub App is installed."
-msgstr "{repositoryFullName} tidak ada di {installedAccountLogin}, tempat GitHub App organisasi ini dipasang."
-
-msgid "{repositoryFullName} isn't shared with the Paradev GitHub App yet."
-msgstr "{repositoryFullName} belum dibagikan ke GitHub App Paradev."
-
 msgid "{seconds}s"
 msgstr "{seconds} dtk"
 
@@ -1344,6 +1342,9 @@ msgstr "{years}thn lalu"
 #. placeholder {0}: connection.login
 msgid "@{0} · cloud workspaces commit, push and open pull requests as you"
 msgstr "@{0} · workspace cloud melakukan commit, push, dan membuka pull request atas nama Anda"
+
+msgid "@{accountLogin}"
+msgstr "@{accountLogin}"
 
 msgid "@superset"
 msgstr "@superset"
@@ -1978,9 +1979,6 @@ msgstr "Tambahkan prompt, mis. cari crash di $sentry"
 
 msgid "Add reaction…"
 msgstr "Tambahkan reaksi…"
-
-msgid "Add repository"
-msgstr "Tambah repositori"
 
 msgid "Add script"
 msgstr "Tambah skrip"
@@ -2760,6 +2758,9 @@ msgstr "apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx"
 msgid "Archive"
 msgstr "Arsipkan"
 
+msgid "Archive {environmentName}?"
+msgstr "Arsipkan {environmentName}?"
+
 msgid "Archive {name}?"
 msgstr "Arsipkan {name}?"
 
@@ -3215,6 +3216,9 @@ msgstr "Direktori dasar untuk worktree baru di {selectedHostLabel}"
 
 msgid "Base directory for new worktrees on {selectedHostName}."
 msgstr "Direktori dasar untuk worktree baru di {selectedHostName}."
+
+msgid "Base image · no checkpoint yet"
+msgstr "Image dasar · belum ada checkpoint"
 
 msgid "Base URL"
 msgstr "URL dasar"
@@ -3980,6 +3984,10 @@ msgstr "Checkpoint"
 msgid "Checkpoint · before tooltip refactor"
 msgstr "Checkpoint · sebelum refactor tooltip"
 
+#. placeholder {0}: formatRelativeTime(new Date(row.updatedAt))
+msgid "Checkpoint saved {0}"
+msgstr "Checkpoint tersimpan {0}"
+
 msgid "Checks"
 msgstr "Check"
 
@@ -4042,6 +4050,9 @@ msgstr "Pilih server MCP untuk pesan ini"
 
 msgid "Choose the model"
 msgstr "Pilih model"
+
+msgid "Choose the primary repository"
+msgstr "Pilih repositori utama"
 
 msgid "Choose what to clear from the in-app browser."
 msgstr "Pilih apa yang ingin dibersihkan dari browser dalam aplikasi."
@@ -4404,8 +4415,14 @@ msgstr "Menutup terminal ini akan menghentikan proses yang berjalan."
 msgid "Cloud"
 msgstr "Cloud"
 
+msgid "Cloud environment setup"
+msgstr "Penyiapan environment cloud"
+
 msgid "Cloud environments"
 msgstr "Environment cloud"
+
+msgid "Cloud environments check out your repositories from GitHub. Connect these first; you only do this once."
+msgstr "Environment cloud mengambil repositori Anda dari GitHub. Hubungkan ini dulu; Anda hanya melakukannya sekali."
 
 msgid "Cloud GB-hours per seat each month"
 msgstr "GB-jam cloud per kursi setiap bulan"
@@ -4429,20 +4446,20 @@ msgstr "Workspace cloud"
 msgid "serverError.cloudWorkspace.cloudSandboxesAreInternalOnly"
 msgstr "Workspace cloud tidak diaktifkan untuk {account}. Workspace cloud tersedia di paket Team dan Ultra: upgrade di Pengaturan, Penagihan."
 
+msgid "Cloud workspaces commit, push and open pull requests as you"
+msgstr "Workspace cloud melakukan commit, push, dan membuka pull request atas nama Anda"
+
 msgid "Cloud workspaces ignore this variable. Agents sign in under Settings › Agents instead."
 msgstr "Workspace cloud mengabaikan variabel ini. Agen masuk melalui Pengaturan › Agen sebagai gantinya."
-
-msgid "Cloud workspaces need a project for now"
-msgstr "Workspace cloud perlu proyek untuk saat ini"
 
 msgid "Cloud workspaces need the Team or Ultra plan. Upgrade in Settings, Billing to start one."
 msgstr "Workspace cloud memerlukan paket Team atau Ultra. Upgrade di Pengaturan, Penagihan untuk memulainya."
 
+msgid "Cloud workspaces open on it, and its .superset/config.json runs setup. The others are checked out beside it."
+msgstr "Workspace cloud dibuka di repositori ini, dan .superset/config.json miliknya menjalankan penyiapan. Yang lain diambil di sampingnya."
+
 msgid "Cloud workspaces will stop running {agentLabel} with it."
 msgstr "Workspace cloud tidak lagi menjalankan {agentLabel} dengannya."
-
-msgid "Cloud workspaces without a project are coming. Pick a project for now."
-msgstr "Workspace cloud tanpa proyek akan segera hadir. Pilih proyek untuk saat ini."
 
 msgid "Co-founder & CTO, TrainLoop (YC W25)"
 msgstr "Pendiri bersama & CTO, TrainLoop (YC W25)"
@@ -4679,6 +4696,9 @@ msgstr "config.json harus berupa objek JSON"
 msgid "Configure"
 msgstr "Atur"
 
+msgid "Configure access"
+msgstr "Atur akses"
+
 msgid "Configure agents…"
 msgstr "Atur agen…"
 
@@ -4690,9 +4710,6 @@ msgstr "Atur preferensi umum aplikasi"
 
 msgid "Configure git branch and worktree behavior"
 msgstr "Atur perilaku branch git dan worktree"
-
-msgid "Configure GitHub App"
-msgstr "Konfigurasi GitHub App"
 
 msgid "Configure GitHub App…"
 msgstr "Konfigurasi GitHub App…"
@@ -4769,9 +4786,6 @@ msgstr "Hubungkan layanan eksternal untuk menyinkronkan data."
 
 msgid "Connect GitHub"
 msgstr "Hubungkan GitHub"
-
-msgid "Connect GitHub in Integrations to add {repositoryFullName}."
-msgstr "Hubungkan GitHub di Integrasi untuk menambahkan {repositoryFullName}."
 
 msgid "Connect GitHub in Settings to act on pull requests as yourself"
 msgstr "Hubungkan GitHub di Pengaturan untuk bertindak pada pull request atas nama Anda sendiri"
@@ -4871,6 +4885,9 @@ msgstr "Terhubung ke"
 
 msgid "Connected to {connectedOrgName}"
 msgstr "Terhubung ke {connectedOrgName}"
+
+msgid "Connected to GitHub as {accountLogin}"
+msgstr "Terhubung ke GitHub sebagai {accountLogin}"
 
 msgid "Connected via subscription"
 msgstr "Terhubung lewat langganan"
@@ -5829,6 +5846,9 @@ msgstr "Buat \"{newLabel}\""
 msgid "Create a channel"
 msgstr "Buat kanal"
 
+msgid "Create a cloud environment"
+msgstr "Buat environment cloud"
+
 msgid "Create a Dev"
 msgstr "Buat Dev"
 
@@ -5985,6 +6005,7 @@ msgctxt "github release action"
 msgid "Created"
 msgstr "Dibuat"
 
+#. placeholder {0}: formatRelativeTime(new Date(row.createdAt))
 #. placeholder {0}: issue.identifier
 #. placeholder {0}: result.task.slug
 msgid "Created {0}"
@@ -7297,11 +7318,11 @@ msgstr "Enterprise"
 msgid "Environment"
 msgstr "Lingkungan"
 
-msgid "Environment created"
-msgstr "Environment dibuat"
+msgid "Environment archived"
+msgstr "Environment diarsipkan"
 
-msgid "Environment saved"
-msgstr "Environment disimpan"
+msgid "Environment not found"
+msgstr "Environment tidak ditemukan"
 
 msgid "Environment setup, flaky tests, and credential plumbing, the boring failure modes that killed unattended runs in 2025, are mostly engineered away rather than modeled away."
 msgstr "Penyiapan environment, tes flaky, dan urusan kredensial — mode kegagalan membosankan yang mematikan run tanpa pengawasan pada 2025 — sebagian besar diselesaikan lewat rekayasa, bukan lewat model."
@@ -9563,6 +9584,9 @@ msgstr "Pasang, otorisasi, dan atur cakupan server MCP di semua workspace Anda d
 msgid "Install."
 msgstr "Instal."
 
+msgid "Installed on {appAccountLogin}"
+msgstr "Terpasang di {appAccountLogin}"
+
 #. js-lingui-explicit-id
 msgid "serverError.plugins.marketplaceHasInstalls"
 msgstr "Plugin yang terpasang berasal dari {name}: {plugins}. Hapus dulu."
@@ -10225,6 +10249,9 @@ msgstr "kurang dari semenit lalu"
 msgid "Let the agent drive."
 msgstr "Biarkan agen yang mengemudi."
 
+msgid "Lets your organization list and clone repositories"
+msgstr "Memungkinkan organisasi Anda menampilkan dan mengkloning repositori"
+
 msgid "Letter spacing (px)"
 msgstr "Jarak huruf (px)"
 
@@ -10346,6 +10373,9 @@ msgstr "Tautkan tugas ini"
 
 msgid "Linked {slug} to workspace"
 msgstr "{slug} ditautkan ke workspace"
+
+msgid "Linked to {projectName}"
+msgstr "Tertaut ke {projectName}"
 
 msgid "Liquid Glass"
 msgstr "Liquid Glass"
@@ -10684,6 +10714,9 @@ msgstr "Kelola akun…"
 
 msgid "Manage billing"
 msgstr "Kelola penagihan"
+
+msgid "Manage environments"
+msgstr "Kelola environment"
 
 msgid "Manage integrations in the web app to connect and configure services."
 msgstr "Kelola integrasi di aplikasi web untuk menghubungkan dan mengatur layanan."
@@ -11026,6 +11059,9 @@ msgstr "Terlewat"
 
 msgid "Missed <0>· 7d</0>"
 msgstr "Terlewat <0>· 7h</0>"
+
+msgid "Missing a repository?"
+msgstr "Ada repositori yang hilang?"
 
 msgid "Missing authorization code. Re-run"
 msgstr "Kode otorisasi tidak ada. Jalankan ulang"
@@ -11704,17 +11740,14 @@ msgstr "Belum ada unduhan"
 msgid "No emoji found"
 msgstr "Emoji tidak ditemukan"
 
-msgid "No environment for {repositoryFullName}"
-msgstr "Tidak ada lingkungan untuk {repositoryFullName}"
+msgid "No environments are linked to this project yet."
+msgstr "Belum ada environment yang tertaut ke proyek ini."
 
 msgid "No environments available"
 msgstr "Tidak ada environment yang tersedia"
 
 msgid "No environments found."
 msgstr "Environment tidak ditemukan."
-
-msgid "No environments yet"
-msgstr "Belum ada lingkungan"
 
 msgid "No environments yet."
 msgstr "Belum ada environment. Buat satu untuk memulai workspace cloud darinya."
@@ -11835,9 +11868,6 @@ msgstr "Tidak ada anggota organisasi yang cocok."
 
 msgid "No matching pages"
 msgstr "Tidak ada halaman yang cocok"
-
-msgid "No matching repositories."
-msgstr "Tidak ada repositori yang cocok."
 
 msgid "No MCP servers found"
 msgstr "Tidak ada server MCP"
@@ -11975,6 +12005,9 @@ msgstr "Tidak ada proyek yang cocok."
 msgid "No projects on this host yet"
 msgstr "Belum ada proyek di host ini"
 
+msgid "No projects to link."
+msgstr "Tidak ada proyek untuk ditautkan."
+
 msgid "No projects were deleted in the last 30 days."
 msgstr "Tidak ada proyek yang dihapus dalam 30 hari terakhir."
 
@@ -11996,11 +12029,11 @@ msgstr "Tidak ada pull request ditemukan."
 msgid "No release notes at {url}"
 msgstr "Tidak ada catatan rilis di {url}"
 
+msgid "No repositories found."
+msgstr "Repositori tidak ditemukan."
+
 msgid "No repositories found. Make sure your GitHub App has access to repositories."
 msgstr "Tidak ada repositori ditemukan. Pastikan GitHub App Anda punya akses ke repositori."
-
-msgid "No repositories. Connect GitHub in Integrations, then refresh."
-msgstr "Tidak ada repositori. Hubungkan GitHub di Integrasi, lalu segarkan."
 
 msgid "No results"
 msgstr "Tidak ada hasil"
@@ -12134,6 +12167,9 @@ msgstr "Tidak ada proyek v1 di perangkat ini."
 msgid "No v1 terminal scripts found."
 msgstr "Tidak ada skrip terminal v1."
 
+msgid "No variables set yet."
+msgstr "Belum ada variabel yang diatur."
+
 msgid "No versions yet"
 msgstr "Belum ada versi"
 
@@ -12184,6 +12220,9 @@ msgstr "Tidak ada yang mereview secara berbeda karenanya."
 
 msgid "None"
 msgstr "Tidak ada"
+
+msgid "None selected"
+msgstr "Tidak ada yang dipilih"
 
 msgid "None. This is the floor."
 msgstr "Tidak ada. Ini adalah lantai dasarnya."
@@ -13097,12 +13136,6 @@ msgstr "Membuka halaman"
 msgid "Opening worktree..."
 msgstr "Membuka worktree..."
 
-msgid "Opens a cloud workspace where an agent installs what the project needs and writes its .superset/config.json"
-msgstr "Membuka workspace cloud tempat agen memasang yang dibutuhkan proyek dan menulis .superset/config.json miliknya"
-
-msgid "Opens on"
-msgstr "Dibuka di"
-
 msgid "Operator"
 msgstr "Operator"
 
@@ -13205,6 +13238,9 @@ msgstr "Aplikasi lain"
 
 msgid "Other devices"
 msgstr "Perangkat lain"
+
+msgid "Other environments"
+msgstr "Environment lain"
 
 msgid "Other Hosts"
 msgstr "Host Lain"
@@ -13422,6 +13458,9 @@ msgstr "Paradev untuk tim Anda"
 
 msgid "Paradev forwards the ports a remote workspace opens while you have it selected."
 msgstr "Paradev meneruskan port yang dibuka workspace jarak jauh selama workspace itu Anda pilih."
+
+msgid "Paradev GitHub App"
+msgstr "Paradev GitHub App"
 
 msgid "Paradev has a free tier. The source code is available on GitHub under Elastic License 2.0 (ELv2), so you can inspect and self-host it subject to the license terms."
 msgstr "Paradev punya paket gratis. Kode sumbernya tersedia di GitHub dengan Elastic License 2.0 (ELv2), jadi Anda bisa memeriksanya dan meng-host sendiri sesuai ketentuan lisensinya."
@@ -13776,6 +13815,9 @@ msgstr "Pilih folder proyek yang baru di {hostName}."
 msgid "Pick the project worktree folder on {hostName}."
 msgstr "Pilih folder worktree proyek di {hostName}."
 
+msgid "Pick the repositories it checks out. An agent on this machine works out what to install and gets it running in the cloud."
+msgstr "Pilih repositori yang diambilnya. Agen di mesin ini mencari tahu apa yang perlu dipasang dan menjalankannya di cloud."
+
 msgid "Pick the worktree folder on {hostName}."
 msgstr "Pilih folder worktree di {hostName}."
 
@@ -14090,6 +14132,9 @@ msgstr "Harga"
 msgid "Pricing depends on your team and use case. Get in touch and we'll put together a plan that works for you."
 msgstr "Harga tergantung tim dan kasus penggunaan Anda. Hubungi kami dan kami akan menyusun paket yang cocok untuk Anda."
 
+msgid "primary"
+msgstr "utama"
+
 msgid "Primary"
 msgstr "Primer"
 
@@ -14214,6 +14259,9 @@ msgstr "Proyek belum disiapkan di host ini"
 msgid "Project not trusted in Codex"
 msgstr "Proyek tidak dipercaya di Codex"
 
+msgid "Project on another device"
+msgstr "Proyek di perangkat lain"
+
 msgid "Project ready — open it from the sidebar."
 msgstr "Proyek siap — buka dari sidebar."
 
@@ -14249,9 +14297,6 @@ msgstr "Host proyek tidak bisa dijangkau — tidak bisa ganti nama sekarang"
 
 msgid "Projects"
 msgstr "Proyek"
-
-msgid "Promoted from a workspace, so its repositories and region are fixed. Promote a workspace again to change them."
-msgstr "Dipromosikan dari workspace, jadi repositori dan regionnya tetap. Promosikan workspace lagi untuk mengubahnya."
 
 msgid "Prompt"
 msgstr "Prompt"
@@ -14766,9 +14811,6 @@ msgstr "Segarkan metrik"
 msgid "Refresh pull requests"
 msgstr "Segarkan pull request"
 
-msgid "Refresh repositories"
-msgstr "Segarkan repositori"
-
 msgid "Refreshes when Claude Code next runs."
 msgstr "Diperbarui saat Claude Code berikutnya dijalankan."
 
@@ -14874,9 +14916,6 @@ msgstr "Hapus {label}?"
 
 msgid "Remove {name}"
 msgstr "Hapus {name}"
-
-msgid "Remove {repositoryName}"
-msgstr "Hapus {repositoryName}"
 
 msgid "Remove attachment"
 msgstr "Hapus lampiran"
@@ -16508,6 +16547,9 @@ msgstr "Sesi"
 msgid "Sessions · top {0} by cost"
 msgstr "Sesi · {0} teratas menurut biaya"
 
+msgid "Set"
+msgstr "Diatur"
+
 msgid "Set a notification schedule"
 msgstr "Atur jadwal notifikasi"
 
@@ -16540,7 +16582,7 @@ msgstr "Tetapkan proyek ini"
 msgid "Set up"
 msgstr "Siapkan"
 
-#. placeholder {0}: name.trim()
+#. placeholder {0}: environment.name
 msgid "Set up {0}"
 msgstr "Siapkan {0}"
 
@@ -16550,9 +16592,6 @@ msgstr "Siapkan host lewat SSH"
 msgid "Set up an automation"
 msgstr "Siapkan otomatisasi"
 
-msgid "Set up environment"
-msgstr "Siapkan lingkungan"
-
 msgid "Set up project on {hostName}"
 msgstr "Siapkan proyek di {hostName}"
 
@@ -16561,9 +16600,6 @@ msgstr "Siapkan proyek…"
 
 msgid "Set up this project for Paradev"
 msgstr "Siapkan proyek ini untuk Paradev"
-
-msgid "Set up with an agent"
-msgstr "Siapkan dengan agen"
 
 msgid "Set up your organization to get started"
 msgstr "Siapkan organisasi Anda untuk memulai"
@@ -17115,6 +17151,9 @@ msgstr "Smiley & Orang"
 
 msgid "Smoother onboarding"
 msgstr "Onboarding yang lebih mulus"
+
+msgid "Snapshot"
+msgstr "Snapshot"
 
 msgid "Snapshots this workspace as it is now, with everything installed in it. New workspaces from the environment start from that snapshot."
 msgstr "Membuat snapshot workspace ini seperti sekarang, beserta semua yang terpasang di dalamnya. Workspace baru dari environment ini dimulai dari snapshot tersebut."
@@ -18863,6 +18902,9 @@ msgstr "Path ini ada, tapi bukan direktori."
 msgid "This path is a directory"
 msgstr "Path ini adalah direktori"
 
+msgid "This permanently removes the saved environment for everyone with access to it. Workspaces already running from it stay available."
+msgstr "Ini menghapus environment tersimpan secara permanen untuk semua orang yang memiliki akses. Workspace yang sudah berjalan darinya tetap tersedia."
+
 msgid "This port is still in use"
 msgstr "Port ini masih dipakai"
 
@@ -19588,6 +19630,9 @@ msgstr "Workspace tidak dikenal"
 
 msgid "Unlimited"
 msgstr "Tanpa batas"
+
+msgid "Unlink project"
+msgstr "Lepaskan tautan proyek"
 
 msgid "Unlink task"
 msgstr "Lepaskan tautan tugas"
@@ -20929,6 +20974,9 @@ msgstr "Anda diundang bergabung ke {organization}"
 msgid "you@example.com"
 msgstr "you@example.com"
 
+msgid "Your account can be connected later in Settings → Connections"
+msgstr "Akun Anda bisa dihubungkan nanti di Pengaturan → Koneksi"
+
 msgid "Your account is deactivated and will be permanently deleted soon. Reactivate to restore it exactly as you left it."
 msgstr "Akun Anda dinonaktifkan dan akan segera dihapus permanen. Aktifkan kembali untuk memulihkannya persis seperti yang Anda tinggalkan."
 
@@ -20968,6 +21016,9 @@ msgstr "Email Anda (opsional)"
 msgid "Your first agent"
 msgstr "Agen pertama Anda"
 
+msgid "Your GitHub account"
+msgstr "Akun GitHub Anda"
+
 msgid "Your GitHub account cannot reach a repository in this environment"
 msgstr "Akun GitHub Anda tidak dapat menjangkau repositori di environment ini"
 
@@ -20989,6 +21040,9 @@ msgstr "Organisasi Anda telah mencapai batas penggunaan cloud. Naikkan batas ata
 #. placeholder {0}: params?.limit
 msgid "Your organization has reached its environment limit ({0}). Archive an environment, or upgrade in Settings, Billing to add more."
 msgstr "Organisasi Anda telah mencapai batas lingkungan ({0}). Arsipkan satu lingkungan, atau upgrade di Pengaturan, Penagihan untuk menambah lagi."
+
+msgid "Your organization has reached its limit of {reachedLimit} environments. Archive one to make room."
+msgstr "Organisasi Anda telah mencapai batas {reachedLimit} environment. Arsipkan satu untuk memberi ruang."
 
 msgid "Your organization reached its cloud usage limit. This workspace stops in a few minutes unless the limit is raised."
 msgstr "Organisasi Anda telah mencapai batas penggunaan cloud. Workspace ini akan berhenti dalam beberapa menit kecuali batasnya dinaikkan."

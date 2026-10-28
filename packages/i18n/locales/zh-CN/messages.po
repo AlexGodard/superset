@@ -531,6 +531,10 @@ msgstr "{0}个项目"
 msgid "{0} Running"
 msgstr "{0}项运行中"
 
+#. placeholder {0}: selected.length
+msgid "{0} selected"
+msgstr "已选择 {0} 个"
+
 #. placeholder {0}: result.killedCount
 msgid "{0} sessions terminated"
 msgstr "已终止{0}个会话"
@@ -1216,12 +1220,6 @@ msgstr "{received}/{total}"
 msgid "{remaining} tokens left"
 msgstr "剩余 {remaining} 个 token"
 
-msgid "{repositoryFullName} isn't on {installedAccountLogin}, where this organization's GitHub App is installed."
-msgstr "{repositoryFullName} 不在 {installedAccountLogin} 上，而本组织的 GitHub App 安装在那里。"
-
-msgid "{repositoryFullName} isn't shared with the Paradev GitHub App yet."
-msgstr "{repositoryFullName} 尚未与 Paradev GitHub App 共享。"
-
 msgid "{seconds}s"
 msgstr "{seconds} 秒"
 
@@ -1344,6 +1342,9 @@ msgstr "{years}年前"
 #. placeholder {0}: connection.login
 msgid "@{0} · cloud workspaces commit, push and open pull requests as you"
 msgstr "@{0} · 云端工作区以你的身份提交、推送并创建拉取请求"
+
+msgid "@{accountLogin}"
+msgstr "@{accountLogin}"
 
 msgid "@superset"
 msgstr "@superset"
@@ -1978,9 +1979,6 @@ msgstr "添加提示词，例如：在$sentry中查找崩溃"
 
 msgid "Add reaction…"
 msgstr "添加回应…"
-
-msgid "Add repository"
-msgstr "添加仓库"
 
 msgid "Add script"
 msgstr "添加脚本"
@@ -2760,6 +2758,9 @@ msgstr "apps/web/src/app/design/components/LayoutSection/LayoutSection.tsx"
 msgid "Archive"
 msgstr "归档"
 
+msgid "Archive {environmentName}?"
+msgstr "归档 {environmentName}？"
+
 msgid "Archive {name}?"
 msgstr "要归档 {name} 吗？"
 
@@ -3215,6 +3216,9 @@ msgstr "{selectedHostLabel}上新建worktree的基准目录"
 
 msgid "Base directory for new worktrees on {selectedHostName}."
 msgstr "{selectedHostName}上新建worktree的基准目录。"
+
+msgid "Base image · no checkpoint yet"
+msgstr "基础镜像 · 尚无检查点"
 
 msgid "Base URL"
 msgstr "基础URL"
@@ -3980,6 +3984,10 @@ msgstr "检查点"
 msgid "Checkpoint · before tooltip refactor"
 msgstr "检查点 · tooltip重构之前"
 
+#. placeholder {0}: formatRelativeTime(new Date(row.updatedAt))
+msgid "Checkpoint saved {0}"
+msgstr "检查点已保存 {0}"
+
 msgid "Checks"
 msgstr "检查"
 
@@ -4042,6 +4050,9 @@ msgstr "为这条消息选择MCP服务器"
 
 msgid "Choose the model"
 msgstr "选择模型"
+
+msgid "Choose the primary repository"
+msgstr "选择主仓库"
 
 msgid "Choose what to clear from the in-app browser."
 msgstr "选择要从应用内浏览器清除的内容。"
@@ -4404,8 +4415,14 @@ msgstr "关闭此终端将结束正在运行的进程。"
 msgid "Cloud"
 msgstr "云端"
 
+msgid "Cloud environment setup"
+msgstr "云环境设置"
+
 msgid "Cloud environments"
 msgstr "云端环境"
+
+msgid "Cloud environments check out your repositories from GitHub. Connect these first; you only do this once."
+msgstr "云环境从 GitHub 检出你的仓库。请先连接这些;只需操作一次。"
 
 msgid "Cloud GB-hours per seat each month"
 msgstr "每席位每月云端 GB 小时"
@@ -4429,20 +4446,20 @@ msgstr "云工作区"
 msgid "serverError.cloudWorkspace.cloudSandboxesAreInternalOnly"
 msgstr "{account} 未开通云工作区。云工作区包含在 Team 和 Ultra 方案中：请在设置的账单中升级。"
 
+msgid "Cloud workspaces commit, push and open pull requests as you"
+msgstr "云工作区以你的身份提交、推送并创建拉取请求"
+
 msgid "Cloud workspaces ignore this variable. Agents sign in under Settings › Agents instead."
 msgstr "云工作区会忽略此变量。智能体改为在「设置 › 智能体」中登录。"
-
-msgid "Cloud workspaces need a project for now"
-msgstr "云工作区目前需要一个项目"
 
 msgid "Cloud workspaces need the Team or Ultra plan. Upgrade in Settings, Billing to start one."
 msgstr "云工作区需要 Team 或 Ultra 方案。请在设置的账单中升级后启动。"
 
+msgid "Cloud workspaces open on it, and its .superset/config.json runs setup. The others are checked out beside it."
+msgstr "云工作区会在其上打开，并由它的 .superset/config.json 运行设置。其他仓库会检出在旁边。"
+
 msgid "Cloud workspaces will stop running {agentLabel} with it."
 msgstr "云工作区将不再用它运行{agentLabel}。"
-
-msgid "Cloud workspaces without a project are coming. Pick a project for now."
-msgstr "无项目的云工作区即将推出。目前请先选择一个项目。"
 
 msgid "Co-founder & CTO, TrainLoop (YC W25)"
 msgstr "联合创始人兼 CTO，TrainLoop (YC W25)"
@@ -4679,6 +4696,9 @@ msgstr "config.json 必须是 JSON 对象"
 msgid "Configure"
 msgstr "配置"
 
+msgid "Configure access"
+msgstr "配置访问权限"
+
 msgid "Configure agents…"
 msgstr "配置智能体…"
 
@@ -4690,9 +4710,6 @@ msgstr "配置应用的通用偏好设置"
 
 msgid "Configure git branch and worktree behavior"
 msgstr "配置git分支和worktree行为"
-
-msgid "Configure GitHub App"
-msgstr "配置 GitHub App"
 
 msgid "Configure GitHub App…"
 msgstr "配置 GitHub App…"
@@ -4769,9 +4786,6 @@ msgstr "连接外部服务以同步数据。"
 
 msgid "Connect GitHub"
 msgstr "连接 GitHub"
-
-msgid "Connect GitHub in Integrations to add {repositoryFullName}."
-msgstr "在集成中连接 GitHub 以添加 {repositoryFullName}。"
 
 msgid "Connect GitHub in Settings to act on pull requests as yourself"
 msgstr "在设置中连接 GitHub，以你自己的身份处理拉取请求"
@@ -4871,6 +4885,9 @@ msgstr "已连接到"
 
 msgid "Connected to {connectedOrgName}"
 msgstr "已连接到{connectedOrgName}"
+
+msgid "Connected to GitHub as {accountLogin}"
+msgstr "已以 {accountLogin} 身份连接 GitHub"
 
 msgid "Connected via subscription"
 msgstr "已通过订阅连接"
@@ -5829,6 +5846,9 @@ msgstr "创建“{newLabel}”"
 msgid "Create a channel"
 msgstr "创建频道"
 
+msgid "Create a cloud environment"
+msgstr "创建云环境"
+
 msgid "Create a Dev"
 msgstr "创建 Dev"
 
@@ -5985,6 +6005,7 @@ msgctxt "github release action"
 msgid "Created"
 msgstr "已创建"
 
+#. placeholder {0}: formatRelativeTime(new Date(row.createdAt))
 #. placeholder {0}: issue.identifier
 #. placeholder {0}: result.task.slug
 msgid "Created {0}"
@@ -7297,11 +7318,11 @@ msgstr "企业版"
 msgid "Environment"
 msgstr "环境"
 
-msgid "Environment created"
-msgstr "环境已创建"
+msgid "Environment archived"
+msgstr "环境已归档"
 
-msgid "Environment saved"
-msgstr "环境已保存"
+msgid "Environment not found"
+msgstr "未找到环境"
 
 msgid "Environment setup, flaky tests, and credential plumbing, the boring failure modes that killed unattended runs in 2025, are mostly engineered away rather than modeled away."
 msgstr "环境搭建、不稳定的测试、凭据串联，这些在2025年让无人值守运行折戟的无聊失败模式，大多是被工程手段消除的，而不是被模型消除的。"
@@ -9563,6 +9584,9 @@ msgstr "在一处为所有工作区安装、授权并划定MCP服务器的权限
 msgid "Install."
 msgstr "安装。"
 
+msgid "Installed on {appAccountLogin}"
+msgstr "已安装在 {appAccountLogin}"
+
 #. js-lingui-explicit-id
 msgid "serverError.plugins.marketplaceHasInstalls"
 msgstr "已安装的插件来自 {name}：{plugins}。请先移除它们。"
@@ -10225,6 +10249,9 @@ msgstr "不到一分钟前"
 msgid "Let the agent drive."
 msgstr "让智能体来操作。"
 
+msgid "Lets your organization list and clone repositories"
+msgstr "允许你的组织列出并克隆仓库"
+
 msgid "Letter spacing (px)"
 msgstr "字间距（px）"
 
@@ -10346,6 +10373,9 @@ msgstr "关联此任务"
 
 msgid "Linked {slug} to workspace"
 msgstr "已将{slug}关联到工作区"
+
+msgid "Linked to {projectName}"
+msgstr "已关联到 {projectName}"
 
 msgid "Liquid Glass"
 msgstr "Liquid Glass"
@@ -10684,6 +10714,9 @@ msgstr "管理账号…"
 
 msgid "Manage billing"
 msgstr "管理账单"
+
+msgid "Manage environments"
+msgstr "管理环境"
 
 msgid "Manage integrations in the web app to connect and configure services."
 msgstr "在网页应用中管理集成，以连接和配置服务。"
@@ -11026,6 +11059,9 @@ msgstr "已错过"
 
 msgid "Missed <0>· 7d</0>"
 msgstr "已错过 <0>· 7天</0>"
+
+msgid "Missing a repository?"
+msgstr "缺少仓库?"
 
 msgid "Missing authorization code. Re-run"
 msgstr "缺少授权码。请重新运行"
@@ -11704,17 +11740,14 @@ msgstr "暂无下载"
 msgid "No emoji found"
 msgstr "未找到表情"
 
-msgid "No environment for {repositoryFullName}"
-msgstr "{repositoryFullName} 没有环境"
+msgid "No environments are linked to this project yet."
+msgstr "尚无环境关联到此项目。"
 
 msgid "No environments available"
 msgstr "没有可用的环境"
 
 msgid "No environments found."
 msgstr "未找到环境。"
-
-msgid "No environments yet"
-msgstr "还没有环境"
 
 msgid "No environments yet."
 msgstr "还没有环境。创建一个，以便基于它启动云端工作区。"
@@ -11835,9 +11868,6 @@ msgstr "没有匹配的组织成员。"
 
 msgid "No matching pages"
 msgstr "没有匹配的页面"
-
-msgid "No matching repositories."
-msgstr "没有匹配的仓库。"
 
 msgid "No MCP servers found"
 msgstr "未找到MCP服务器"
@@ -11975,6 +12005,9 @@ msgstr "没有匹配的项目。"
 msgid "No projects on this host yet"
 msgstr "此主机上暂无项目"
 
+msgid "No projects to link."
+msgstr "没有可关联的项目。"
+
 msgid "No projects were deleted in the last 30 days."
 msgstr "过去 30 天内没有删除任何项目。"
 
@@ -11996,11 +12029,11 @@ msgstr "未找到拉取请求。"
 msgid "No release notes at {url}"
 msgstr "{url} 上没有版本说明"
 
+msgid "No repositories found."
+msgstr "未找到仓库。"
+
 msgid "No repositories found. Make sure your GitHub App has access to repositories."
 msgstr "未找到仓库。请确认你的GitHub App有权访问仓库。"
-
-msgid "No repositories. Connect GitHub in Integrations, then refresh."
-msgstr "没有仓库。请在“集成”中连接 GitHub，然后刷新。"
 
 msgid "No results"
 msgstr "无结果"
@@ -12134,6 +12167,9 @@ msgstr "此设备上未找到 v1 项目。"
 msgid "No v1 terminal scripts found."
 msgstr "未找到 v1 终端脚本。"
 
+msgid "No variables set yet."
+msgstr "尚未设置变量。"
+
 msgid "No versions yet"
 msgstr "还没有版本"
 
@@ -12184,6 +12220,9 @@ msgstr "没有人因此改变审查方式。"
 
 msgid "None"
 msgstr "无"
+
+msgid "None selected"
+msgstr "未选择"
 
 msgid "None. This is the floor."
 msgstr "没有。这是起点。"
@@ -13097,12 +13136,6 @@ msgstr "打开页面"
 msgid "Opening worktree..."
 msgstr "正在打开worktree..."
 
-msgid "Opens a cloud workspace where an agent installs what the project needs and writes its .superset/config.json"
-msgstr "打开一个云端工作区，由代理安装项目所需内容并写入其 .superset/config.json"
-
-msgid "Opens on"
-msgstr "打开于"
-
 msgid "Operator"
 msgstr "操作员"
 
@@ -13205,6 +13238,9 @@ msgstr "其他应用"
 
 msgid "Other devices"
 msgstr "其他设备"
+
+msgid "Other environments"
+msgstr "其他环境"
 
 msgid "Other Hosts"
 msgstr "其他主机"
@@ -13422,6 +13458,9 @@ msgstr "为你的团队准备的Paradev"
 
 msgid "Paradev forwards the ports a remote workspace opens while you have it selected."
 msgstr "当你选中某个远程工作区时，Paradev 会转发它打开的端口。"
+
+msgid "Paradev GitHub App"
+msgstr "Paradev GitHub App"
 
 msgid "Paradev has a free tier. The source code is available on GitHub under Elastic License 2.0 (ELv2), so you can inspect and self-host it subject to the license terms."
 msgstr "Paradev有免费版。源代码在GitHub上以Elastic License 2.0（ELv2）提供，你可以在许可条款范围内查阅并自行部署。"
@@ -13776,6 +13815,9 @@ msgstr "在{hostName}上选择新的项目文件夹。"
 msgid "Pick the project worktree folder on {hostName}."
 msgstr "在{hostName}上选择项目的worktree文件夹。"
 
+msgid "Pick the repositories it checks out. An agent on this machine works out what to install and gets it running in the cloud."
+msgstr "选择它要检出的仓库。这台机器上的智能体会弄清需要安装什么,并让它在云端运行起来。"
+
 msgid "Pick the worktree folder on {hostName}."
 msgstr "在{hostName}上选择worktree文件夹。"
 
@@ -14090,6 +14132,9 @@ msgstr "定价"
 msgid "Pricing depends on your team and use case. Get in touch and we'll put together a plan that works for you."
 msgstr "价格取决于你的团队规模和使用场景。联系我们，我们会为你制定合适的方案。"
 
+msgid "primary"
+msgstr "主"
+
 msgid "Primary"
 msgstr "主色"
 
@@ -14214,6 +14259,9 @@ msgstr "项目未在此主机上设置"
 msgid "Project not trusted in Codex"
 msgstr "项目在Codex中未受信任"
 
+msgid "Project on another device"
+msgstr "其他设备上的项目"
+
 msgid "Project ready — open it from the sidebar."
 msgstr "项目已就绪，可从侧边栏打开。"
 
@@ -14249,9 +14297,6 @@ msgstr "项目所在主机不可达，暂时无法重命名"
 
 msgid "Projects"
 msgstr "项目"
-
-msgid "Promoted from a workspace, so its repositories and region are fixed. Promote a workspace again to change them."
-msgstr "由工作区提升而来，因此仓库和区域固定。再次提升一个工作区即可更改。"
 
 msgid "Prompt"
 msgstr "提示词"
@@ -14766,9 +14811,6 @@ msgstr "刷新指标"
 msgid "Refresh pull requests"
 msgstr "刷新拉取请求"
 
-msgid "Refresh repositories"
-msgstr "刷新仓库"
-
 msgid "Refreshes when Claude Code next runs."
 msgstr "下次运行 Claude Code 时刷新。"
 
@@ -14874,9 +14916,6 @@ msgstr "移除{label}？"
 
 msgid "Remove {name}"
 msgstr "移除 {name}"
-
-msgid "Remove {repositoryName}"
-msgstr "移除 {repositoryName}"
 
 msgid "Remove attachment"
 msgstr "移除附件"
@@ -16508,6 +16547,9 @@ msgstr "会话"
 msgid "Sessions · top {0} by cost"
 msgstr "会话 · 按费用排名前{0}"
 
+msgid "Set"
+msgstr "已设置"
+
 msgid "Set a notification schedule"
 msgstr "设置通知时间表"
 
@@ -16540,7 +16582,7 @@ msgstr "设为此项目"
 msgid "Set up"
 msgstr "设置"
 
-#. placeholder {0}: name.trim()
+#. placeholder {0}: environment.name
 msgid "Set up {0}"
 msgstr "设置 {0}"
 
@@ -16550,9 +16592,6 @@ msgstr "通过 SSH 设置主机"
 msgid "Set up an automation"
 msgstr "设置自动化"
 
-msgid "Set up environment"
-msgstr "设置环境"
-
 msgid "Set up project on {hostName}"
 msgstr "在{hostName}上设置项目"
 
@@ -16561,9 +16600,6 @@ msgstr "配置项目…"
 
 msgid "Set up this project for Paradev"
 msgstr "为Paradev配置这个项目"
-
-msgid "Set up with an agent"
-msgstr "用智能体设置"
 
 msgid "Set up your organization to get started"
 msgstr "设置你的组织即可开始"
@@ -17115,6 +17151,9 @@ msgstr "笑脸与人物"
 
 msgid "Smoother onboarding"
 msgstr "更顺畅的上手流程"
+
+msgid "Snapshot"
+msgstr "快照"
 
 msgid "Snapshots this workspace as it is now, with everything installed in it. New workspaces from the environment start from that snapshot."
 msgstr "为此工作区的当前状态（包括其中安装的所有内容）创建快照。从该环境新建的工作区将从此快照开始。"
@@ -18863,6 +18902,9 @@ msgstr "此路径存在，但不是目录。"
 msgid "This path is a directory"
 msgstr "该路径是一个目录"
 
+msgid "This permanently removes the saved environment for everyone with access to it. Workspaces already running from it stay available."
+msgstr "这会为所有有权访问的人永久移除已保存的环境。已从该环境运行的工作区仍然可用。"
+
 msgid "This port is still in use"
 msgstr "此端口仍在使用中"
 
@@ -19588,6 +19630,9 @@ msgstr "未知工作区"
 
 msgid "Unlimited"
 msgstr "无限"
+
+msgid "Unlink project"
+msgstr "取消关联项目"
 
 msgid "Unlink task"
 msgstr "取消关联任务"
@@ -20929,6 +20974,9 @@ msgstr "你受邀加入{organization}"
 msgid "you@example.com"
 msgstr "you@example.com"
 
+msgid "Your account can be connected later in Settings → Connections"
+msgstr "你可以稍后在 设置 → 连接 中连接账号"
+
 msgid "Your account is deactivated and will be permanently deleted soon. Reactivate to restore it exactly as you left it."
 msgstr "你的账户已停用，并将很快被永久删除。重新激活即可恢复到你离开时的状态。"
 
@@ -20968,6 +21016,9 @@ msgstr "你的邮箱（选填）"
 msgid "Your first agent"
 msgstr "你的第一个智能体"
 
+msgid "Your GitHub account"
+msgstr "你的 GitHub 账号"
+
 msgid "Your GitHub account cannot reach a repository in this environment"
 msgstr "你的 GitHub 账户无法访问此环境中的某个仓库"
 
@@ -20989,6 +21040,9 @@ msgstr "你的组织已达到云端用量上限。请在“设置”中的“账
 #. placeholder {0}: params?.limit
 msgid "Your organization has reached its environment limit ({0}). Archive an environment, or upgrade in Settings, Billing to add more."
 msgstr "你的组织已达到环境数量上限（{0}）。请归档一个环境，或在“设置”中的“账单”升级以添加更多。"
+
+msgid "Your organization has reached its limit of {reachedLimit} environments. Archive one to make room."
+msgstr "你的组织已达到 {reachedLimit} 个环境的上限。归档一个环境以腾出空间。"
 
 msgid "Your organization reached its cloud usage limit. This workspace stops in a few minutes unless the limit is raised."
 msgstr "你的组织已达到云端用量上限。除非提高上限，此工作区将在几分钟后停止。"
