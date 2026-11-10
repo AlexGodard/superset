@@ -11,6 +11,7 @@ import { useDefaultBrowserUrl } from "../../hooks/useDefaultBrowserUrl";
 import { useNewTabLists } from "../../hooks/useNewTabLists";
 import { useV2TerminalLauncher } from "../../hooks/useV2TerminalLauncher";
 import type { PaneViewerData } from "../../types";
+import { mobilePaneEnabled } from "../../utils/mobilePaneEnabled";
 import { NewTabPagesSection } from "./components/NewTabPagesSection";
 import { NewTabPullRequestsSection } from "./components/NewTabPullRequestsSection";
 import { createRightPane, getRightPaneOptions } from "./paneOptions";
@@ -23,8 +24,9 @@ export function RightPaneNewTab({ onOpen }: RightPaneNewTabProps) {
 	const { i18n } = useLingui();
 	const { workspace } = useWorkspace();
 	const host = useWorkspaceHostTarget(workspace.id);
-	const isMobilePaneEnabled =
-		useFeatureFlagEnabled(FEATURE_FLAGS.MOBILE_PANE) === true;
+	const isMobilePaneEnabled = mobilePaneEnabled(
+		useFeatureFlagEnabled(FEATURE_FLAGS.MOBILE_PANE),
+	);
 	const launcher = useV2TerminalLauncher();
 	const browserUrl = useDefaultBrowserUrl();
 	const { pages, pullRequests } = useNewTabLists(workspace.id);

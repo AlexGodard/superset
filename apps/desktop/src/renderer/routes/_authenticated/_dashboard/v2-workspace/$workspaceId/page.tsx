@@ -101,6 +101,7 @@ import type {
 	SubagentPaneData,
 } from "./types";
 import { isWorktreeMissing } from "./utils/isWorktreeMissing";
+import { mobilePaneEnabled } from "./utils/mobilePaneEnabled";
 import {
 	closeVisibleChangesPane,
 	findVisibleChangesPane,
@@ -239,8 +240,9 @@ function V2WorkspaceContent() {
 		workspaceId,
 		isPaneAreaEnabled: isRightPaneAreaEnabled,
 	});
-	const isMobilePaneEnabled =
-		useFeatureFlagEnabled(FEATURE_FLAGS.MOBILE_PANE) === true;
+	const isMobilePaneEnabled = mobilePaneEnabled(
+		useFeatureFlagEnabled(FEATURE_FLAGS.MOBILE_PANE),
+	);
 	const { store: rightStore, isLayoutReady: isRightLayoutReady } =
 		useV2WorkspacePaneLayout({ slot: "rightPaneLayout" });
 	useRestoreExpandedPaneArea({
