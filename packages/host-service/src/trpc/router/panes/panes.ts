@@ -19,6 +19,12 @@ import { terminalRouter } from "../terminal";
 import { addPaneDetails } from "./add-pane-details";
 import { closeChatsOnTerminal } from "./close-chats-on-terminal";
 import { resolveOpenPath } from "./resolve-open-path";
+import {
+	isOnThisHost,
+	requireOpenPathAsGiven,
+	requireSessionsOnThisHost,
+	requireTerminalOnThisHost,
+} from "./workspace-on-another-host";
 
 const createTerminalCaller = createCallerFactory(terminalRouter);
 
@@ -40,13 +46,12 @@ async function applyOp(
 				"This host has no pane layout to edit (no desktop app is attached to it).",
 		});
 	}
-	if (!getLocalWorkspace(ctx.db, workspaceId)) {
-		throw new TRPCError({ code: "NOT_FOUND", message: "Workspace not found" });
-	}
 	const result = await new PaneLayoutBridgeClient(ctx.browserBridge).apply({
 		workspaceId,
 		op,
 	});
+	// Its terminals run on its own host, so their titles and agents are not known here.
+	if (!isOnThisHost(ctx, workspaceId)) return result;
 	return addPaneDetails(result, {
 		titles: new Map(
 			listTerminalSessions({ workspaceId }).map((session) => [
@@ -114,6 +119,7 @@ export const panesRouter = router({
 	split: protectedProcedure
 		.input(paneInput.extend({ direction, terminalId: z.string().min(1) }))
 		.mutation(({ ctx, input }) => {
+			requireSessionsOnThisHost(ctx, input.workspaceId);
 			requireWorkspaceTerminal(ctx, input.workspaceId, input.terminalId);
 			return applyOp(ctx, input.workspaceId, {
 				type: "split",
@@ -141,6 +147,7 @@ export const panesRouter = router({
 					message: "Pass a terminalId or a sessionId, not both",
 				});
 			}
+			requireSessionsOnThisHost(ctx, input.workspaceId);
 			if (input.sessionId) {
 				return applyOp(ctx, input.workspaceId, {
 					type: "newTab",
@@ -191,6 +198,9 @@ export const panesRouter = router({
 			const terminalId = allLayoutTabs(before.layout)
 				.flatMap((tab) => tab.panes)
 				.find((pane) => pane.id === input.paneId)?.terminalId;
+			if (terminalId && !input.keepTerminal) {
+				requireTerminalOnThisHost(ctx, input.workspaceId, terminalId);
+			}
 			const result = await applyOp(ctx, input.workspaceId, {
 				type: "close",
 				paneId: input.paneId,
@@ -253,6 +263,7 @@ export const panesRouter = router({
 		)
 		.mutation(({ ctx, input }) => {
 			const { tool, path } = input;
+			requireOpenPathAsGiven(ctx, input.workspaceId, tool, path);
 			const worktreePath = getLocalWorkspace(
 				ctx.db,
 				input.workspaceId,

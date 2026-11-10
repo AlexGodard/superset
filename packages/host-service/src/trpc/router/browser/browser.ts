@@ -4,6 +4,7 @@ import { BrowserBridgeClient } from "../../../runtime/browser-bridge/browser-bri
 import type { HostServiceContext } from "../../../types";
 import { getLocalWorkspace } from "../../../workspaces/local-workspace-store";
 import { protectedProcedure, router } from "../../index";
+import { requirePanesInApp } from "../panes/workspace-on-another-host";
 
 function requireBridge(ctx: HostServiceContext): BrowserBridgeClient {
 	if (!ctx.browserBridge) {
@@ -58,16 +59,14 @@ export const browserRouter = router({
 				show: z.boolean().default(false),
 			}),
 		)
-		.mutation(({ ctx, input }) => {
+		.mutation(async ({ ctx, input }) => {
 			const bridge = requireBridge(ctx);
 			const workspace = getLocalWorkspace(ctx.db, input.workspaceId);
-			if (!workspace) {
-				throw new TRPCError({
-					code: "NOT_FOUND",
-					message: "Workspace not found",
-				});
-			}
-			return bridge.open({ ...input, projectId: workspace.projectId });
+			if (!workspace) await requirePanesInApp(ctx, input.workspaceId);
+			return bridge.open({
+				...input,
+				projectId: workspace?.projectId ?? null,
+			});
 		}),
 
 	navigate: protectedProcedure
