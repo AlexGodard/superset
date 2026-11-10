@@ -4,17 +4,37 @@ import { workspaceTrpc } from "@superset/workspace-client";
 import { CloudSimulator } from "./components/CloudSimulator";
 import { LocalDevices } from "./components/LocalDevices";
 import { PaneMessage } from "./components/PaneMessage";
+import { ThisMachineHost } from "./components/ThisMachineHost";
+import { fallsBackToThisMachine } from "./utils/fallsBackToThisMachine";
 
 /** Mobile simulator backed by whichever this host can produce: a hosted
  * simulator on a cloud sandbox, or a local iOS/Android simulator on a real
  * machine. */
 interface MobilePaneProps {
 	workspaceId: string;
+	onThisMachine?: boolean;
 }
 
-export function MobilePane({ workspaceId }: MobilePaneProps) {
+export function MobilePane({
+	workspaceId,
+	onThisMachine = false,
+}: MobilePaneProps) {
 	const statusQuery = workspaceTrpc.mobile.status.useQuery();
 	const backend = statusQuery.data?.backend;
+
+	if (
+		fallsBackToThisMachine({
+			backend,
+			unreachable: statusQuery.isError,
+			onThisMachine,
+		})
+	) {
+		return (
+			<ThisMachineHost>
+				<MobilePane workspaceId={workspaceId} onThisMachine />
+			</ThisMachineHost>
+		);
+	}
 
 	if (backend === "eas") {
 		return (
