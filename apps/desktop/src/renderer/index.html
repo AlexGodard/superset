@@ -2,6 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!--
+      Cascade layer order, declared before any stylesheet: a layer ranks by
+      where it first appears, and Vite 8 splits CSS that a component imports
+      (packages/ui fade-edge.css, which opens with @layer utilities) into a
+      chunk linked ahead of the main one. Without this line utilities ranks
+      below base, so the preflight resets of padding, margin, border and font
+      size win over every utility class (2.0.9).
+    -->
+    <style>@layer properties, theme, base, components, utilities;</style>
     <!-- Theme boot script must run before body to prevent flash -->
     <script type="module" src="/theme-boot.js"></script>
     <!--
